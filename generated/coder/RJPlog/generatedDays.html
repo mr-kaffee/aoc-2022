@@ -1,0 +1,2470 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Aoc 2022: RJPlog</title>
+    <meta charset="UTF-8">
+<meta name="google-site-verification" content="JZ7jk3duxzxHDLuOHKPxc-uoz0JPlSBLeaAxh3wGn9Q" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Just for fun">
+    <meta name="author" content="Ralf D. Müller">
+    <meta name="keywords" content="aoc">
+    <meta name="generator" content="JBake">
+
+    <!-- Le styles -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/asciidoctor.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link href="../../../css/prettify.css" rel="stylesheet">
+      <link href="../../../css/retro.css" rel="stylesheet">
+      <style>
+      @media only screen and (min-width:768px){
+          #toctitle{font-size:1.375em}
+          #toc.toc{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #efefed;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto; padding-top: 60px;}
+          #toc.toc #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+          #toc.toc>ul{font-size:.9em;margin-bottom:0}
+          #toc.toc ul ul{margin-left:0;padding-left:1em}
+          #toc.toc ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+          body.toc2{ padding-left: 15.5em;padding-right:0; width: 100% !important;}
+          body.toc2 div#wrap div.content {width: auto !important;}
+          #toc.toc{width:15em; padding-top: 60px;}
+      }
+      @media only screen and (min-width:1280px){
+          body.toc2{ padding-left: 20.5em;padding-right:0; width: 100% !important;}
+          body.toc2 div#wrap div.content {width: auto !important;}
+          #toc.toc{width:20em; padding-top: 60px;}
+          #toc.toc #toctitle{font-size:1.375em}
+          #toc.toc>ul{font-size:.95em}
+          #toc.toc ul ul{padding-left:1.25em}
+      }
+      body {
+          overflow-y: scroll;
+      }
+      html, body {
+          font-size: 1.06rem;
+      }
+      body.toc2{ overflow-x: auto}
+      #toc.toc ul {
+          padding-inline-start: 0;
+      }
+      :target::before {
+          content: "";
+          display: block;
+          height: 60px; /* fixed header height*/
+          margin: -60px 0 0; /* negative fixed header height */
+      }
+      .navbar {
+          background-image: url(/aoc-2022/images/treeback.png);
+          background-size: contain;
+          background-repeat: repeat-x;
+          border-bottom: 0;
+          padding-bottom: 20px;
+          background-color: transparent;
+          box-shadow: none;
+      }
+      html {
+          background: url(/aoc-2022/images/snowback.png) no-repeat center center fixed;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+      }
+
+      </style>
+      <script>
+          //smart redirectg
+          if (document.location.href.includes("netlify")) {
+              document.location.href=document.location.href.replace("aoc-2022.netlify.app/","doctoolchain.org/aoc-2022/");
+          }
+      </script>
+<!-- /aoc-2022/ -->
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+      <link rel="apple-touch-icon" sizes="180x180" href="/aoc-2022//apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/aoc-2022//favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/aoc-2022//favicon-16x16.png">
+      <link rel="manifest" href="/aoc-2022//site.webmanifest">
+      <link rel="mask-icon" href="/aoc-2022//safari-pinned-tab.svg" color="#5bbad5">
+      <meta name="msapplication-TileColor" content="#da532c">
+      <meta name="theme-color" content="#ffffff">
+  </head>
+
+<body onload="prettyPrint()" class="toc2 toc-left" >
+<div id="wrap">
+
+	
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../../../">AoC-2022</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+              
+                
+                  <li><a href="../../../rules/">Rules</a></li>
+                
+              
+                
+                  <li><a href="../../../solutions/">Solutions</a></li>
+                
+              
+                
+                  <li><a href="../../../about/">About</a></li>
+                
+              
+          </ul>
+            <!-- tag::search[] -->
+            <form class="navbar-form navbar-right" action="https://google.de/search" style="border: none;">
+                <div class="form-group">
+                    <input type="hidden" name="q" value="site:doctoolchain.org/aoc-2022">
+                    <input type="text" name="q" class="form-control" id="search">
+                    <button type="submit" class="btn btn-default hidden-sm ">Find</button>
+                </div>
+            </form>
+            <!-- end::search[] -->
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+	<div class="container content">
+	<p><div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_rjplog">RJPlog</a>
+<ul class="sectlevel2">
+<li><a href="#_about_me">About me</a></li>
+<li><a href="#_day_00_kotlin">Day 00: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_day_00_hello_world">Day 00: Hello World!</a></li>
+</ul>
+</li>
+<li><a href="#_day_01_kotlin">Day 01: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_day_1_calorie_counting">Day 1: Calorie Counting</a>
+<ul class="sectlevel4">
+<li><a href="#_first_star">First Star</a></li>
+<li><a href="#_second_star">Second Star</a></li>
+<li><a href="#_add_on">Add on</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_02_kotlin">Day 02: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_day_2_rock_paper_scissors">Day 2: Rock Paper Scissors</a>
+<ul class="sectlevel4">
+<li><a href="#_first_star_2">First Star</a></li>
+<li><a href="#_second_star_2">Second Star</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_03_kotlin">Day 03: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_day_3_rucksack_reorganization">Day 3: Rucksack Reorganization</a>
+<ul class="sectlevel4">
+<li><a href="#_first_star_3">First Star</a></li>
+<li><a href="#_second_star_3">Second Star</a></li>
+<li><a href="#_add_on_2">Add on</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_04_kotlin">Day 04: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_day_4_camp_cleanup">Day 4: Camp Cleanup</a>
+<ul class="sectlevel4">
+<li><a href="#_first_star_4">First Star</a></li>
+<li><a href="#_second_star_4">Second Star</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_05_kotlin">Day 05: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_day_5_supply_stacks">Day 5: Supply Stacks</a>
+<ul class="sectlevel4">
+<li><a href="#_first_star_5">First Star</a></li>
+<li><a href="#_second_star_5">Second Star</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_06_kotlin">Day 06: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_day_6_tuning_trouble">Day 6: Tuning Trouble</a>
+<ul class="sectlevel4">
+<li><a href="#_first_star_6">First Star</a></li>
+<li><a href="#_second_star_6">Second Star</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_07_kotlin">Day 07: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_day_7_no_space_left_on_device">Day 7: No Space Left On Device</a>
+<ul class="sectlevel4">
+<li><a href="#_first_star_7">First Star</a></li>
+<li><a href="#_second_star_7">Second Star</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_08_kotlin">Day 08: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_day_8_treetop_tree_house">Day 8: Treetop Tree House</a>
+<ul class="sectlevel4">
+<li><a href="#_first_star_8">First Star</a></li>
+<li><a href="#_second_star_8">Second Star</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_09_kotlin">Day 09: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_day_9_rope_bridge">Day 9: Rope Bridge</a>
+<ul class="sectlevel4">
+<li><a href="#_first_star_9">First Star</a></li>
+<li><a href="#_second_star_9">Second Star</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_10_kotlin">Day 10: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_day_10_cathode_ray_tube">Day 10: Cathode-Ray Tube</a>
+<ul class="sectlevel4">
+<li><a href="#_first_star_10">First Star</a></li>
+<li><a href="#_second_star_10">Second Star</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_11_kotlin">Day 11: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_day_11_monkey_in_the_middle">Day 11: Monkey in the Middle</a>
+<ul class="sectlevel4">
+<li><a href="#_first_star_11">First Star</a></li>
+<li><a href="#_second_star_11">Second Star</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_12_kotlin">Day 12: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_day_12_hill_climbing_algorithm">Day 12: Hill Climbing Algorithm</a>
+<ul class="sectlevel4">
+<li><a href="#_first_star_12">First Star</a></li>
+<li><a href="#_second_star_12">Second Star</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_14_kotlin">Day 14: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_day_14_regolith_reservoir">Day 14: Regolith Reservoir</a>
+<ul class="sectlevel4">
+<li><a href="#_first_star_13">First Star</a></li>
+<li><a href="#_second_star_13">Second Star</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_15_kotlin">Day 15: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_day_15_beacon_exclusion_zone">Day 15: Beacon Exclusion Zone</a>
+<ul class="sectlevel4">
+<li><a href="#_first_star_14">First Star</a></li>
+<li><a href="#_second_star_14">Second Star</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_18_kotlin">Day 18: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_day_18_boiling_boulders">Day 18: Boiling Boulders</a>
+<ul class="sectlevel4">
+<li><a href="#_first_star_15">First Star</a></li>
+<li><a href="#_second_star_15">Second Star</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_21_kotlin">Day 21: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_day_21_monkey_math">Day 21: Monkey Math</a>
+<ul class="sectlevel4">
+<li><a href="#_first_star_16">First Star</a></li>
+<li><a href="#_second_star_16">Second Star</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_rjplog"><a class="anchor" href="#_rjplog"></a><a class="link" href="#_rjplog">RJPlog</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="https://avatars.githubusercontent.com/u/44948239?v=4" alt="44948239?v=4"></span></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>RJPlog</strong><br>
+<span class="icon"><i class="fa fa-github"></i></span>: <a href="https://github.com/RJPlog">RJPlog</a></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_about_me"><a class="anchor" href="#_about_me"></a><a class="link" href="#_about_me">About me</a></h3>
+<div class="paragraph">
+<p>Nothing here yet. Update your profile at <a href="https://github.com/docToolchain/aoc-2022/blob/master/profiles/RJPlog.adoc">/profiles/RJPlog.adoc</a></p>
+</div>
+<a id="day00" />
+</div>
+<div class="sect2">
+<h3 id="_day_00_kotlin"><a class="anchor" href="#_day_00_kotlin"></a><a class="link" href="#_day_00_kotlin">Day 00: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_day_00_hello_world"><a class="anchor" href="#_day_00_hello_world"></a><a class="link" href="#_day_00_hello_world">Day 00: Hello World!</a></h4>
+<div class="paragraph">
+<p>At the beginning this is just an exercise to get my setup running.</p>
+</div>
+<a id="day01" />
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_01_kotlin"><a class="anchor" href="#_day_01_kotlin"></a><a class="link" href="#_day_01_kotlin">Day 01: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_day_1_calorie_counting"><a class="anchor" href="#_day_1_calorie_counting"></a><a class="link" href="#_day_1_calorie_counting">Day 1: Calorie Counting</a></h4>
+<div class="paragraph">
+<p>This solution is written in Kotlin.</p>
+</div>
+<div class="paragraph">
+<p>The original puzzle can be found at <a href="https://adventofcode.com/2022/day/1" class="bare">https://adventofcode.com/2022/day/1</a></p>
+</div>
+<div class="sect4">
+<h5 id="_first_star"><a class="anchor" href="#_first_star"></a><a class="link" href="#_first_star">First Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>Inside function <em>calories</em> the puzzle input is read and accumulated. Whenever a new block comes, the accumulated value is added to a list and the accumulation starts from new. The function takes one input parameter, if it is <em>1</em> only the max value of the list with accumulated calories is returned</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun calories(in1: Int): Int {
+
+	var caloriesPerElf = mutableListOf&lt;Int&gt;()
+	var calories: Int = 0
+
+	File("day2201_puzzle_input.txt").forEachLine {
+		if (it == "") {
+			caloriesPerElf.add(calories)
+			calories = 0
+		} else {
+			calories += it.toInt()
+		}
+	}
+	caloriesPerElf.add(calories)
+
+	if (in1 == 1) {
+		return caloriesPerElf.max() ?: 0
+	} else {
+		return caloriesPerElf.sorted().takeLast(3).sum()
+	}
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_second_star"><a class="anchor" href="#_second_star"></a><a class="link" href="#_second_star">Second Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>The same function call is used only with a different input parameter and therefore not the max value is returned but the sum of the three highest values</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun calories(in1: Int): Int {
+
+	var caloriesPerElf = mutableListOf&lt;Int&gt;()
+	var calories: Int = 0
+
+	File("day2201_puzzle_input.txt").forEachLine {
+		if (it == "") {
+			caloriesPerElf.add(calories)
+			calories = 0
+		} else {
+			calories += it.toInt()
+		}
+	}
+	caloriesPerElf.add(calories)
+
+	if (in1 == 1) {
+		return caloriesPerElf.max() ?: 0
+	} else {
+		return caloriesPerElf.sorted().takeLast(3).sum()
+	}
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>At the end, both solutions are printed out.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">// print solution for part 1
+	println("*******************************")
+	println("--- Day 1: Calorie Counting ---")
+	println("*******************************")
+	println("Solution for part1")
+	println("   $solution1 is that Elf carrying?")
+	print("   oneliner: ")
+	println(day01Part1Solution())
+	println()
+// print solution for part 2
+	println("*******************************")
+	println("Solution for part2")
+	println("   $solution2 are those Elves carrying")
+	print("   oneliner: ")
+	println(day01Part2Solution())
+	println()</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_add_on"><a class="anchor" href="#_add_on"></a><a class="link" href="#_add_on">Add on</a></h5>
+<div class="paragraph">
+<p>Since today I had some free time, I tried to find another solution with only one line. There was still some trouble with using <em>readText</em>, I guess there is still some missmatch with the charset, I used <em>readLines</em> instead which is not as elegant, but for the time being I need to get back to some other stuff.</p>
+</div>
+<div class="paragraph">
+<p>UPDATE: I found the issue with <em>readText()</em>, for new line not only <em>\n</em> is in the input file but <em>\r\n</em> which needs different splitting.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun day01Part1Solution() = File("day2201_puzzle_input.txt").readText().split("\r\n\r\n").map {it.split("\r\n").map {it.toInt()}.sum()}.max() ?:0
+//fun day01Part1Solution() = File("day2201_puzzle_input.txt").readLines().joinToString("\n").split("\n\n").map {it.split("\n").map {it.toInt()}.sum()}.sortedDescending()[0]
+
+fun day01Part2Solution() = File("day2201_puzzle_input.txt").readText().split("\r\n\r\n").map {it.split("\r\n").map {it.toInt()}.sum()}.sorted().takeLast(3).sum()
+//fun day01Part2Solution() = File("day2201_puzzle_input.txt").readLines().joinToString("\n").split("\n\n").map {it.split("\n").map {it.toInt()}.sum()}.sortedDescending().take(3).sum()</code></pre>
+</div>
+</div>
+<a id="day02" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_02_kotlin"><a class="anchor" href="#_day_02_kotlin"></a><a class="link" href="#_day_02_kotlin">Day 02: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_day_2_rock_paper_scissors"><a class="anchor" href="#_day_2_rock_paper_scissors"></a><a class="link" href="#_day_2_rock_paper_scissors">Day 2: Rock Paper Scissors</a></h4>
+<div class="paragraph">
+<p>This solution is written in Kotlin.</p>
+</div>
+<div class="paragraph">
+<p>The original puzzle can be found at <a href="https://adventofcode.com/2022/day/2" class="bare">https://adventofcode.com/2022/day/2</a></p>
+</div>
+<div class="sect4">
+<h5 id="_first_star_2"><a class="anchor" href="#_first_star_2"></a><a class="link" href="#_first_star_2">First Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>Inside function <em>rockPaperScissors</em> the puzzle input is read line by line. With a simple <em>when</em> construct for each game the result is added to a final result.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun rockPaperScissors(in1: Int): Int {
+
+	var result: Int = 0
+
+	File("day2202_puzzle_input.txt").forEachLine {
+		if (in1 == 1) {
+			when (it) {
+				("A X") -&gt; result += 1 + 3
+				("A Y") -&gt; result += 2 + 6
+				("A Z") -&gt; result += 3 + 0
+				("B X") -&gt; result += 1 + 0
+				("B Y") -&gt; result += 2 + 3
+				("B Z") -&gt; result += 3 + 6
+				("C X") -&gt; result += 1 + 6
+				("C Y") -&gt; result += 2 + 0
+				("C Z") -&gt; result += 3 + 3
+			}
+		} else {
+			when (it) {
+				("A X") -&gt; result += 3 + 0  // lose
+				("A Y") -&gt; result += 1 + 3  // draw
+				("A Z") -&gt; result += 2 + 6  // win
+				("B X") -&gt; result += 1 + 0
+				("B Y") -&gt; result += 2 + 3
+				("B Z") -&gt; result += 3 + 6
+				("C X") -&gt; result += 2 + 0
+				("C Y") -&gt; result += 3 + 3
+				("C Z") -&gt; result += 1 + 6
+			}
+		}
+	}
+	return result
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_second_star_2"><a class="anchor" href="#_second_star_2"></a><a class="link" href="#_second_star_2">Second Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>The same function call is used only with a different input parameter and therefore a second <em>when</em> construct is taking care for adding up the correct scores of each game.</p>
+</div>
+<div class="paragraph">
+<p>At the end, both solutions are printed out.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">// print solution for part 1
+	println("*********************************")
+	println("--- Day 2: Rock Paper Scissors---")
+	println("*********************************")
+	println("Solution for part1")
+	println("   $solution1 is your total score?")
+	println()
+// print solution for part 2
+	println("*********************************")
+	println("Solution for part2")
+	println("   $solution2 would be your total score")
+	println()</code></pre>
+</div>
+</div>
+<a id="day03" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_03_kotlin"><a class="anchor" href="#_day_03_kotlin"></a><a class="link" href="#_day_03_kotlin">Day 03: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_day_3_rucksack_reorganization"><a class="anchor" href="#_day_3_rucksack_reorganization"></a><a class="link" href="#_day_3_rucksack_reorganization">Day 3: Rucksack Reorganization</a></h4>
+<div class="paragraph">
+<p>This solution is written in Kotlin.</p>
+</div>
+<div class="paragraph">
+<p>The original puzzle can be found at <a href="https://adventofcode.com/2022/day/3" class="bare">https://adventofcode.com/2022/day/3</a></p>
+</div>
+<div class="sect4">
+<h5 id="_first_star_3"><a class="anchor" href="#_first_star_3"></a><a class="link" href="#_first_star_3">First Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>Inside function <em>RuRePartOne</em> the puzzle input is read line by line. Each line is split into two substrings and than iterated through every letter to find the common ones. The values of the letter are added to the result.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun RuRePartOne(): Int {
+
+	var result: Int = 0
+
+	File("day2203_puzzle_input.txt").forEachLine {
+		val compOne = it.chunked(it.length / 2)[0]
+		val compTwo = it.chunked(it.length / 2)[1]
+		for (i in 1..52) {
+			var item: Char
+			if (i &lt; 27) {
+				item = (i + 96).toChar()
+			} else {
+				item = (i + 64 - 26).toChar()
+			}
+			if (compOne.contains(item) &amp;&amp; compTwo.contains(item)) {
+				result += i
+				break
+			}
+		}
+	}
+	return result
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_second_star_3"><a class="anchor" href="#_second_star_3"></a><a class="link" href="#_second_star_3">Second Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>Inside function <em>RuRePartTwo</em> the puzzle input is read line by line. Every third line all values so far were iterated through every letter to find the common one. The values of the letter are added to the result.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun RuRePartTwo(): Int {
+
+	var result: Int = 0
+	var groupCount: Int = 0
+	var compOne = ""
+	var compTwo = ""
+	var compThree = ""
+
+	File("day2203_puzzle_input.txt").forEachLine {
+		if (groupCount == 0) {
+			compOne = it
+		} else if (groupCount == 1) {
+			compTwo = it
+		} else {
+			compThree = it
+			for (i in 1..52) {
+				var item: Char
+				if (i &lt; 27) {
+					item = (i + 96).toChar()
+				} else {
+					item = (i + 64 - 26).toChar()
+				}
+				if (compOne.contains(item) &amp;&amp; compTwo.contains(item) &amp;&amp; compThree.contains(item)) {
+					result += i
+					break
+				}
+			}
+			groupCount = -1
+		}
+		groupCount += 1
+	}
+	return result
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>At the end, both solutions are printed out.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">// print solution for part 1
+	println("**************************************")
+	println("--- Day 3: Rucksack Reorganization ---")
+	println("**************************************")
+	println("Solution for part1")
+	println("   $solution1 is the sum of the priorities of those item types")
+	print("   alternative: ")
+	println(RuReOneAlt1())
+	println()
+// print solution for part 2
+	println("**************************************")
+	println("Solution for part2")
+	println("   $solution2 is the sum of the priorities of those item types")
+	print("   alternative: ")
+	println(RuReOneAlt2())
+	println()</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_add_on_2"><a class="anchor" href="#_add_on_2"></a><a class="link" href="#_add_on_2">Add on</a></h5>
+<div class="paragraph">
+<p>I did not like the solution with the loops, taking a lot lines of code. So I investigated in some shorter solution:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun RuReOneAlt1() = File("day2203_puzzle_input.txt").readLines()
+	.map { (it.chunked(it.length / 2)[0].toList() - (it.chunked(it.length / 2)[0].toList() - it.chunked(it.length / 2)[1].toList())).joinToString() }
+	.map { if (it.toCharArray()[0].toInt() &gt; 95) it.toCharArray()[0].toInt() - 96 else it.toCharArray()[0].toInt() - 64 + 26 }
+	.sum()
+
+fun RuReOneAlt2() = File("day2203_puzzle_input.txt").readLines()
+	.chunked(3)
+	.map {it[0].toList() - (it[0].toList()-it[1].toList()) - (it[1].toList()-it[2].toList())}
+	.map { if (it.toCharArray()[0].toInt() &gt; 95) it.toCharArray()[0].toInt() - 96 else it.toCharArray()[0].toInt() - 64 + 26 }
+	.sum()</code></pre>
+</div>
+</div>
+<a id="day04" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_04_kotlin"><a class="anchor" href="#_day_04_kotlin"></a><a class="link" href="#_day_04_kotlin">Day 04: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_day_4_camp_cleanup"><a class="anchor" href="#_day_4_camp_cleanup"></a><a class="link" href="#_day_4_camp_cleanup">Day 4: Camp Cleanup</a></h4>
+<div class="paragraph">
+<p>This solution is written in Kotlin.</p>
+</div>
+<div class="paragraph">
+<p>The original puzzle can be found at <a href="https://adventofcode.com/2022/day/4" class="bare">https://adventofcode.com/2022/day/4</a></p>
+</div>
+<div class="sect4">
+<h5 id="_first_star_4"><a class="anchor" href="#_first_star_4"></a><a class="link" href="#_first_star_4">First Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>Inside function <em>CampCleanUp</em> the puzzle input is read line by line. Each line is split into the ranges of the elfs and all complete overlaps are counted at input == 1</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun CampCleanUp(in1: Int): Int {
+
+	var result: Int = 0
+
+	File("day2204_puzzle_input.txt").forEachLine {
+		var (a, b, c, d) = """(\d+)-(\d+),(\d+)-(\d+)""".toRegex().find(it)!!.destructured
+		var elf1 = IntRange(a.toInt(),b.toInt())
+		var elf2 = IntRange(c.toInt(),d.toInt())
+		if (in1 == 1) {
+			if ( (elf1.contains(c.toInt()) &amp;&amp; elf1.contains(d.toInt())) || (elf2.contains(a.toInt()) &amp;&amp; elf2.contains(b.toInt()))) {
+				result += 1
+			}
+		} else {
+			if (elf1.contains(c.toInt()) || elf1.contains(d.toInt()) || elf2.contains(a.toInt()) || elf2.contains(b.toInt()) ) {
+				result += 1
+			}
+		}
+	}
+	return result
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_second_star_4"><a class="anchor" href="#_second_star_4"></a><a class="link" href="#_second_star_4">Second Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>Inside function <em>CampCleanUp</em> the puzzle input is read line by line. Each line is split into the ranges of the elfs and all partly overlaps are counted at input != 1</p>
+</div>
+<div class="paragraph">
+<p>At the end, both solutions are printed out.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">// print solution for part 1
+	println("***************************")
+	println("--- Day 4: Camp Cleanup ---")
+	println("***************************")
+	println("Solution for part1")
+	println("   $solution1 is that assignment pairs does one range fully contain the other.")
+	println()
+// print solution for part 2
+	println("***************************")
+	println("Solution for part2")
+	println("   $solution2 assignment pairs do the ranges overlap")
+	println()</code></pre>
+</div>
+</div>
+<a id="day05" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_05_kotlin"><a class="anchor" href="#_day_05_kotlin"></a><a class="link" href="#_day_05_kotlin">Day 05: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_day_5_supply_stacks"><a class="anchor" href="#_day_5_supply_stacks"></a><a class="link" href="#_day_5_supply_stacks">Day 5: Supply Stacks</a></h4>
+<div class="paragraph">
+<p>This solution is written in Kotlin.</p>
+</div>
+<div class="paragraph">
+<p>The original puzzle can be found at <a href="https://adventofcode.com/2022/day/5" class="bare">https://adventofcode.com/2022/day/5</a></p>
+</div>
+<div class="sect4">
+<h5 id="_first_star_5"><a class="anchor" href="#_first_star_5"></a><a class="link" href="#_first_star_5">First Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>The input file is processed by writing the single stacks in a list of lists. After that is done, the crane instructions are parsed and the crates are copied and deleted from the stack where they were taken from and then added to the stack which are they supposed to be delivered. The function <em>SuSaN</em> does this dependent on the input value for part one or part two</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun SuSa(in1: Int): String {
+
+	var stackStaplesNew = MutableList(20) { mutableListOf&lt;Char&gt;() }
+
+	File("day2205_puzzle_input.txt").forEachLine {
+		if (it.contains("[")) {
+			for (i in 0..(it.length) / 4) {
+				if (it[i * 4 + 1] != ' ') {
+					stackStaplesNew[i].add(it[i * 4 + 1])
+				}
+			}
+		}
+
+		if (it.contains("move")) {
+			var num = it.substringAfter("move ").substringBefore(" from").toInt()
+			var stFrom = it.substringAfter("from ").substringBefore(" to").toInt()
+			var stTo = it.substringAfter("to ").toInt()
+
+			if (in1 == 1) {
+				for (i in 1..num) {
+					stackStaplesNew[stTo - 1].add(0, stackStaplesNew[stFrom - 1][0])
+					stackStaplesNew[stFrom - 1].removeAt(0)
+				}
+
+			} else {
+				for (i in 1..num) {
+					stackStaplesNew[stTo - 1].add(i-1, stackStaplesNew[stFrom - 1][0])
+					stackStaplesNew[stFrom - 1].removeAt(0)
+				}
+			}
+		}
+	}
+
+	var result: String = ""
+	stackStaplesNew.forEach {
+		result = result + it.take(1).joinToString()
+	}
+	return result
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_second_star_5"><a class="anchor" href="#_second_star_5"></a><a class="link" href="#_second_star_5">Second Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>Part two takes the same function <em>SuSa</em> as part one, only difference is that adding the crates to the stack will be in different order.</p>
+</div>
+<div class="paragraph">
+<p>At the end, both solutions are printed out.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">// print solution for part 1
+	println("****************************")
+	println("--- Day 5: Supply Stacks ---")
+	println("****************************")
+	println("Solution for part1")
+	println("   $solution1 crate ends up on top of each stack")
+	println()
+// print solution for part 2
+	println("*******************************")
+	println("Solution for part2")
+	println("   $solution2 are those Elves carrying")
+	println()</code></pre>
+</div>
+</div>
+<a id="day06" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_06_kotlin"><a class="anchor" href="#_day_06_kotlin"></a><a class="link" href="#_day_06_kotlin">Day 06: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_day_6_tuning_trouble"><a class="anchor" href="#_day_6_tuning_trouble"></a><a class="link" href="#_day_6_tuning_trouble">Day 6: Tuning Trouble</a></h4>
+<div class="paragraph">
+<p>This solution is written in Kotlin.</p>
+</div>
+<div class="paragraph">
+<p>The original puzzle can be found at <a href="https://adventofcode.com/2022/day/6" class="bare">https://adventofcode.com/2022/day/6</a></p>
+</div>
+<div class="sect4">
+<h5 id="_first_star_6"><a class="anchor" href="#_first_star_6"></a><a class="link" href="#_first_star_6">First Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>Inside the function <em>TuTr</em> the input string is windowed by the number of necessary letters (input value) and each time an index is increased. As soon as all letters of the window are different, the index is returned.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun TuTr(in1: Int): Int {
+
+    var puzzle_input = "sbpbwwrlwrwggscsfcsshsvhshphttzctztfflddvbvcbcvbcbnbrrstsspsvpvllncccqssqdssnsmshmshhtssbzzlplffzppddmhhwnhntnjtnjtnnqggjdgjdjrjffsdfsfbsffhtthwwfssqpspllcvcdvvfvfzfbzzgpglpgpmppfsfdfbfvvfjfsjjvqqbvqbvqbvvlvglvglvljvjzvvqcvqcqjcqqpddqbqcqrqmmvnvbnnfqnncznccqjcqqjzzwlltrrmmlwlllbjlblzlddfdmmscmsspfssqggbsbsjjdqdqgqgqbqdqrqlrrltttghthrtrwrdrnrfnfvftvtsvtvwtvwttvqtvtccqtqmqggwhhhlzhhrwwbwqwbbfrrmddwhdwdnwdwbdwwsswtwnnvvdggbbtwbbwllgffqpffpgpgmpmmjqqmpmffjgfgrffdzzspzptzzdszszbsbsbsvsbbhsbsbddnhhrqqcwwblbwlwnnthtsshmshmhgmgqgjqqpccfvcvbbbnllgmlgmmbnmnlmlzlffrrrgssmcmddnpdndtntrrqdqldldbbtppvddgndnwwctwccpbpffngnsgshggphggtssgngtnthtllzflzflzfzrfftgtstppghgnnpggrdgdnnswwccljlflwwgzgcgrrhssbwbllblnlvlddsffgrrnbbmsmmmhjmjvmjvmjmqqpdqppltlflmfmssqcqsqvsvsggpglplslggqtggmsmmmgffrccrvvsdvdvfddprdprrwjrjcjjmlmrmqmggqgdqdwdsdwwwgfwfddrcdcvcmmjbbmrrhlrrwcwvcclttwbwttgffnmnjmjdmmmlqmqrrlblplccdbcbwcbcpphpqpqlqrllqwwjsjgjbjqbbmcmzmrrqtrqqmcmmnjmjbbtnnbbjdjzzvbzvzjzdjzjrzzfzfbbmnmdnnzppmbpbhbdbvvqnqqnqrnrzrhhrddbqdqpqqwgwlglplglslhhpjpdjdjgddnppmvppjddczccgsccdsccbcvczccnbnmmsnsmmrwmwbmbbcpbbwbppzggdnnnzmnzzvrvcrvcvcrvrnrzzqzmzttjhhnffqggnqqwzwfzfwzwfwcwnccwgcwgcgqcgqcggzgwgfwgfffjttjddwswqqnttqwqsqhhcmchcscbbnwnlwlrlppqnnwjnjtntrtdtbbmzzrmzrzvrzvrzzwqwqllccnffvmmfmvmzzfttnnzttrbttdvvhdhzhzhvzzfsfszsvsttrqqdlldflfjjnqjjbhhqhzhcchppzsznntdntdddqqwjqjqmmgnnhrhjhnjnznwwdpplzzfzztbzzbmzmbbgjgtjtqjqpqhqgqhhtztpzpmzmjmhhjwwjsspbssvdsvsgvssghgvglgtltgllmhmtmhttfgglwgllpvpgpspzzhnnzcnzzldzdmzmlzzwtwhhlfhhvthhjdjsdsmddgzzsjjnznjnmjjgdgtdtzdtdvtddzwzgwwqvqccwrrrvddbtdbbshbhssnvsnvssswcwjcjlltvvltvvdsdqdsswlwttzfzhzjjgjsgjgttbccsvcscllbfbzzwwwznwwtzwzjzwjjgqjqrjrdjrddzsznsznzpzszhzzspzzbzrzhhsbspsqpqqqpddhdcdldttlccjrjsrsfftfdfrrtntpnpsnnwjnwnznpzzlqqlmqlmmcddlqqzssglsglssprmnvltqhslvqmvszjtvtwqjcdngjmftnhwvjdvtwwhtnsdmvjdspnhnlmjgnmwlspcvpdmlsrnbbzlmwwrslssmcbggmfvgzsnpnlnzdqsbhcfjdccrspnzfmhbvwstvccvqqjlwhpnlrrwszjnrtdfzwrwlzwvdvbzbvltdpfwrjlslmrctwvbbvdrctgtgwtwpjjghhvdsqhplfrsjqlgsrbfgwdjlzdpdljtvjmpwqqbghndqnvjhngtpnpvzfbtchncwdqjhmzjlpdggbdcqrfjlwvczvpspljqmpgtrsvwwhqncfvfrwbnvsfjqlsjdlrqzmlqjgcpghhgzfhjcglllnhtmchrrptbzhqnfntgqbfstrvpsqsvqvcvpgjnchbvmgtgzqfrqcjrvldzghdfrvllrtfcwnsmmgdrcbjmdqgbfwmpwhfjmnbqrbvqvnmjlqtsjqvhzpdsgbjpjngmzbgnznvjqprfvwzjrfrwfdqrtlcgqqlvrzwmqwjbdvprvpwvdcrfdrcttnmnvjfrsrrmjgfjdmpdpnfsrwnprtdpvdmdwssvjrqtlcvpgrqgqqqffvvssbmghzjrzrzlcrnfjtdbvwsjzfvcrsmgqbcrdrjwdwbltffwbgjwtgtdblmlhvhlcpgdmpcztmpmgjghqpwzwtpnmnmgnqqrrtwczgmgtdbgdqtpnlbnzhshsfzsmrztffrmlsgqcprbjpqwjlqgwvctpmpshgzbzsjgqhzvsrjfwplvjbvltrlfldvsmlppcmsfrbbctggmqmjnhppstzrcfjtdgfwrrnmlvjphwtlqtjqcntjtzvgjtwvthjfbgpwhlrzdqncmggvgthmgjvrbnzbndsldnlcgtcqbqdnnbnqhvtpfnrclttfwcpnqscjbzdvbqrrsbzpdfhjllbjwsltjpmdnbrrzvhvzzqnlbglsjrnjbqffnnzmldfvtvmldfsztrnpcjgblsdhzfzmfqzlfrtslglhfvszppptjnjqcdmjcwqmfzhnqbfhslwhvtjfvcftzsphvghvtjjswpwghnfngmzddbwwqddsphvhcrwtthsjfswfqbvdsqghmrspdldfqmchnnrcdvjsclcnlsncsplchvzrwqbtvvqlqspftrwmjcbgpzbsmnfccbzgnhqsfjgmmsqsscdscfjbrmmtjbsphhlrlsgbllrptqrcgnqchzfddjwlldsbpcnzfbspfpchclqfbbtjpmtmtjthcdvwhrtqbgmgldcgcnmmhtbnqpzzcwlrscbzcqjzgztwjrnbmsnqtcllznlctzrntftspmnvhtfwbljnmrwsstvbmwclqrfpmwvjphrwddzdwtlfcvzlvqdmzhnvslfnfjhvdndlgbvvzbztpwvqzbzsbtqpqfmgqfgpzctfrqfjwmsnmlfqbgrlmncntcbshjhdcbqnvznhtcgcmmhnsbwpzbvtqbntwgflhjgmvvfhdbwfqmnfjlzdvvnpmvjrdfdnrhpbtllhbtbswwvrbwjgnqpbgnfrjtvbczbpmrcbwdlhztzssnwshjmmcqchptrtchrqncdgdtmwrlnmmwqlzqswwwvpngvwcphgnzrhpprjnbldscvwlqdjwnhjrnscdwlnhnsbwgzjtgvzdgqcjcgvrdhntszhdnjsbbrfphlmdlldjdslbjnnsfbmcnvtlczmtnhrwblnbrdptcpmsbwqptgmwzsqnmmchwnnrvrlfsrglfzzqbnzmpdtnhhbmfqvsrsdsctvhqwfgbtvhbbrsrqmrvvplrnbfnbdmrvzpgctdtglndhcqnllvvcppgfbwjrpqcbghlqdbmpzwrqpmvwddqgthlmzmdsvzdfsmgzltbsvphctzgjsmqvgjlsbgnvmgprbcsfhgrtbwtnnrsqcwfzrhlgjcwcfrjhffrvrvtnpczvwvjnnhfdgcppnnjjpttptcbmdqvgdbhdmlqgcqsrnbcrbtcgzbvgmhbnwzsgnwzbhdqqmvtpssvlvsttgnmcclqnjcgjnvtdggrcwsgbpjljgzgtllsnfvfshtbbpwrjhzvzswlfdvhbpngvgddcmhbzqcvnjhfsqpnvvsdvdtmqlqpzcgsnwlflnqprbqnwdqchjvsptbtrvtzvhrmrvznfpzmcsgnqtdvghhzwrrwvqwrztvdbjjtfchpftdcbthpfdczwchpptwzdpswvbhppdphgvpfzhprpqtnprgfmdnqrbrdlclcmhrdfrcdhwpcqhnbwmhrrgnctpvsqmphcwwvlmslszhdz"
+    var markerFound = false
+    var index = in1
+
+    puzzle_input.windowed(in1).forEach{
+    	if (it.toList().distinct().size == in1) {
+        	if (!markerFound) {
+            	return index
+            	markerFound = true
+        	}
+    	}
+    	index += 1
+    }
+    return -1
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_second_star_6"><a class="anchor" href="#_second_star_6"></a><a class="link" href="#_second_star_6">Second Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>Part two takes the same function <em>TuTr</em> as part one but uses a different input parameter.</p>
+</div>
+<div class="paragraph">
+<p>At the end, both solutions are printed out.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">// print solution for part 1
+	println("*****************************")
+	println("--- Day 6: Tuning Trouble ---")
+	println("*****************************")
+	println("Solution for part1")
+	println("   $solution1 characters need to be processed before the first start-of-packet marker is detected")
+	println()
+// print solution for part 2
+	println("********************************")
+	println("Solution for part2")
+	println("   $solution2 characters need to be processed before the first start-of-message marker is detected")
+	println()</code></pre>
+</div>
+</div>
+<a id="day07" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_07_kotlin"><a class="anchor" href="#_day_07_kotlin"></a><a class="link" href="#_day_07_kotlin">Day 07: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_day_7_no_space_left_on_device"><a class="anchor" href="#_day_7_no_space_left_on_device"></a><a class="link" href="#_day_7_no_space_left_on_device">Day 7: No Space Left On Device</a></h4>
+<div class="paragraph">
+<p>This solution is written in Kotlin.</p>
+</div>
+<div class="paragraph">
+<p>The original puzzle can be found at <a href="https://adventofcode.com/2022/day/7" class="bare">https://adventofcode.com/2022/day/7</a></p>
+</div>
+<div class="sect4">
+<h5 id="_first_star_7"><a class="anchor" href="#_first_star_7"></a><a class="link" href="#_first_star_7">First Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>Today it got more difficult for me. I thought that may be a good oportunity to deal with data classes, so first I had to figure out how to work with data classes. I defined a <em>Directory</em> data class, which contains folder name, parent folder name, a list of subfolder names (also of class <em>Directory</em>) and the cummulated size of the files directly in this folder.</p>
+</div>
+<div class="paragraph">
+<p>With the function <em>NoSpace</em> first the input is parsed line by line, whenever there occurs a new directory, a new data class is generated, and all data classes are stored in one list of <em>Directory</em>, containing all parsed information.</p>
+</div>
+<div class="paragraph">
+<p>In a loop then this list will be aggregated to the total size of all files contained in a folder and it&#8217;s subfolders.</p>
+</div>
+<div class="paragraph">
+<p>For the solution of part one all folders &gt; 100000 are cummulated. Could have done also with .filter, but works also with forEach.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun NoSpace(in1: Int): Long {
+
+	// create Folderstructure
+	var folderList = mutableListOf&lt;Directory&gt;()
+	var currentFolder: String = ""
+
+	File("day2207_puzzle_input.txt").forEachLine {
+		if (it.contains("$ cd")) {
+			var parameter = it.split(" ")[2]
+			if (parameter != "..") {
+				parameter = currentFolder + it.split(" ")[2]
+				if (!folderList.contains(Directory(parameter))) {
+					folderList.add(Directory(parameter))
+					folderList[folderList.indexOf(Directory(parameter))].parentDirectory = currentFolder
+				}
+				currentFolder = parameter
+			} else {
+				currentFolder = folderList[folderList.indexOf(Directory(currentFolder))].parentDirectory
+			}
+		} else if (it[0].isDigit()) {
+			folderList[folderList.indexOf(Directory(currentFolder))].sizeOfFiles += it.split(" ")[0].toLong()
+		} else if (it.take(3) == "dir") {
+			folderList[folderList.indexOf(Directory(currentFolder))].subDirectories.add(
+				Directory(
+					currentFolder + it.split(
+						" "
+					)[1]
+				)
+			)
+		}
+	}
+
+	// aggregate all folder sizes
+	var aggEnd = false
+	var folderSize = mutableListOf&lt;Directory&gt;()
+	folderSize.addAll(folderList)
+
+	while (!aggEnd) {
+		aggEnd = true
+		folderSize.forEach {
+			if (it.subDirectories.size &gt; 0) {
+				var subDirectory = it.subDirectories[0].name
+				if (folderSize[folderSize.indexOf(Directory(subDirectory))].subDirectories.size == 0) {
+					it.subDirectories.removeAt(0)
+					it.sizeOfFiles += folderSize[folderSize.indexOf(Directory(subDirectory))].sizeOfFiles
+					aggEnd = false
+				}
+			}
+		}
+	}
+
+	// use previous calculations for both part1 and part2
+	if (in1 == 1) {
+		// sum up all folders with almost 100000
+		var result: Long = 0
+		folderSize.forEach {
+			if (it.sizeOfFiles &lt;= 100000) {
+				result += it.sizeOfFiles
+			}
+		}
+		return result
+	} else {
+		// search for the total disk space
+		var totalDiskSpace = folderSize.map { it.sizeOfFiles }.max() ?: 0
+
+		// calculate the value which needs to be freed up
+		var amountToFreeUp = totalDiskSpace - 40000000
+
+		// return the smallest folder size which is still higher than the space to be freed up
+		return folderSize.map { it.sizeOfFiles }.filter { (it - amountToFreeUp) &gt; 0 }.min() ?: 0
+	}
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_second_star_7"><a class="anchor" href="#_second_star_7"></a><a class="link" href="#_second_star_7">Second Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>For part two the same aggregated list is used to find the smallest folder with a size still above the needed space to be deleted</p>
+</div>
+<div class="paragraph">
+<p>At the end, both solutions are printed out.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">// print solution for part 1
+	println("**************************************")
+	println("--- Day 7: No Space Left On Device ---")
+	println("**************************************")
+	println("Solution for part1")
+	println("   $solution1 is the sum of the total sizes of those directories")
+	println()
+// print solution for part 2
+	println("**************************************")
+	println("Solution for part2")
+	println("   $solution2 is the total size of that directory")
+	println()</code></pre>
+</div>
+</div>
+<a id="day08" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_08_kotlin"><a class="anchor" href="#_day_08_kotlin"></a><a class="link" href="#_day_08_kotlin">Day 08: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_day_8_treetop_tree_house"><a class="anchor" href="#_day_8_treetop_tree_house"></a><a class="link" href="#_day_8_treetop_tree_house">Day 8: Treetop Tree House</a></h4>
+<div class="paragraph">
+<p>This solution is written in Kotlin.</p>
+</div>
+<div class="paragraph">
+<p>The original puzzle can be found at <a href="https://adventofcode.com/2022/day/8" class="bare">https://adventofcode.com/2022/day/8</a></p>
+</div>
+<div class="paragraph">
+<p>Today I was a little bit puzzled by the specification, because it named the third tree in the forth row as the ideal spot with a senic score of 8, but there are other trees in the example with a higher one, so while testing with the given example the highest score was 16 and I did not find out how to differenciate with the "ideal" spot.</p>
+</div>
+<div class="paragraph">
+<p>At the end looking simply at the highest score the puzzle answer was accepted, no matter if this would be the ideal spot.</p>
+</div>
+<div class="paragraph">
+<p>UPDATE: There was a fault in my code, since solution for part 2 uses parts of code of part 1 the result variable was already pre initialized for part 1 (outline trees visible = 16). For part 2 this did not matter, because the final senic score was higher than the init value, so I did not recogise the bug &#8594; thanks to Peter!</p>
+</div>
+<div class="paragraph">
+<p>The solution starts with calling a function <em>TreeTreeHouse</em>. Here the puzzle input will be read into one string and width and height of the tree area will be determined. After that dependent on the input results of the two parts of the puzzle will be solved using additional functions.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun TreeTreeHouse(in1: Int): Int {
+	var width = 0
+	var height = 0
+	var treeList: String = ""
+
+	//store input in a single string, single trees are accesible by their coordinates (index = x + y*width)
+	File("day2208_puzzle_input.txt").forEachLine {
+		width = it.length
+		height += 1
+		treeList += it
+	}
+
+	// initialize result with outer lines
+	var resultPart1: Int = (height + width) * 2 - 4
+	var resultPart2: Int = 0
+
+	// start for each puzzle part the calculation for each tree
+	for (y in 1..height - 2) {
+		for (x in 1..width - 2) {
+			if (in1 == 1) {
+				if (treeIsVisible(x, y, treeList, width, height)) {
+					resultPart1 += 1
+				}
+			} else {
+				var senSco = senicScore(x, y, treeList, width, height)
+				if (senSco &gt; resultPart2) resultPart2 = senSco
+			}
+		}
+	}
+
+	if (in1 == 1) {
+		return resultPart1
+	} else {
+		return resultPart2
+	}
+}</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_first_star_8"><a class="anchor" href="#_first_star_8"></a><a class="link" href="#_first_star_8">First Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>The function <em>treeIsVisible</em> just runs trough the grid starting from the given tree and checks if it is visible from any direction.
+All visible trees were added to the result.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun treeIsVisible(x: Int, y: Int, treeList: String, width: Int, height: Int): Boolean {
+	var isVisibleLeft: Boolean = true
+	var isVisibleRight: Boolean = true
+	var isVisibleUp: Boolean = true
+	var isVisibleDown: Boolean = true
+
+	var currentTree = treeList[x + y * width]
+
+	for (i in 0..x - 1) {
+		if (treeList[i + y * width] &gt;= currentTree) isVisibleLeft = false
+	}
+	for (i in x + 1..width - 1) {
+		if (treeList[i + y * width] &gt;= currentTree) isVisibleRight = false
+	}
+	for (i in 0..y - 1) {
+		if (treeList[x + i * width] &gt;= currentTree) isVisibleUp = false
+	}
+	for (i in y + 1..height - 1) {
+		if (treeList[x + i * width] &gt;= currentTree) isVisibleDown = false
+	}
+	return isVisibleLeft || isVisibleRight || isVisibleUp || isVisibleDown
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_second_star_8"><a class="anchor" href="#_second_star_8"></a><a class="link" href="#_second_star_8">Second Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>The function _senicScore just runs trough the grid starting from the given tree and checks how far is the visibility in any direction.
+All directions are multiplied and the highest score will be the result.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun senicScore(x: Int, y: Int, treeList: String, width: Int, height: Int): Int {
+	var senScoLeft: Int = 0
+	var senScoRight: Int = 0
+	var senScoUp: Int = 0
+	var senScoDown: Int = 0
+
+	var currentTree = treeList[x + y * width]
+
+	var equalTreeReached = false
+
+	for (i in x - 1 downTo 0) {
+		if (!equalTreeReached) {
+			if (treeList[i + y * width] &lt; currentTree) {
+				senScoLeft += 1
+			} else {
+				senScoLeft += 1
+				equalTreeReached = true
+			}
+		}
+	}
+	equalTreeReached = false
+
+	for (i in x + 1..width - 1) {
+		if (!equalTreeReached) {
+			if (treeList[i + y * width] &lt; currentTree) {
+				senScoRight += 1
+			} else {
+				senScoRight += 1
+				equalTreeReached = true
+			}
+		}
+	}
+	equalTreeReached = false
+
+	for (i in y - 1 downTo 0) {
+		if (!equalTreeReached) {
+			if (treeList[x + i * width] &lt; currentTree) {
+				senScoUp += 1
+			} else {
+				senScoUp += 1
+				equalTreeReached = true
+			}
+		}
+	}
+	equalTreeReached = false
+
+	for (i in y + 1..height - 1) {
+		if (!equalTreeReached) {
+			if (treeList[x + i * width] &lt; currentTree) {
+				senScoDown += 1
+			} else {
+				senScoDown += 1
+				equalTreeReached = true
+			}
+		}
+	}
+
+	return senScoLeft * senScoRight * senScoUp * senScoDown
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>At the end, both solutions are printed out.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">// print solution for part 1
+	println("*******************************")
+	println("--- Treetop Tree House ---")
+	println("*******************************")
+	println("Solution for part1")
+	println("   $solution1 trees are visible from outside the grid")
+	println()
+// print solution for part 2
+	println("*******************************")
+	println("Solution for part2")
+	println("   $solution2 is the highest scenic score possible for any tree")
+	println()</code></pre>
+</div>
+</div>
+<a id="day09" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_09_kotlin"><a class="anchor" href="#_day_09_kotlin"></a><a class="link" href="#_day_09_kotlin">Day 09: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_day_9_rope_bridge"><a class="anchor" href="#_day_9_rope_bridge"></a><a class="link" href="#_day_9_rope_bridge">Day 9: Rope Bridge</a></h4>
+<div class="paragraph">
+<p>This solution is written in Kotlin.</p>
+</div>
+<div class="paragraph">
+<p>The original puzzle can be found at <a href="https://adventofcode.com/2022/day/9" class="bare">https://adventofcode.com/2022/day/9</a></p>
+</div>
+<div class="paragraph">
+<p>The solution uses for both parts of the puzzle function <em>RopeBridge</em>. Here the puzzle input is parsed and the path of the rope&#8217;s head is calculated and stored in first list of lists. For all following segments it&#8217;s path is calculated by calling function <em>follow</em> using the coordinates of the segment one before. The path for all segments is stored in a list of lists.</p>
+</div>
+<div class="paragraph">
+<p>function <em>RopeBrigde</em></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun RopeBridge(in1: Int): Int {
+
+	var (xH, yH) = Pair(0, 0)
+	var (xT, yT) = Pair(0, 0)
+	var allPath = MutableList(10) { mutableListOf&lt;Pair&lt;Int, Int&gt;&gt;(Pair(0, 0)) }
+
+	File("day2209_puzzle_input.txt").forEachLine {
+		var (dir, steps) = it.split(" ")
+
+		for (i in 1..steps.toInt()) {
+			xH = allPath[0].takeLast(1)[0].first
+			yH = allPath[0].takeLast(1)[0].second
+			if (dir == "U") {
+				yH += 1
+			} else if (dir == "D") {
+				yH -= 1
+			} else if (dir == "R") {
+				xH += 1
+			} else if (dir == "L") {
+				xH -= 1
+			}
+			allPath[0].add(Pair(xH, yH))
+
+			// add loop for all 9 sections of rope
+			for (j in 1..9) {
+				xT = allPath[j].takeLast(1)[0].first
+				yT = allPath[j].takeLast(1)[0].second
+				xH = allPath[j - 1].takeLast(1)[0].first
+				yH = allPath[j - 1].takeLast(1)[0].second
+
+				val newPos = follow(xH, yH, xT, yT)
+
+				xT = newPos.first
+				yT = newPos.second
+				allPath[j].add(Pair(xT, yT))
+			}
+		}
+	}
+	if (in1 == 1) {
+		return allPath[1].distinct().size
+	} else {
+		return allPath[9].distinct().size
+	}
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>function <em>follow</em></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun follow(xH: Int, yH: Int, xT: Int, yT: Int): Pair&lt;Int, Int&gt; {
+	var xTNew: Int = xT
+	var yTNew: Int = yT
+
+	if ((xT != xH) &amp;&amp; (yT != yH) &amp;&amp; (abs(xT - xH) &gt; 1 || abs(yT - yH) &gt; 1)) {
+		if ((xH - xT) &gt; 0) {
+			xTNew = xT + 1
+		} else if ((xH - xT) &lt; 0) {
+			xTNew = xT - 1
+		}
+		if ((yH - yT) &gt; 0) {
+			yTNew = yT + 1
+		} else if ((yH - yT) &lt; 0) {
+			yTNew = yT - 1
+		}
+	} else if ((xT != xH) || (yT != yH)) {
+		if ((xH - xT) &gt; 1) {
+			xTNew = xT + 1
+		} else if ((xH - xT) &lt; -1) {
+			xTNew = xT - 1
+		}
+		if ((yH - yT) &gt; 1) {
+			yTNew = yT + 1
+		} else if ((yH - yT) &lt; -1) {
+			yTNew = yT - 1
+		}
+	}
+	return Pair(xTNew, yTNew)
+}</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_first_star_9"><a class="anchor" href="#_first_star_9"></a><a class="link" href="#_first_star_9">First Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>After calculating the path of all segments the path of the first segment will be stripped of all positions visited more than once and than the remaining positions counted.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_second_star_9"><a class="anchor" href="#_second_star_9"></a><a class="link" href="#_second_star_9">Second Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>After calculating the path of all segments the path of the last segment (#9) will be stripped of all positions visited more than once and than the remaining positions counted.</p>
+</div>
+<div class="paragraph">
+<p>At the end, both solutions are printed out.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">// print solution for part 1
+	println("***************************")
+	println("--- Day 9: Rope Bridge ---")
+	println("**************************")
+	println("Solution for part1")
+	println("   $solution1 positions does the tail of the rope visit at least once")
+	println()
+// print solution for part 2
+	println("**************************")
+	println("Solution for part2")
+	println("   $solution2 positions does the tail of the rope visit at least once")
+	println()</code></pre>
+</div>
+</div>
+<a id="day10" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_10_kotlin"><a class="anchor" href="#_day_10_kotlin"></a><a class="link" href="#_day_10_kotlin">Day 10: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_day_10_cathode_ray_tube"><a class="anchor" href="#_day_10_cathode_ray_tube"></a><a class="link" href="#_day_10_cathode_ray_tube">Day 10: Cathode-Ray Tube</a></h4>
+<div class="paragraph">
+<p>This solution is written in Kotlin.</p>
+</div>
+<div class="paragraph">
+<p>The original puzzle can be found at <a href="https://adventofcode.com/2022/day/10" class="bare">https://adventofcode.com/2022/day/10</a></p>
+</div>
+<div class="paragraph">
+<p>The solution uses for both parts of the puzzle function <em>CathodRay</em>. Here the puzzle input is parsed, cycle incremented and register calculated. For a addx instruction the cycle is updated twice.</p>
+</div>
+<div class="paragraph">
+<p>function <em>CathodRay</em></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun CathodRay(in1: Int): Int {
+
+	var signalStrength = mutableListOf&lt;Int&gt;()
+	var messurePoint = mutableListOf(20, 60, 100, 140, 180, 220)
+	var output = mutableListOf&lt;Int&gt;()
+	var cycle: Int = 1
+	var register: Int = 1
+	output.add(register)
+
+	File("day2210_puzzle_input.txt").forEachLine {
+		if (it == "noop") {
+			cycle += 1
+			output.add(register)
+			if (messurePoint.contains(cycle)) {
+				signalStrength.add(cycle * register)
+			}
+
+		} else if (it.contains("addx")) {
+			var value = it.substringAfter("addx ").toInt()
+			cycle += 1
+			output.add(register)
+			if (messurePoint.contains(cycle)) {
+				signalStrength.add(cycle * register)
+			}
+			cycle += 1
+			register += value
+			output.add(register)
+			if (messurePoint.contains(cycle)) {
+				signalStrength.add(cycle * register)
+			}
+
+		}
+	}
+	// return value for different Parts
+	if (in1 == 1) {
+		return signalStrength.sum()
+	} else {
+		for (y in 0..5) {
+			for (x in 0..39) {
+				var sprite = output[x + y * 40]
+				if (x == sprite || x == sprite - 1 || x == sprite + 1) {
+					print("#")
+				} else {
+					print(".")
+				}
+			}
+			println()
+		}
+	}
+	return -1
+}</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_first_star_10"><a class="anchor" href="#_first_star_10"></a><a class="link" href="#_first_star_10">First Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>During stepping through the cycles and calculation of the X register at times 20, 60, 100,&#8230;&#8203; the register value is multiplied with the cycle and stored into a list. At the end the sum of the list is returned as result.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_second_star_10"><a class="anchor" href="#_second_star_10"></a><a class="link" href="#_second_star_10">Second Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>For all cycles the register value is stored into a list. At the end of the program, this list is printed out by taking into consideration current position on screen and current position of sprite</p>
+</div>
+<div class="paragraph">
+<p>At the end, both solutions are printed out.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">// print solution for part 1
+	println("*******************************")
+	println("--- Day 10: Cathode-Ray Tube ---")
+	println("*******************************")
+	println("Solution for part1")
+	println("   $solution1 is the sum of these six signal strengths.")
+	println()
+// print solution for part 2
+	println("*******************************")
+	println("Solution for part2")
+	var solution2 = CathodRay(2)
+	println()</code></pre>
+</div>
+</div>
+<a id="day11" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_11_kotlin"><a class="anchor" href="#_day_11_kotlin"></a><a class="link" href="#_day_11_kotlin">Day 11: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_day_11_monkey_in_the_middle"><a class="anchor" href="#_day_11_monkey_in_the_middle"></a><a class="link" href="#_day_11_monkey_in_the_middle">Day 11: Monkey in the Middle</a></h4>
+<div class="paragraph">
+<p>This solution is written in Kotlin.</p>
+</div>
+<div class="paragraph">
+<p>The original puzzle can be found at <a href="https://adventofcode.com/2022/day/11" class="bare">https://adventofcode.com/2022/day/11</a></p>
+</div>
+<div class="paragraph">
+<p>To solve the puzzle, first a data class <em>Monkey</em> is defined, it will hold all necessary informations of each monkey per turn.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">data class Monkey(var number: Int) {
+	var items = mutableListOf&lt;Long&gt;()
+	var operation: String = ""
+	var secondValue: String = ""
+	var test: Long = 0
+	var ifTrue: Int = 0
+	var ifFalse: Int = 0
+	var counts:Long = 0
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For the solution itself, first the puzzle input is parsed and a list of <em>Monkey</em> is filled with all monkeys out of the puzzle input. After that, this list is used to iterate through each monkey and through each item of the monkey. For each item the worry factor is calculated and depending on the test result, the item thrown to the next monkey.</p>
+</div>
+<div class="sect4">
+<h5 id="_first_star_11"><a class="anchor" href="#_first_star_11"></a><a class="link" href="#_first_star_11">First Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>Each worry level is divided by 3, and the number of turns is 20. Since the number of evaluations is counted before, the to highest values are taken and multiplied by each other returned as a result.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun MonkeyMiddle(in1: Int): Long {
+
+	// parse puzzle input and fill list of monkeys with their roles and contents
+	var monkeyList = mutableListOf&lt;Monkey&gt;()
+	var monkey: Int = 0
+	var primeFactor = 1
+
+	File("day2211_puzzle_input.txt").forEachLine {
+		if (it.contains("Monkey")) {
+			monkey = it.substringAfter("Monkey ").dropLast(1).toInt()
+			monkeyList.add(Monkey(monkey))
+		} else if (it.contains("Starting")) {
+			var items = it.substringAfter("Starting items: ").split(", ")
+			items.forEach {
+				monkeyList[monkey].items.add(it.toLong())
+			}
+		} else if (it.contains("Operation")) {
+			var items = it.substringAfter("Operation: new = ").split(" ")
+			monkeyList[monkey].operation = items[1]
+			monkeyList[monkey].secondValue = items[2]
+		} else if (it.contains("Test")) {
+			var items = it.substringAfter("Test: divisible by ")
+			monkeyList[monkey].test = items.toLong()
+			primeFactor *= items.toInt()
+		} else if (it.contains("true")) {
+			var items = it.substringAfter("If true: throw to monkey ")
+			monkeyList[monkey].ifTrue = items.toInt()
+		} else if (it.contains("false")) {
+			var items = it.substringAfter("If false: throw to monkey ")
+			monkeyList[monkey].ifFalse = items.toInt()
+		}
+	}
+
+	// controll data flow for part one and part two
+	var n : Int
+	if (in1 == 1) {
+		n = 20
+	} else {
+		n = 10000
+	}
+
+	// play turns of the monkey in the middle game
+	for (i in 1..n) {
+		monkeyList.forEach {
+			var operation = it.operation
+			var secondValue = it.secondValue
+			var test = it.test
+			var ifTrue = it.ifTrue
+			var ifFalse = it.ifFalse
+			it.items.forEach {
+				var worry: Long = 0
+				var b: Long
+				if (secondValue == "old") {
+						b = it
+				} else {
+						b = secondValue.toLong()
+				}
+				if (operation == "+") {
+						worry = it + b
+				} else if (operation == "-") {
+						worry = it - b
+				} else if (operation == "*") {
+						worry = it * b
+				}
+				if( in1 == 3) {
+				worry = worry / 3
+				} else {
+					worry = worry % (primeFactor)
+				}
+				if (worry % test == 0L) {
+					monkeyList[ifTrue].items.add(worry)
+				} else {
+					monkeyList[ifFalse].items.add(worry)
+				}
+			}
+			it.counts += it.items.size
+			it.items.clear()
+		}
+	}
+
+	// prepare result
+	var countsList = mutableListOf&lt;Long&gt;()
+	monkeyList.forEach{
+		countsList.add(it.counts)
+	}
+	countsList.sortDescending()
+
+	return countsList[0]*countsList[1]
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_second_star_11"><a class="anchor" href="#_second_star_11"></a><a class="link" href="#_second_star_11">Second Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>Since the number of turns increased from 20 to 10000 and there was no recuction of the worry level any more, it was to be expected that numbers are growing very fast. Unfortunately switching from <em>Int</em> to <em>Long</em> did not help, so there must be an other solution for getting numbers down at each cycle.</p>
+</div>
+<div class="paragraph">
+<p>First of all I guessed it must have to do with primes, since every test value was a prime, and I wasted lots of time to think about deconstruction into prime factors (this is why the varialbe used is called <em>primeFactor</em>).</p>
+</div>
+<div class="paragraph">
+<p>At the end the key was that a worry level is only divisible if there is no rest, means if you simple reduce the worry factor each time it gets bigger than the test level of all monkeys multiplied by this value, the test works also for the remaining worry level.</p>
+</div>
+<div class="paragraph">
+<p>At the end, both solutions are printed out.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">// print solution for part 1
+	println("*******************************")
+	println("--- Day 10: Cathode-Ray Tube ---")
+	println("*******************************")
+	println("Solution for part1")
+	println("   $solution1 is the sum of these six signal strengths.")
+	println()
+// print solution for part 2
+	println("*******************************")
+	println("Solution for part2")
+	println("   $solution2 is the sum of these six signal strengths.")  //16068009780 to high
+	println()</code></pre>
+</div>
+</div>
+<a id="day12" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_12_kotlin"><a class="anchor" href="#_day_12_kotlin"></a><a class="link" href="#_day_12_kotlin">Day 12: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_day_12_hill_climbing_algorithm"><a class="anchor" href="#_day_12_hill_climbing_algorithm"></a><a class="link" href="#_day_12_hill_climbing_algorithm">Day 12: Hill Climbing Algorithm</a></h4>
+<div class="paragraph">
+<p>This solution is written in Kotlin.</p>
+</div>
+<div class="paragraph">
+<p>The original puzzle can be found at <a href="https://adventofcode.com/2022/day/12" class="bare">https://adventofcode.com/2022/day/12</a></p>
+</div>
+<div class="paragraph">
+<p>Today started with difficulties for me. First I wanted to generate all possible pathes in list of list but failed with different issues. After reading a lot of stuff about optimization algorithms I considered A* for to complicated. That&#8217;s why I stripped it down to the following "low" A*. A list <em>distList</em> with all possible fields is generated. It is initialized with width*heigth, means the maximum possible length. Then for a given start point all reachable neighbours are evaluated, and for each the minimum distance is stored, either the previous value or the parent place plus one. The list will be iterated and for all values reached (distList != width*heigth) the evaluation of the neighbours is started.</p>
+</div>
+<div class="paragraph">
+<p>I guess this is still some kind of brute force, since there is no distinguishing between already finished positions, and there is no priorization of the positions with the lowest distance.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun HillClimbing(in1: Int): Int {
+
+	var landscape: String = ""
+	var xStart: Int = 0
+	var yStart: Int = 0
+	var xEnd: Int = 0
+	var yEnd: Int = 0
+	var width: Int = 0
+	var height: Int = 0
+
+	File("day2212_puzzle_input.txt").forEachLine {
+		width = it.length
+		if (it.contains("S")) {
+			xStart = it.indexOf("S")
+			yStart = height
+		}
+		if (it.contains("E")) {
+			xEnd = it.indexOf("E")
+			yEnd = height
+		}
+		landscape += it.replace("S", "a").replace("E", "z")
+		height += 1
+	}
+
+	var distList = MutableList(width * height) { width * height }
+	distList[xStart * yStart * width] = 0
+
+	if (in1 == 2) {
+		for (y in 0..height - 1) {
+			for (x in 0..width - 1) {
+				if (landscape[x + y * width] == 'a') {
+					distList[x + y * width] = 0
+				}
+			}
+		}
+	}
+
+	// iterate over all points
+	var gameEnd: Boolean = false
+	var distListSum = distList.sum()
+
+	while (!gameEnd) {
+		for (y in 0..height - 1) {
+			for (x in 0..width - 1) {
+				// check successors of all known nodes
+				var dist = distList[x + y * width]
+				if (dist != width * height) {
+					// calculate all possible directions
+					if (x - 1 &gt;= 0) {
+						if (landscape[(x - 1) + y * width] &lt;= landscape[x + y * width] + 1) {
+							distList[x - 1 + y * width] = min(distList[(x - 1) + y * width], dist + 1)
+						}
+					}
+					if (x + 1 &lt; width) {
+						if (landscape[(x + 1) + y * width] &lt;= landscape[x + y * width] + 1) {
+							distList[(x + 1) + y * width] = min(distList[(x + 1) + y * width], dist + 1)
+						}
+					}
+					if (y - 1 &gt;= 0) {
+						if (landscape[x + (y - 1) * width] &lt;= landscape[x + y * width] + 1) {
+							distList[x + (y - 1) * width] = min(distList[x + (y - 1) * width], dist + 1)
+						}
+					}
+					if (y + 1 &lt; height) {
+						if (landscape[x + (y + 1) * width] &lt;= landscape[x + y * width] + 1) {
+							distList[x + (y + 1) * width] = min(distList[x + (y + 1) * width], dist + 1)
+						}
+					}
+				}
+			}
+		}
+		if (distListSum == distList.sum()) {
+			gameEnd = true
+		}
+		distListSum = distList.sum()
+	}
+	return distList[xEnd + yEnd * width]
+}</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_first_star_12"><a class="anchor" href="#_first_star_12"></a><a class="link" href="#_first_star_12">First Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>While reading the input file the coordinates for the starting point are evaluated. For the starting point the distance in the distList is set to zero, this is the starting point of the evaluation. After distList does not change anymore, the distance at endpoint is the solution</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_second_star_12"><a class="anchor" href="#_second_star_12"></a><a class="link" href="#_second_star_12">Second Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>For part two not only for the starting point the distance in the distList is set to zero, but for all values with 'a', they are the starting point of the evaluation. After distList does not change anymore, the distance at endpoint is the solution</p>
+</div>
+<div class="paragraph">
+<p>At the end, both solutions are printed out.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">// print solution for part 1
+	println("***************************************")
+	println("--- Day 12: Hill Climbing Algorithm ---")
+	println("***************************************")
+	println("Solution for part1")
+	println("   $solution1 is the fewest steps.")
+	println()
+// print solution for part 2
+	println("***************************************")
+	println("Solution for part2")
+	println("   $solution2 is the fewest steps.")</code></pre>
+</div>
+</div>
+<a id="day14" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_14_kotlin"><a class="anchor" href="#_day_14_kotlin"></a><a class="link" href="#_day_14_kotlin">Day 14: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_day_14_regolith_reservoir"><a class="anchor" href="#_day_14_regolith_reservoir"></a><a class="link" href="#_day_14_regolith_reservoir">Day 14: Regolith Reservoir</a></h4>
+<div class="paragraph">
+<p>This solution is written in Kotlin.</p>
+</div>
+<div class="paragraph">
+<p>The original puzzle can be found at <a href="https://adventofcode.com/2022/day/14" class="bare">https://adventofcode.com/2022/day/14</a></p>
+</div>
+<div class="paragraph">
+<p>Puzzle today looks very similar to 2018 day 17. This I have not solved up to now, but in preparation for this year&#8217;s challenge I tried to and have a first draft, which I now reworked for today, but the solution still is not really a good one, part 2 takes round about 6 minutes.</p>
+</div>
+<div class="paragraph">
+<p>First the puzzle input has to be processed, therefore I create to lists where all ranges are stored for x and y walls, these can be used afterwards to check if a possible place for a sand corn is already a wall.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin"></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Having the xRange and yRange set up, a loop starts for x= 500, y= 0 and dependend if there is a wall or already a sand corn position is moved down, left down or right down, or a sand corn is placed. All already placed sand corns are stored in a list fallingSand.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">	var fallingSand = mutableListOf&lt;Pair&lt;Int, Int&gt;&gt;()
+	var gameEnd: Boolean = false
+	var sandCount = 0
+
+	while (!gameEnd) {
+		var x = 500
+		var y = 0
+
+		while (true) {
+			// if field below is empty, go one step deper /if not go left or right / or place sand
+			if (!(fallingSand.contains(Pair(x, y + 1)) || checkTilesClay(x, y + 1, xRange, yRange))) {
+				y += 1
+				if (in1 == 1) {
+					if (y &gt; yMax) {
+						break
+					}
+				}
+			} else if (!(fallingSand.contains(Pair(x - 1, y + 1)) || checkTilesClay(x - 1, y + 1, xRange, yRange))) {
+				x -= 1
+				y += 1
+			} else if (!(fallingSand.contains(Pair(x + 1, y + 1)) || checkTilesClay(x + 1, y + 1, xRange, yRange))) {
+				x += 1
+				y += 1
+			} else {
+				fallingSand.add(Pair(x, y))
+				break
+			}
+		}
+		if (in1 == 2) {
+			if (fallingSand.contains(Pair(500, 0))) {
+				gameEnd = true
+			}
+		} else {
+			if (sandCount == fallingSand.count()) {
+				gameEnd = true
+			}
+		}
+		sandCount = fallingSand.count()
+	}
+	return sandCount</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_first_star_13"><a class="anchor" href="#_first_star_13"></a><a class="link" href="#_first_star_13">First Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>The processing runs until the first new positions exceeds the max y value given by the input, all placed sand corns are counted.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_second_star_13"><a class="anchor" href="#_second_star_13"></a><a class="link" href="#_second_star_13">Second Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>During the input prozessing already an additinal range is added, (max y + 2, and x(500)-2*ymax - x(500)+2*ymax. 2 times ymax is not realy needed). Also here also all placed sand corns are counted.</p>
+</div>
+<div class="paragraph">
+<p>At the end, both solutions are printed out.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">// print solution for part 1
+	println("**********************************")
+	println("--- Day 14: Regolith Reservoir ---")
+	println("**********************************")
+	println("Solution for part1")
+	println("   $solution1 units of sand come to rest")
+	println()
+// print solution for part 2
+	println("**********************************")
+	println("Solution for part2")
+	println("   $solution2 units of sand come to rest")
+	println()</code></pre>
+</div>
+</div>
+<a id="day15" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_15_kotlin"><a class="anchor" href="#_day_15_kotlin"></a><a class="link" href="#_day_15_kotlin">Day 15: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_day_15_beacon_exclusion_zone"><a class="anchor" href="#_day_15_beacon_exclusion_zone"></a><a class="link" href="#_day_15_beacon_exclusion_zone">Day 15: Beacon Exclusion Zone</a></h4>
+<div class="paragraph">
+<p>This solution is written in Kotlin.</p>
+</div>
+<div class="paragraph">
+<p>The original puzzle can be found at <a href="https://adventofcode.com/2022/day/15" class="bare">https://adventofcode.com/2022/day/15</a></p>
+</div>
+<div class="sect4">
+<h5 id="_first_star_14"><a class="anchor" href="#_first_star_14"></a><a class="link" href="#_first_star_14">First Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>For each line in puzzle input the function <em>BeaconExclusion</em> evaluates, if the given y line is within the distance of the given sensor and its beacon. If so, dependend on the difference of the manhatten distance of sensor and beacon minus the absolute distance of the sensor and the given y line all not reacheable positions are added to a list. After going through all input lines, all positions which were more then once are deleted and the positions where already sensors or beacons are placed are substracted. The remaining number is the solution</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun BeaconExclusion(in1: Int): Int {
+	var sensorList = mutableListOf&lt;Pair&lt;Int, Int&gt;&gt;()
+	var beaconList = mutableListOf&lt;Pair&lt;Int, Int&gt;&gt;()
+	var resultList = mutableListOf&lt;Pair&lt;Int, Int&gt;&gt;()
+
+	File("day2215_puzzle_input.txt").forEachLine {
+		var xSensor = it.split(":")[0].substringAfter("x=").substringBefore(", y=").toInt()
+		var ySensor = it.split(":")[0].substringAfter("y=").toInt()
+		var xBeacon = it.split(":")[1].substringAfter("x=").substringBefore(", y=").toInt()
+		var yBeacon = it.split(":")[1].substringAfter("y=").toInt()
+
+		sensorList.add(Pair(xSensor, ySensor))
+		beaconList.add(Pair(xBeacon, yBeacon))
+
+		var manhatten = abs(xSensor - xBeacon) + abs(ySensor - yBeacon)
+		var yRange = manhatten - abs(ySensor - in1)
+
+		if (yRange &gt;= 0) {
+			resultList.add(Pair(xSensor, in1))
+			for (i in 1..yRange) {
+				resultList.add(Pair(xSensor - i, in1))
+				resultList.add(Pair(xSensor + i, in1))
+			}
+		}
+	}
+	return ((resultList.distinct() - sensorList) - beaconList).count()
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_second_star_14"><a class="anchor" href="#_second_star_14"></a><a class="link" href="#_second_star_14">Second Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>It was clear from the start, that iterating for each input line through 4000000 x 4000000 would not work, so a different solution must be found. After some drawings I figured out, that a free beacon could only mean, that there are four sections which are exactly in a distance of 2 more than their manhatten distances, where each two define a line. 4 sections means two crossing lines, the intersection is the position we are searching for. Here the propsed solution has a problem, it only works for a puzzle input which has exactly two times two matching inputs, which obviously was here the case. Have a look at function <em>FindBeacon</em> how I managed it to find the solution, but don&#8217;t take it as a good example.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun FindBeacon(): Long {
+	var sensorList = mutableListOf&lt;Pair&lt;Int, Int&gt;&gt;()
+	var beaconList = mutableListOf&lt;Pair&lt;Int, Int&gt;&gt;()
+
+	File("day2215_puzzle_input.txt").forEachLine {
+		var xSensor = it.split(":")[0].substringAfter("x=").substringBefore(", y=").toInt()
+		var ySensor = it.split(":")[0].substringAfter("y=").toInt()
+		var xBeacon = it.split(":")[1].substringAfter("x=").substringBefore(", y=").toInt()
+		var yBeacon = it.split(":")[1].substringAfter("y=").toInt()
+		sensorList.add(Pair(xSensor, ySensor))
+		beaconList.add(Pair(xBeacon, yBeacon))
+	}
+
+	// find all pairs of inputs where still one line is left between both spotted areas (in this line a undiscovered beacon could hide
+	var candidates = mutableListOf&lt;Int&gt;()
+	for (i in 0..sensorList.size - 1) {
+		for (j in 0..sensorList.size - 1) {
+			if (i &lt; j) {
+				var manhatten1 =
+					abs(sensorList[i].first - beaconList[i].first) + abs(sensorList[i].second - beaconList[i].second)
+				var manhatten2 =
+					abs(sensorList[j].first - beaconList[j].first) + abs(sensorList[j].second - beaconList[j].second)
+				var manhatten3 =
+					abs(sensorList[i].first - sensorList[j].first) + abs(sensorList[i].second - sensorList[j].second)
+
+				if (manhatten3 == manhatten1 + manhatten2 + 2) {
+					candidates.add(i)
+					candidates.add(j)
+				}
+			}
+		}
+	}
+
+	// this code does only work if there are only two pairs of input were found, means that there are two lines where a beacon could hide, the position
+	// to find lies at the intersection of both lines
+	var man1 =
+		abs(sensorList[candidates[0]].first - beaconList[candidates[0]].first) + abs(sensorList[candidates[0]].second - beaconList[candidates[0]].second)
+	var man2 =
+		abs(sensorList[candidates[1]].first - beaconList[candidates[1]].first) + abs(sensorList[candidates[1]].second - beaconList[candidates[1]].second)
+	var man3 =
+		abs(sensorList[candidates[2]].first - beaconList[candidates[2]].first) + abs(sensorList[candidates[2]].second - beaconList[candidates[2]].second)
+	var man4 =
+		abs(sensorList[candidates[3]].first - beaconList[candidates[3]].first) + abs(sensorList[candidates[3]].second - beaconList[candidates[3]].second)
+
+	var xStart = 0
+
+	if (sensorList[candidates[0]].first &lt; sensorList[candidates[1]].first) {
+		xStart = sensorList[candidates[0]].first + man1 + 1
+	} else {
+		xStart = sensorList[candidates[0]].first - man1 - 1
+	}
+
+	var yStart = sensorList[candidates[0]].second
+
+	var direction = 0
+	if (sensorList[candidates[0]].second &lt; sensorList[candidates[1]].second) {
+		direction = 1
+	} else {
+		direction = -1
+	}
+
+	var xResult = 0
+	var yResult = 0
+
+	var gameEnd = false
+
+	while (!gameEnd) {
+		xStart -= 1
+		yStart += direction
+		if (abs(xStart - sensorList[candidates[2]].first) + abs(yStart - sensorList[candidates[2]].second) &gt; man3 &amp;&amp; abs(
+				xStart - sensorList[candidates[3]].first
+			) + abs(yStart - sensorList[candidates[3]].second) &gt; man4
+		) {
+			xResult = xStart
+			yResult = yStart
+			gameEnd = true
+		}
+	}
+
+	return xResult * 4000000L + yResult
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>At the end, both solutions are printed out.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">// print solution for part 1
+	println("*************************************")
+	println("--- Day 15: Beacon Exclusion Zone ---")
+	println("*************************************")
+	println("Solution for part1")
+	println("   $solution1 positions cannot contain a beacon")
+	println()
+// print solution for part 2
+	println("*************************************")
+	println("Solution for part2")
+	println("   $solution2 is its tuning frequency")
+	println()</code></pre>
+</div>
+</div>
+<a id="day18" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_18_kotlin"><a class="anchor" href="#_day_18_kotlin"></a><a class="link" href="#_day_18_kotlin">Day 18: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_day_18_boiling_boulders"><a class="anchor" href="#_day_18_boiling_boulders"></a><a class="link" href="#_day_18_boiling_boulders">Day 18: Boiling Boulders</a></h4>
+<div class="paragraph">
+<p>This solution is written in Kotlin.</p>
+</div>
+<div class="paragraph">
+<p>The original puzzle can be found at <a href="https://adventofcode.com/2022/day/18" class="bare">https://adventofcode.com/2022/day/18</a></p>
+</div>
+<div class="paragraph">
+<p>Today&#8217;s puzzle for me felt easier than the days before, maybe a contribution to the 4th advent, thank&#8217;s to that I am back in the game :-).</p>
+</div>
+<div class="sect4">
+<h5 id="_first_star_15"><a class="anchor" href="#_first_star_15"></a><a class="link" href="#_first_star_15">First Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>The puzzle input is parsed and for each new line 6 new surfaces are added to the total sum. After that, the current line is compared to all previous ones stored in a list, for each cube already exisiting the manhatten distance is calculated, and if it is one, then two surfaces are remuoved from the total sum. After that, the current line is added to the list of existing cubes. Inside the function also the code for part two is already worked in, so you may find the min/max evaluation, which will be used for part two.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun BoiBou(in1: Int): Int {
+
+	var bouldersList = mutableListOf&lt;Triple&lt;Int, Int, Int&gt;&gt;()
+	var result = 0
+
+	var xMin = 0
+	var xMax = 0
+	var yMin = 0
+	var yMax = 0
+	var zMin = 0
+	var zMax = 0
+
+	File("day2218_puzzle_input.txt").forEachLine {
+		var (x, y, z) = it.split(",").map { it.toString().toInt() }
+
+		// needed for part two
+		xMin = min(xMin, x)
+		xMax = max(xMax, x)
+		yMin = min(yMin, y)
+		yMax = max(yMax, y)
+		zMin = min(zMin, z)
+		zMax = max(zMax, z)
+
+		// for each new cube 6 surface areas are added
+		result += 6
+
+		bouldersList.forEach {
+			// for each already existing cube which is touched by the new cube, two surface areas are removed
+			if (abs(x - it.first) + abs(y - it.second) + abs(z - it.third) == 1) {
+				result -= 2
+			}
+		}
+		bouldersList.add(Triple(x, y, z))
+	}
+
+	// return result for first part
+	if (in1 == 1) {
+		return result
+	}
+
+	// start second part - find all free cubes which are outside
+	var gameEnd = false
+	var freeCubeList = mutableListOf&lt;Triple&lt;Int, Int, Int&gt;&gt;()
+
+	while (!gameEnd) {
+		gameEnd = true
+
+		for (z in zMin - 1..zMax + 1) {
+			for (y in yMin - 1..yMax + 1) {
+				for (x in xMin - 1..xMax + 1) {
+					if (!bouldersList.contains(Triple(x, y, z))) {
+						if (x == xMin || x == xMax || y == yMin || y == yMax || z == zMin || z == zMax) {
+							// set cubes to the outside boundaries
+							if (!freeCubeList.contains(Triple(x, y, z))) {
+								freeCubeList.add(Triple(x, y, z))
+							}
+						} else {
+							// if not outside boundary add a new free cube, if the position is connected to the outside
+							var connected = false
+							freeCubeList.forEach {
+								if (abs(x - it.first) + abs(y - it.second) + abs(z - it.third) == 1) {
+									connected = true
+								}
+							}
+							if (connected &amp;&amp; !freeCubeList.contains(Triple(x, y, z))) {
+								freeCubeList.add(Triple(x, y, z))
+								gameEnd = false
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// count all surfaces of the free cubes connected to a boiling boulder cube
+	result = 0
+	freeCubeList.forEach {
+		var xC = it.first
+		var yC = it.second
+		var zC = it.third
+		bouldersList.forEach {
+			if (abs(xC - it.first) + abs(yC - it.second) + abs(zC - it.third) == 1) {
+				result += 1
+			}
+		}
+	}
+
+	// return result for part 2
+	return result
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_second_star_15"><a class="anchor" href="#_second_star_15"></a><a class="link" href="#_second_star_15">Second Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>For the second part a list of free cubes is created, starting +/- one position from the min and max values of the lava cloud. This list is filled then iteratively with additional cubes inside the box, if the current position is not a lava cube and if it has a connection to all so far found free cubes.</p>
+</div>
+<div class="paragraph">
+<p>After having found all free cubes conneted to the outer frontiers, all surfaces which have a connection to the lava cloud are added up.</p>
+</div>
+<div class="paragraph">
+<p>At the end, both solutions are printed out.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">// print solution for part 1
+	println("********************************")
+	println("--- Day 18: Boiling Boulders ---")
+	println("********************************")
+	println("Solution for part1")
+	println("   $solution1 is the surface area of your scanned lava droplet")
+	println()
+// print solution for part 2
+	println("*******************************")
+	println("Solution for part2")
+	println("   $solution2 is the exterior surface area of your scanned lava droplet")
+	println()</code></pre>
+</div>
+</div>
+<a id="day21" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_21_kotlin"><a class="anchor" href="#_day_21_kotlin"></a><a class="link" href="#_day_21_kotlin">Day 21: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_day_21_monkey_math"><a class="anchor" href="#_day_21_monkey_math"></a><a class="link" href="#_day_21_monkey_math">Day 21: Monkey Math</a></h4>
+<div class="paragraph">
+<p>This solution is written in Kotlin.</p>
+</div>
+<div class="paragraph">
+<p>The original puzzle can be found at <a href="https://adventofcode.com/2022/day/21" class="bare">https://adventofcode.com/2022/day/21</a></p>
+</div>
+<div class="sect4">
+<h5 id="_first_star_16"><a class="anchor" href="#_first_star_16"></a><a class="link" href="#_first_star_16">First Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>Inside function <em>day2221_1</em> the puzzle input is read line by line, processed and stored into a map. After that I iterate through the map and replace all possible variables by its numbers and calculate already the formulars, if two values are in. After some iterations, the key root contains the value searched for.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun day2221_1(): String {
+
+	var monkeyMap = mutableMapOf&lt;String, String&gt;()
+	File("day2221_puzzle_input.txt").forEachLine {
+		var instruction = it.split(": ")
+		monkeyMap.put(instruction[0], instruction[1])
+	}
+
+	// replace all placeholders by numbers and calculat formulas until key root contains only a number
+	while (monkeyMap.getValue("root").contains(" ")) {
+		for ((key, value) in monkeyMap) {
+			if (value.contains(" ")) {
+				var instruction = value.split(" ")
+				if (instruction[0][0].isDigit() &amp;&amp; instruction[2][0].isDigit()) {
+					when (instruction[1]) {
+						"+" -&gt; monkeyMap.put(key, (instruction[0].toLong() + instruction[2].toLong()).toString())
+						"-" -&gt; monkeyMap.put(key, (instruction[0].toLong() - instruction[2].toLong()).toString())
+						"*" -&gt; monkeyMap.put(key, (instruction[0].toLong() * instruction[2].toLong()).toString())
+						"/" -&gt; monkeyMap.put(key, (instruction[0].toLong() / instruction[2].toLong()).toString())
+					}
+				} else if (!instruction[0][0].isDigit()) {
+					if (!monkeyMap.getValue(instruction[0]).contains(" ")) {
+						monkeyMap.put(
+							key,
+							monkeyMap.getValue(instruction[0]) + " " + instruction[1] + " " + instruction[2]
+						)
+					}
+				} else if (!instruction[2][0].isDigit()) {
+					if (!monkeyMap.getValue(instruction[2]).contains(" ")) {
+						monkeyMap.put(
+							key,
+							instruction[0] + " " + instruction[1] + " " + monkeyMap.getValue(instruction[2])
+						)
+					}
+				}
+			}
+		}
+	}
+	return monkeyMap.getValue("root")
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_second_star_16"><a class="anchor" href="#_second_star_16"></a><a class="link" href="#_second_star_16">Second Star</a></h5>
+<div class="paragraph">
+<p>How does it work:<br></p>
+</div>
+<div class="paragraph">
+<p>Inside function <em>day2221_2</em> oncde more the puzzle input is read line by line, processed and stored into a map. If key is root, then the instruction is changed to <em>=</em>, and if key is <em>humn</em> the instruction is changed to <em>humn</em>. After that I iterate through the map and replace all possible variables by its numbers and calculate already the formulars, if two values are in. Here I did not have the time to generate a stop critieria, so I simply took 100 iterations to make sure every value is resolved. This for sure could have done better. After that, I iterate step by step through the formula at root, resolve it to have only the variable on one side and then replace it by the formula of this variable, until only <em>humn</em> remains, then on the other side of the equation you find the value which is searched for.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">fun day2221_2(): String {
+
+	var monkeyMap = mutableMapOf&lt;String, String&gt;()
+
+	File("day2221_puzzle_input.txt").forEachLine {
+		var instruction = it.split(": ")
+		if (instruction[0] == "root") {
+			var operation = instruction[1].split(" ")
+			monkeyMap.put(instruction[0], operation[0] + " = " + operation[2])
+		} else if (instruction[0] == "humn") {
+			monkeyMap.put(instruction[0], "humn")
+		} else {
+			monkeyMap.put(instruction[0], instruction[1])
+		}
+
+	}
+
+	// try do resolve as much as possible of the formulars analog to part 1
+	for (i in 0..100) {  // for shure this is not a good solution, but today I had not time to do some additional work in AoC :-)
+		for ((key, value) in monkeyMap) {
+			if (value.contains(" ")) {
+				var instruction = value.split(" ")
+				if (instruction[0][0].isDigit() &amp;&amp; instruction[2][0].isDigit()) {
+					when (instruction[1]) {
+						"+" -&gt; monkeyMap.put(key, (instruction[0].toLong() + instruction[2].toLong()).toString())
+						"-" -&gt; monkeyMap.put(key, (instruction[0].toLong() - instruction[2].toLong()).toString())
+						"*" -&gt; monkeyMap.put(key, (instruction[0].toLong() * instruction[2].toLong()).toString())
+						"/" -&gt; monkeyMap.put(key, (instruction[0].toLong() / instruction[2].toLong()).toString())
+					}
+				} else {
+					if (!instruction[0][0].isDigit()) {
+						if (!monkeyMap.getValue(instruction[0]).contains(" ")) {
+							monkeyMap.put(
+								key,
+								monkeyMap.getValue(instruction[0]) + " " + instruction[1] + " " + instruction[2]
+							)
+						}
+					}
+					if (!instruction[2][0].isDigit()) {
+						if (!monkeyMap.getValue(instruction[2]).contains(" ")) {
+							monkeyMap.put(
+								key,
+								instruction[0] + " " + instruction[1] + " " + monkeyMap.getValue(instruction[2])
+							)
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// calculate step by step the remaining formulas until only open placeholder is "humn"
+	while (!monkeyMap.getValue("root").contains("humn")) {
+		var instruction = monkeyMap.getValue("root").split(" = ")
+		if (!instruction[0][0].isDigit()) {
+			var operation = monkeyMap.getValue(instruction[0]).split(" ")
+			if (!operation[0][0].isDigit()) {
+				when (operation[1]) {
+					"+" -&gt; monkeyMap.put(
+						"root",
+						operation[0] + " = " + (instruction[1].toLong() - operation[2].toLong()).toString()
+					)
+					"-" -&gt; monkeyMap.put(
+						"root",
+						operation[0] + " = " + (instruction[1].toLong() + operation[2].toLong()).toString()
+					)
+					"*" -&gt; monkeyMap.put(
+						"root",
+						operation[0] + " = " + (instruction[1].toLong() / operation[2].toLong()).toString()
+					)
+					"/" -&gt; monkeyMap.put(
+						"root",
+						operation[0] + " = " + (instruction[1].toLong() * operation[2].toLong()).toString()
+					)
+				}
+			} else if (!operation[2][0].isDigit()) {
+				when (operation[1]) {
+					"+" -&gt; monkeyMap.put(
+						"root",
+						operation[2] + " = " + (instruction[1].toLong() - operation[0].toLong()).toString()
+					)
+					"-" -&gt; monkeyMap.put(
+						"root",
+						operation[2] + " = " + (operation[0].toLong() - instruction[1].toLong()).toString()
+					)
+					"*" -&gt; monkeyMap.put(
+						"root",
+						operation[2] + " = " + (instruction[1].toLong() / operation[0].toLong()).toString()
+					)
+					"/" -&gt; monkeyMap.put(
+						"root",
+						operation[2] + " = " + (operation[0].toLong() / instruction[1].toLong()).toString()
+					)
+				}
+			}
+			monkeyMap.remove(instruction[0])
+		}  // else if (!instuction[2][0].isDigit())  --&gt; not need for my puzzle input, would have been copy and apdapt of the upper part
+	}
+	return monkeyMap.getValue("root")
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>At the end, both solutions are printed out.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight linenums"><code class="language-kotlin" data-lang="kotlin">// print solution for part 1
+	println("***************************")
+	println("--- Day 21: Monkey Math ---")
+	println("***************************")
+	println("Solution for part1")
+	println("   $solution1 will the monkey named root yell")
+	println()
+// print solution for part 2
+	println("***************************")
+	println("Solution for part2")
+	println("   $solution2 do you yell to pass root's equality test")
+	println()</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></p>
+
+	</div>
+
+</div>
+<div id="push"></div>
+</div>
+
+
+    <div id="footer">
+      <div class="container">
+          <p class="muted credit">&copy; 2022 | Mixed with Bootstrap v3.1.1 | generated with <a href="https://doctoolchain.org">docToolchain</a> | Baked with JBake v2.6.4</p>
+      </div>
+    </div>
+    
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/prettify.js"></script>
+    
+
+
+</body>
+</html>

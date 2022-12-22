@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Aoc 2022: ceedee666</title>
+    <meta charset="UTF-8">
+<meta name="google-site-verification" content="JZ7jk3duxzxHDLuOHKPxc-uoz0JPlSBLeaAxh3wGn9Q" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Just for fun">
+    <meta name="author" content="Ralf D. Müller">
+    <meta name="keywords" content="aoc">
+    <meta name="generator" content="JBake">
+
+    <!-- Le styles -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/asciidoctor.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link href="../../../css/prettify.css" rel="stylesheet">
+      <link href="../../../css/retro.css" rel="stylesheet">
+      <style>
+      @media only screen and (min-width:768px){
+          #toctitle{font-size:1.375em}
+          #toc.toc{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #efefed;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto; padding-top: 60px;}
+          #toc.toc #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+          #toc.toc>ul{font-size:.9em;margin-bottom:0}
+          #toc.toc ul ul{margin-left:0;padding-left:1em}
+          #toc.toc ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+          body.toc2{ padding-left: 15.5em;padding-right:0; width: 100% !important;}
+          body.toc2 div#wrap div.content {width: auto !important;}
+          #toc.toc{width:15em; padding-top: 60px;}
+      }
+      @media only screen and (min-width:1280px){
+          body.toc2{ padding-left: 20.5em;padding-right:0; width: 100% !important;}
+          body.toc2 div#wrap div.content {width: auto !important;}
+          #toc.toc{width:20em; padding-top: 60px;}
+          #toc.toc #toctitle{font-size:1.375em}
+          #toc.toc>ul{font-size:.95em}
+          #toc.toc ul ul{padding-left:1.25em}
+      }
+      body {
+          overflow-y: scroll;
+      }
+      html, body {
+          font-size: 1.06rem;
+      }
+      body.toc2{ overflow-x: auto}
+      #toc.toc ul {
+          padding-inline-start: 0;
+      }
+      :target::before {
+          content: "";
+          display: block;
+          height: 60px; /* fixed header height*/
+          margin: -60px 0 0; /* negative fixed header height */
+      }
+      .navbar {
+          background-image: url(/aoc-2022/images/treeback.png);
+          background-size: contain;
+          background-repeat: repeat-x;
+          border-bottom: 0;
+          padding-bottom: 20px;
+          background-color: transparent;
+          box-shadow: none;
+      }
+      html {
+          background: url(/aoc-2022/images/snowback.png) no-repeat center center fixed;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+      }
+
+      </style>
+      <script>
+          //smart redirectg
+          if (document.location.href.includes("netlify")) {
+              document.location.href=document.location.href.replace("aoc-2022.netlify.app/","doctoolchain.org/aoc-2022/");
+          }
+      </script>
+<!-- /aoc-2022/ -->
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+      <link rel="apple-touch-icon" sizes="180x180" href="/aoc-2022//apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/aoc-2022//favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/aoc-2022//favicon-16x16.png">
+      <link rel="manifest" href="/aoc-2022//site.webmanifest">
+      <link rel="mask-icon" href="/aoc-2022//safari-pinned-tab.svg" color="#5bbad5">
+      <meta name="msapplication-TileColor" content="#da532c">
+      <meta name="theme-color" content="#ffffff">
+  </head>
+
+<body onload="prettyPrint()" class="toc2 toc-left" >
+<div id="wrap">
+
+	
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../../../">AoC-2022</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+              
+                
+                  <li><a href="../../../rules/">Rules</a></li>
+                
+              
+                
+                  <li><a href="../../../solutions/">Solutions</a></li>
+                
+              
+                
+                  <li><a href="../../../about/">About</a></li>
+                
+              
+          </ul>
+            <!-- tag::search[] -->
+            <form class="navbar-form navbar-right" action="https://google.de/search" style="border: none;">
+                <div class="form-group">
+                    <input type="hidden" name="q" value="site:doctoolchain.org/aoc-2022">
+                    <input type="text" name="q" class="form-control" id="search">
+                    <button type="submit" class="btn btn-default hidden-sm ">Find</button>
+                </div>
+            </form>
+            <!-- end::search[] -->
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+	<div class="container content">
+	<p><div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_ceedee666">ceedee666</a>
+<ul class="sectlevel2">
+<li><a href="#_about_me">About me</a></li>
+<li><a href="#_day_01_python">Day 01: python</a>
+<ul class="sectlevel3">
+<li><a href="#_day_01">Day 01</a>
+<ul class="sectlevel4">
+<li><a href="#_main_idea">Main idea</a></li>
+<li><a href="#_what_did_i_learn">What did I learn</a></li>
+<li><a href="#_how_to_run">How to run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_02_python">Day 02: python</a>
+<ul class="sectlevel3">
+<li><a href="#_day_02">Day 02</a>
+<ul class="sectlevel4">
+<li><a href="#_main_idea_2">Main idea</a></li>
+<li><a href="#_what_did_i_learn_2">What did I learn</a></li>
+<li><a href="#_how_to_run_2">How to run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_03_python">Day 03: python</a>
+<ul class="sectlevel3">
+<li><a href="#_day">Day ??</a>
+<ul class="sectlevel4">
+<li><a href="#_main_idea_3">Main idea</a></li>
+<li><a href="#_what_did_i_learn_3">What did I learn</a></li>
+<li><a href="#_how_to_run_3">How to run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_04_python">Day 04: python</a>
+<ul class="sectlevel3">
+<li><a href="#_day_2">Day ??</a>
+<ul class="sectlevel4">
+<li><a href="#_main_idea_4">Main idea</a></li>
+<li><a href="#_what_did_i_learn_4">What did I learn</a></li>
+<li><a href="#_how_to_run_4">How to run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_05_python">Day 05: python</a>
+<ul class="sectlevel3">
+<li><a href="#_day_3">Day ??</a>
+<ul class="sectlevel4">
+<li><a href="#_main_idea_5">Main idea</a></li>
+<li><a href="#_what_did_i_learn_5">What did I learn</a></li>
+<li><a href="#_how_to_run_5">How to run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_06_python">Day 06: python</a>
+<ul class="sectlevel3">
+<li><a href="#_day_4">Day ??</a>
+<ul class="sectlevel4">
+<li><a href="#_main_idea_6">Main idea</a></li>
+<li><a href="#_what_did_i_learn_6">What did I learn</a></li>
+<li><a href="#_how_to_run_6">How to run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_07_python">Day 07: python</a>
+<ul class="sectlevel3">
+<li><a href="#_day_07">Day 07</a>
+<ul class="sectlevel4">
+<li><a href="#_main_idea_7">Main idea</a></li>
+<li><a href="#_what_did_i_learn_7">What did I learn</a></li>
+<li><a href="#_how_to_run_7">How to run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_08_python">Day 08: python</a>
+<ul class="sectlevel3">
+<li><a href="#_day_08">Day 08</a>
+<ul class="sectlevel4">
+<li><a href="#_main_idea_8">Main idea</a></li>
+<li><a href="#_what_did_i_learn_8">What did I learn</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_09_python">Day 09: python</a>
+<ul class="sectlevel3">
+<li><a href="#_day_09">Day 09</a>
+<ul class="sectlevel4">
+<li><a href="#_main_idea_9">Main idea</a></li>
+<li><a href="#_what_did_i_learn_9">What did I learn</a></li>
+<li><a href="#_how_to_run_8">How to run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_10_python">Day 10: python</a>
+<ul class="sectlevel3">
+<li><a href="#_day_10">Day 10</a>
+<ul class="sectlevel4">
+<li><a href="#_main_idea_10">Main idea</a></li>
+<li><a href="#_what_did_i_learn_10">What did I learn</a></li>
+<li><a href="#_how_to_run_9">How to run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_11_python">Day 11: python</a>
+<ul class="sectlevel3">
+<li><a href="#_day_11">Day 11</a>
+<ul class="sectlevel4">
+<li><a href="#_main_idea_11">Main idea</a></li>
+<li><a href="#_what_did_i_learn_11">What did I learn</a></li>
+<li><a href="#_how_to_run_10">How to run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_12_python">Day 12: python</a>
+<ul class="sectlevel3">
+<li><a href="#_day_11_2">Day 11</a>
+<ul class="sectlevel4">
+<li><a href="#_main_idea_12">Main idea</a></li>
+<li><a href="#_what_did_i_learn_12">What did I learn</a></li>
+<li><a href="#_how_to_run_11">How to run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_13_python">Day 13: python</a>
+<ul class="sectlevel3">
+<li><a href="#_day_13">Day 13</a>
+<ul class="sectlevel4">
+<li><a href="#_main_idea_13">Main idea</a></li>
+<li><a href="#_what_did_i_learn_13">What did I learn</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_14_python">Day 14: python</a>
+<ul class="sectlevel3">
+<li><a href="#_day_14">Day 14</a>
+<ul class="sectlevel4">
+<li><a href="#_main_idea_14">Main idea</a></li>
+<li><a href="#_what_did_i_learn_14">What did I learn</a></li>
+<li><a href="#_how_to_run_12">How to run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_15_python">Day 15: python</a>
+<ul class="sectlevel3">
+<li><a href="#_day_15">Day 15</a>
+<ul class="sectlevel4">
+<li><a href="#_main_idea_15">Main idea</a></li>
+<li><a href="#_what_did_i_learn_15">What did I learn</a></li>
+<li><a href="#_how_to_run_13">How to run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_16_python">Day 16: python</a>
+<ul class="sectlevel3">
+<li><a href="#_day_15_2">Day 15</a>
+<ul class="sectlevel4">
+<li><a href="#_main_idea_16">Main idea</a></li>
+<li><a href="#_what_did_i_learn_16">What did I learn</a></li>
+<li><a href="#_how_to_run_14">How to run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_17_python">Day 17: python</a>
+<ul class="sectlevel3">
+<li><a href="#_day_15_3">Day 15</a>
+<ul class="sectlevel4">
+<li><a href="#_main_idea_17">Main idea</a></li>
+<li><a href="#_what_did_i_learn_17">What did I learn</a></li>
+<li><a href="#_how_to_run_15">How to run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_18_python">Day 18: python</a>
+<ul class="sectlevel3">
+<li><a href="#_day_18">Day 18</a>
+<ul class="sectlevel4">
+<li><a href="#_main_idea_18">Main idea</a></li>
+<li><a href="#_what_did_i_learn_18">What did I learn</a></li>
+<li><a href="#_how_to_run_16">How to run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_19_python">Day 19: python</a>
+<ul class="sectlevel3">
+<li><a href="#_day_19">Day 19</a>
+<ul class="sectlevel4">
+<li><a href="#_main_idea_19">Main idea</a></li>
+<li><a href="#_what_did_i_learn_19">What did I learn</a></li>
+<li><a href="#_how_to_run_17">How to run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_20_python">Day 20: python</a>
+<ul class="sectlevel3">
+<li><a href="#_day_20">Day 20</a>
+<ul class="sectlevel4">
+<li><a href="#_main_idea_20">Main idea</a></li>
+<li><a href="#_what_did_i_learn_20">What did I learn</a></li>
+<li><a href="#_how_to_run_18">How to run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_21_python">Day 21: python</a>
+<ul class="sectlevel3">
+<li><a href="#_day_21">Day 21</a>
+<ul class="sectlevel4">
+<li><a href="#_main_idea_21">Main idea</a></li>
+<li><a href="#_what_did_i_learn_21">What did I learn</a></li>
+<li><a href="#_how_to_run_19">How to run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_22_python">Day 22: python</a>
+<ul class="sectlevel3">
+<li><a href="#_day_22">Day 22</a>
+<ul class="sectlevel4">
+<li><a href="#_main_idea_22">Main idea</a></li>
+<li><a href="#_what_did_i_learn_22">What did I learn</a></li>
+<li><a href="#_how_to_run_20">How to run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_ceedee666"><a class="anchor" href="#_ceedee666"></a><a class="link" href="#_ceedee666">ceedee666</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="https://avatars.githubusercontent.com/u/235757?v=4" alt="235757?v=4"></span></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>ceedee666</strong><br>
+<span class="icon"><i class="fa fa-github"></i></span>: <a href="https://github.com/ceedee666">ceedee666</a></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_about_me"><a class="anchor" href="#_about_me"></a><a class="link" href="#_about_me">About me</a></h3>
+<div class="paragraph">
+<p>Nothing here yet. Update your profile at <a href="https://github.com/docToolchain/aoc-2022/blob/master/profiles/ceedee666.adoc">/profiles/ceedee666.adoc</a></p>
+</div>
+<a id="day01" />
+</div>
+<div class="sect2">
+<h3 id="_day_01_python"><a class="anchor" href="#_day_01_python"></a><a class="link" href="#_day_01_python">Day 01: python</a></h3>
+<div class="sect3">
+<h4 id="_day_01"><a class="anchor" href="#_day_01"></a><a class="link" href="#_day_01">Day 01</a></h4>
+<div class="paragraph">
+<p>This solution is written in python.</p>
+</div>
+<div class="paragraph">
+<p>The following libraries are used to implement the solution:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typer (<a href="https://typer.tiangolo.com/" class="bare">https://typer.tiangolo.com/</a>) to generate a nice command line interface</p>
+</li>
+<li>
+<p>pathlib (<a href="https://docs.python.org/3/library/pathlib.html" class="bare">https://docs.python.org/3/library/pathlib.html</a>)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_main_idea"><a class="anchor" href="#_main_idea"></a><a class="link" href="#_main_idea">Main idea</a></h5>
+<div class="paragraph">
+<p>The main idea of this solution is to group the data into a list of lists.
+Once the data is grouped into a list of lists simple Python functions
+like <code>sum</code> and <code>max</code> can be used to solve the exercise.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_did_i_learn"><a class="anchor" href="#_what_did_i_learn"></a><a class="link" href="#_what_did_i_learn">What did I learn</a></h5>
+<div class="paragraph">
+<p>How to use <code>.vimspector.json</code> files to manage debug configurations.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_run"><a class="anchor" href="#_how_to_run"></a><a class="link" href="#_how_to_run">How to run</a></h5>
+<div class="paragraph">
+<p>Run using:
+<code>$ python day_01.py --help</code></p>
+</div>
+<a id="day02" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_02_python"><a class="anchor" href="#_day_02_python"></a><a class="link" href="#_day_02_python">Day 02: python</a></h3>
+<div class="sect3">
+<h4 id="_day_02"><a class="anchor" href="#_day_02"></a><a class="link" href="#_day_02">Day 02</a></h4>
+<div class="paragraph">
+<p>This solution is written in python.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">The following libraries are used to implement the solution</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Typer (<a href="https://typer.tiangolo.com/" class="bare">https://typer.tiangolo.com/</a>) to generate a nice command line interface</p>
+</li>
+<li>
+<p>pathlib (<a href="https://docs.python.org/3/library/pathlib.html" class="bare">https://docs.python.org/3/library/pathlib.html</a>)</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="sect4">
+<h5 id="_main_idea_2"><a class="anchor" href="#_main_idea_2"></a><a class="link" href="#_main_idea_2">Main idea</a></h5>
+<div class="paragraph">
+<p>The main idea of this solution is to use dicts represent the games.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_did_i_learn_2"><a class="anchor" href="#_what_did_i_learn_2"></a><a class="link" href="#_what_did_i_learn_2">What did I learn</a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="_how_to_run_2"><a class="anchor" href="#_how_to_run_2"></a><a class="link" href="#_how_to_run_2">How to run</a></h5>
+<div class="paragraph">
+<p>Run using:
+<code>$ python day_02.py --help</code></p>
+</div>
+<a id="day03" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_03_python"><a class="anchor" href="#_day_03_python"></a><a class="link" href="#_day_03_python">Day 03: python</a></h3>
+<div class="sect3">
+<h4 id="_day"><a class="anchor" href="#_day"></a><a class="link" href="#_day">Day ??</a></h4>
+<div class="paragraph">
+<p>This solution is written in python.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">The following libraries are used to implement the solution</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Typer (<a href="https://typer.tiangolo.com/" class="bare">https://typer.tiangolo.com/</a>) to generate a nice command line interface</p>
+</li>
+<li>
+<p>pathlib (<a href="https://docs.python.org/3/library/pathlib.html" class="bare">https://docs.python.org/3/library/pathlib.html</a>)</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="sect4">
+<h5 id="_main_idea_3"><a class="anchor" href="#_main_idea_3"></a><a class="link" href="#_main_idea_3">Main idea</a></h5>
+<div class="paragraph">
+<p>The main idea of this solution is to use sets and set intersection to find the common items</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_did_i_learn_3"><a class="anchor" href="#_what_did_i_learn_3"></a><a class="link" href="#_what_did_i_learn_3">What did I learn</a></h5>
+<div class="paragraph">
+<p>That list comprehension can be use to split list into sub lists.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_run_3"><a class="anchor" href="#_how_to_run_3"></a><a class="link" href="#_how_to_run_3">How to run</a></h5>
+<div class="paragraph">
+<p>Run using:
+<code>$ python day_03.py --help</code></p>
+</div>
+<a id="day04" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_04_python"><a class="anchor" href="#_day_04_python"></a><a class="link" href="#_day_04_python">Day 04: python</a></h3>
+<div class="sect3">
+<h4 id="_day_2"><a class="anchor" href="#_day_2"></a><a class="link" href="#_day_2">Day ??</a></h4>
+<div class="paragraph">
+<p>This solution is written in python.</p>
+</div>
+<div class="paragraph">
+<p>The following libraries are used to implement the solution:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typer (<a href="https://typer.tiangolo.com/" class="bare">https://typer.tiangolo.com/</a>) to generate a nice command line interface</p>
+</li>
+<li>
+<p>pathlib (<a href="https://docs.python.org/3/library/pathlib.html" class="bare">https://docs.python.org/3/library/pathlib.html</a>)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_main_idea_4"><a class="anchor" href="#_main_idea_4"></a><a class="link" href="#_main_idea_4">Main idea</a></h5>
+<div class="paragraph">
+<p>The main idea of this solution is to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>check the boundaries of the ranges</p>
+</li>
+<li>
+<p>use the filter function</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_did_i_learn_4"><a class="anchor" href="#_what_did_i_learn_4"></a><a class="link" href="#_what_did_i_learn_4">What did I learn</a></h5>
+<div class="paragraph">
+<p>If you type lamdba istead of lambda it can take quite some time to find the error.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_run_4"><a class="anchor" href="#_how_to_run_4"></a><a class="link" href="#_how_to_run_4">How to run</a></h5>
+<div class="paragraph">
+<p>Run using:
+<code>$ python day_04.py --help</code></p>
+</div>
+<a id="day05" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_05_python"><a class="anchor" href="#_day_05_python"></a><a class="link" href="#_day_05_python">Day 05: python</a></h3>
+<div class="sect3">
+<h4 id="_day_3"><a class="anchor" href="#_day_3"></a><a class="link" href="#_day_3">Day ??</a></h4>
+<div class="paragraph">
+<p>This solution is written in python.</p>
+</div>
+<div class="paragraph">
+<p>The following libraries are used to implement the solution:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typer (<a href="https://typer.tiangolo.com/" class="bare">https://typer.tiangolo.com/</a>) to generate a nice command line interface</p>
+</li>
+<li>
+<p>pathlib (<a href="https://docs.python.org/3/library/pathlib.html" class="bare">https://docs.python.org/3/library/pathlib.html</a>)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_main_idea_5"><a class="anchor" href="#_main_idea_5"></a><a class="link" href="#_main_idea_5">Main idea</a></h5>
+<div class="paragraph">
+<p>The main idea of this solution is to use Python list as stacks. This can be done with the
+<code>pop()</code> and <code>append()</code> functions.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_did_i_learn_5"><a class="anchor" href="#_what_did_i_learn_5"></a><a class="link" href="#_what_did_i_learn_5">What did I learn</a></h5>
+<div class="paragraph">
+<p>Parsing text files results in ugly code.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_run_5"><a class="anchor" href="#_how_to_run_5"></a><a class="link" href="#_how_to_run_5">How to run</a></h5>
+<div class="paragraph">
+<p>Run using:
+<code>$ python day_05.py --help</code></p>
+</div>
+<a id="day06" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_06_python"><a class="anchor" href="#_day_06_python"></a><a class="link" href="#_day_06_python">Day 06: python</a></h3>
+<div class="sect3">
+<h4 id="_day_4"><a class="anchor" href="#_day_4"></a><a class="link" href="#_day_4">Day ??</a></h4>
+<div class="paragraph">
+<p>This solution is written in python.</p>
+</div>
+<div class="paragraph">
+<p>The following libraries are used to implement the solution:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typer (<a href="https://typer.tiangolo.com/" class="bare">https://typer.tiangolo.com/</a>) to generate a nice command line interface</p>
+</li>
+<li>
+<p>pathlib (<a href="https://docs.python.org/3/library/pathlib.html" class="bare">https://docs.python.org/3/library/pathlib.html</a>)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_main_idea_6"><a class="anchor" href="#_main_idea_6"></a><a class="link" href="#_main_idea_6">Main idea</a></h5>
+<div class="paragraph">
+<p>The main idea of this solution is to group the input string into substrings of a given length and use
+a <code>set</code> to check how many different characters are in the substring.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_did_i_learn_6"><a class="anchor" href="#_what_did_i_learn_6"></a><a class="link" href="#_what_did_i_learn_6">What did I learn</a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="_how_to_run_6"><a class="anchor" href="#_how_to_run_6"></a><a class="link" href="#_how_to_run_6">How to run</a></h5>
+<div class="paragraph">
+<p>Run using:
+<code>$ python day_06.py --help</code></p>
+</div>
+<a id="day07" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_07_python"><a class="anchor" href="#_day_07_python"></a><a class="link" href="#_day_07_python">Day 07: python</a></h3>
+<div class="sect3">
+<h4 id="_day_07"><a class="anchor" href="#_day_07"></a><a class="link" href="#_day_07">Day 07</a></h4>
+<div class="paragraph">
+<p>This solution is written in python.</p>
+</div>
+<div class="paragraph">
+<p>The following libraries are used to implement the solution:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typer (<a href="https://typer.tiangolo.com/" class="bare">https://typer.tiangolo.com/</a>) to generate a nice command line interface</p>
+</li>
+<li>
+<p>pathlib (<a href="https://docs.python.org/3/library/pathlib.html" class="bare">https://docs.python.org/3/library/pathlib.html</a>)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_main_idea_7"><a class="anchor" href="#_main_idea_7"></a><a class="link" href="#_main_idea_7">Main idea</a></h5>
+<div class="paragraph">
+<p>The main idea of this solution is to build a tree from the commands. The tree is implemented using
+dataclasses. The dataclass contains recursive methods to collect all children and to calculate
+the total size.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_did_i_learn_7"><a class="anchor" href="#_what_did_i_learn_7"></a><a class="link" href="#_what_did_i_learn_7">What did I learn</a></h5>
+<div class="paragraph">
+<p>I learned a lot about dataclasses, typing and type hints, and enums.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_run_7"><a class="anchor" href="#_how_to_run_7"></a><a class="link" href="#_how_to_run_7">How to run</a></h5>
+<div class="paragraph">
+<p>Run using:
+<code>$ python day_07.py --help</code></p>
+</div>
+<a id="day08" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_08_python"><a class="anchor" href="#_day_08_python"></a><a class="link" href="#_day_08_python">Day 08: python</a></h3>
+<div class="sect3">
+<h4 id="_day_08"><a class="anchor" href="#_day_08"></a><a class="link" href="#_day_08">Day 08</a></h4>
+<div class="paragraph">
+<p>This solution is written in python.</p>
+</div>
+<div class="paragraph">
+<p>The following libraries are used to implement the solution:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typer (<a href="https://typer.tiangolo.com/" class="bare">https://typer.tiangolo.com/</a>) to generate a nice command line interface</p>
+</li>
+<li>
+<p>pathlib (<a href="https://docs.python.org/3/library/pathlib.html" class="bare">https://docs.python.org/3/library/pathlib.html</a>)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_main_idea_8"><a class="anchor" href="#_main_idea_8"></a><a class="link" href="#_main_idea_8">Main idea</a></h5>
+<div class="paragraph">
+<p>I got a little stuck with the first part today by trying to solve this puzzle using just list comprehension.
+I worked on rows and cols separately and tried to combine the results by just summing the visible trees in both.
+However, this does not work as it would count some trees multiple times.</p>
+</div>
+<div class="paragraph">
+<p>Finally, I changed my approach an iterated through the grid using `range`s.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_did_i_learn_8"><a class="anchor" href="#_what_did_i_learn_8"></a><a class="link" href="#_what_did_i_learn_8">What did I learn</a></h5>
+<div class="paragraph">
+<p>If you want to use a <code>range</code> to count down the indices of a list be sure
+to use <code>range(start, -1, -1)</code>. Otherwise some of the elements might be missing.
+=== How to run</p>
+</div>
+<div class="paragraph">
+<p>Run using:
+<code>$ python day_08.py --help</code></p>
+</div>
+<a id="day09" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_09_python"><a class="anchor" href="#_day_09_python"></a><a class="link" href="#_day_09_python">Day 09: python</a></h3>
+<div class="sect3">
+<h4 id="_day_09"><a class="anchor" href="#_day_09"></a><a class="link" href="#_day_09">Day 09</a></h4>
+<div class="paragraph">
+<p>This solution is written in python.</p>
+</div>
+<div class="paragraph">
+<p>The following libraries are used to implement the solution:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typer (<a href="https://typer.tiangolo.com/" class="bare">https://typer.tiangolo.com/</a>) to generate a nice command line interface</p>
+</li>
+<li>
+<p>pathlib (<a href="https://docs.python.org/3/library/pathlib.html" class="bare">https://docs.python.org/3/library/pathlib.html</a>)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_main_idea_9"><a class="anchor" href="#_main_idea_9"></a><a class="link" href="#_main_idea_9">Main idea</a></h5>
+<div class="paragraph">
+<p>The main idea is to use a <code>list</code> of <code>lists</code> to collect the positions of the knots. First the
+position of the head is updated with each move. Next the positions of all
+following knots is updated. Positions are simply added to the <code>list</code>. After all moves where
+executed the <code>list</code> ist converted to a <code>set</code> to get the number visited positions.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_did_i_learn_9"><a class="anchor" href="#_what_did_i_learn_9"></a><a class="link" href="#_what_did_i_learn_9">What did I learn</a></h5>
+<div class="paragraph">
+<p>One shouldn&#8217;t try to be to clever. Instead of trying to use pattern matching to solve this I
+should have gone for the easier <code>if &#8230;&#8203; else&#8230;&#8203;</code> approach.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_run_8"><a class="anchor" href="#_how_to_run_8"></a><a class="link" href="#_how_to_run_8">How to run</a></h5>
+<div class="paragraph">
+<p>Run using:
+<code>$ python day_09.py --help</code></p>
+</div>
+<a id="day10" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_10_python"><a class="anchor" href="#_day_10_python"></a><a class="link" href="#_day_10_python">Day 10: python</a></h3>
+<div class="sect3">
+<h4 id="_day_10"><a class="anchor" href="#_day_10"></a><a class="link" href="#_day_10">Day 10</a></h4>
+<div class="paragraph">
+<p>This solution is written in python.</p>
+</div>
+<div class="paragraph">
+<p>The following libraries are used to implement the solution:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typer (<a href="https://typer.tiangolo.com/" class="bare">https://typer.tiangolo.com/</a>) to generate a nice command line interface</p>
+</li>
+<li>
+<p>pathlib (<a href="https://docs.python.org/3/library/pathlib.html" class="bare">https://docs.python.org/3/library/pathlib.html</a>)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_main_idea_10"><a class="anchor" href="#_main_idea_10"></a><a class="link" href="#_main_idea_10">Main idea</a></h5>
+<div class="paragraph">
+<p>Today was straight forward. Just use a list to keep track of the values of x.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_did_i_learn_10"><a class="anchor" href="#_what_did_i_learn_10"></a><a class="link" href="#_what_did_i_learn_10">What did I learn</a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="_how_to_run_9"><a class="anchor" href="#_how_to_run_9"></a><a class="link" href="#_how_to_run_9">How to run</a></h5>
+<div class="paragraph">
+<p>Run using:
+<code>$ python day_10.py --help</code></p>
+</div>
+<a id="day11" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_11_python"><a class="anchor" href="#_day_11_python"></a><a class="link" href="#_day_11_python">Day 11: python</a></h3>
+<div class="sect3">
+<h4 id="_day_11"><a class="anchor" href="#_day_11"></a><a class="link" href="#_day_11">Day 11</a></h4>
+<div class="paragraph">
+<p>This solution is written in python.</p>
+</div>
+<div class="paragraph">
+<p>The following libraries are used to implement the solution:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typer (<a href="https://typer.tiangolo.com/" class="bare">https://typer.tiangolo.com/</a>) to generate a nice command line interface</p>
+</li>
+<li>
+<p>pathlib (<a href="https://docs.python.org/3/library/pathlib.html" class="bare">https://docs.python.org/3/library/pathlib.html</a>)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_main_idea_11"><a class="anchor" href="#_main_idea_11"></a><a class="link" href="#_main_idea_11">Main idea</a></h5>
+<div class="paragraph">
+<p>Part one was quite easy. The parsing of the input file was the most complicated part. I used
+a <code>dict</code> to represent the monkey data. Depending on the operation the mokey performs I
+added <code>operator.add</code> or <code>operator.mul</code> to the dict. This allowed me to just invoke the correct
+operation later.</p>
+</div>
+<div class="paragraph">
+<p>I struggled a litte with the math for part two.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_did_i_learn_11"><a class="anchor" href="#_what_did_i_learn_11"></a><a class="link" href="#_what_did_i_learn_11">What did I learn</a></h5>
+<div class="paragraph">
+<p>I should work on my basic math skills&#8230;&#8203;.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_run_10"><a class="anchor" href="#_how_to_run_10"></a><a class="link" href="#_how_to_run_10">How to run</a></h5>
+<div class="paragraph">
+<p>Run using:
+<code>$ python day_11.py --help</code></p>
+</div>
+<a id="day12" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_12_python"><a class="anchor" href="#_day_12_python"></a><a class="link" href="#_day_12_python">Day 12: python</a></h3>
+<div class="sect3">
+<h4 id="_day_11_2"><a class="anchor" href="#_day_11_2"></a><a class="link" href="#_day_11_2">Day 11</a></h4>
+<div class="paragraph">
+<p>This solution is written in python.</p>
+</div>
+<div class="paragraph">
+<p>The following libraries are used to implement the solution:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typer (<a href="https://typer.tiangolo.com/" class="bare">https://typer.tiangolo.com/</a>) to generate a nice command line interface</p>
+</li>
+<li>
+<p>pathlib (<a href="https://docs.python.org/3/library/pathlib.html" class="bare">https://docs.python.org/3/library/pathlib.html</a>)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_main_idea_12"><a class="anchor" href="#_main_idea_12"></a><a class="link" href="#_main_idea_12">Main idea</a></h5>
+<div class="paragraph">
+<p>The main idea is to implement breath first search to find the shortest path from the start
+to the highest point.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_did_i_learn_12"><a class="anchor" href="#_what_did_i_learn_12"></a><a class="link" href="#_what_did_i_learn_12">What did I learn</a></h5>
+<div class="paragraph">
+<p>I struggled a little with finding possible neighbours. It took me some time to realize
+that I need to take the hight into account.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_run_11"><a class="anchor" href="#_how_to_run_11"></a><a class="link" href="#_how_to_run_11">How to run</a></h5>
+<div class="paragraph">
+<p>Run using:
+<code>$ python day_11.py --help</code></p>
+</div>
+<a id="day13" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_13_python"><a class="anchor" href="#_day_13_python"></a><a class="link" href="#_day_13_python">Day 13: python</a></h3>
+<div class="sect3">
+<h4 id="_day_13"><a class="anchor" href="#_day_13"></a><a class="link" href="#_day_13">Day 13</a></h4>
+<div class="paragraph">
+<p>This solution is written in python.</p>
+</div>
+<div class="paragraph">
+<p>The following libraries are used to implement the solution:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typer (<a href="https://typer.tiangolo.com/" class="bare">https://typer.tiangolo.com/</a>) to generate a nice command line interface</p>
+</li>
+<li>
+<p>pathlib (<a href="https://docs.python.org/3/library/pathlib.html" class="bare">https://docs.python.org/3/library/pathlib.html</a>)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_main_idea_13"><a class="anchor" href="#_main_idea_13"></a><a class="link" href="#_main_idea_13">Main idea</a></h5>
+<div class="paragraph">
+<p>The main idea is to implement a comparison function for the lists. This
+function returns <code>-1</code>, <code>0</code> or <code>1</code> if the first list is smaller, equal,
+or larger as the second one. This only became obvious after reading the
+second part. Luckily a small refactoring of the solution for part one was
+enough to create the comparison function.</p>
+</div>
+<div class="paragraph">
+<p>Using the comparison function the second part could be solved by simply
+using <code>sorted</code> together with the comparison function.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_did_i_learn_13"><a class="anchor" href="#_what_did_i_learn_13"></a><a class="link" href="#_what_did_i_learn_13">What did I learn</a></h5>
+<div class="paragraph">
+<p>I learned about <code>functools.cmp_to_key</code> today.
+=== How to run</p>
+</div>
+<div class="paragraph">
+<p>Run using:
+<code>$ python day_13.py --help</code></p>
+</div>
+<a id="day14" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_14_python"><a class="anchor" href="#_day_14_python"></a><a class="link" href="#_day_14_python">Day 14: python</a></h3>
+<div class="sect3">
+<h4 id="_day_14"><a class="anchor" href="#_day_14"></a><a class="link" href="#_day_14">Day 14</a></h4>
+<div class="paragraph">
+<p>This solution is written in python.</p>
+</div>
+<div class="paragraph">
+<p>The following libraries are used to implement the solution:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typer (<a href="https://typer.tiangolo.com/" class="bare">https://typer.tiangolo.com/</a>) to generate a nice command line interface</p>
+</li>
+<li>
+<p>pathlib (<a href="https://docs.python.org/3/library/pathlib.html" class="bare">https://docs.python.org/3/library/pathlib.html</a>)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_main_idea_14"><a class="anchor" href="#_main_idea_14"></a><a class="link" href="#_main_idea_14">Main idea</a></h5>
+<div class="paragraph">
+<p>The main idea ist to use a <code>dict</code> to represent the cave. <code>(x,y)</code> coordinates
+are mapped to <code>"R"</code> for rocks and <code>"S"</code> for sand.
+Using this represenatiton it is easy to check if a certain position <code>(x,y)</code> is already
+in occupied by either a rock or a sand.</p>
+</div>
+<div class="paragraph">
+<p>Initially I missed the end condition that a grain of sand could fall into the void,
+i.e. <code>y</code> in creases beyond the maximum <code>y</code> of any rock.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_did_i_learn_14"><a class="anchor" href="#_what_did_i_learn_14"></a><a class="link" href="#_what_did_i_learn_14">What did I learn</a></h5>
+<div class="paragraph">
+<p>How to use comprehensions to create `dict`s.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_run_12"><a class="anchor" href="#_how_to_run_12"></a><a class="link" href="#_how_to_run_12">How to run</a></h5>
+<div class="paragraph">
+<p>Run using:
+<code>$ python day_14.py --help</code></p>
+</div>
+<a id="day15" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_15_python"><a class="anchor" href="#_day_15_python"></a><a class="link" href="#_day_15_python">Day 15: python</a></h3>
+<div class="sect3">
+<h4 id="_day_15"><a class="anchor" href="#_day_15"></a><a class="link" href="#_day_15">Day 15</a></h4>
+<div class="paragraph">
+<p>This solution is written in python.</p>
+</div>
+<div class="paragraph">
+<p>The following libraries are used to implement the solution:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typer (<a href="https://typer.tiangolo.com/" class="bare">https://typer.tiangolo.com/</a>) to generate a nice command line interface</p>
+</li>
+<li>
+<p>pathlib (<a href="https://docs.python.org/3/library/pathlib.html" class="bare">https://docs.python.org/3/library/pathlib.html</a>)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_main_idea_15"><a class="anchor" href="#_main_idea_15"></a><a class="link" href="#_main_idea_15">Main idea</a></h5>
+<div class="paragraph">
+<p>I did really struggle totday. I tried to create all positions and filter those for part one.
+This wouldn&#8217;t work for part two. So I had to change the approach to calculate which ranges of
+a row are covered by the sensors.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_did_i_learn_15"><a class="anchor" href="#_what_did_i_learn_15"></a><a class="link" href="#_what_did_i_learn_15">What did I learn</a></h5>
+<div class="paragraph">
+<p>Regex can be really useful to parse files ;)</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_run_13"><a class="anchor" href="#_how_to_run_13"></a><a class="link" href="#_how_to_run_13">How to run</a></h5>
+<div class="paragraph">
+<p>Run using:
+<code>$ python day_15.py --help</code></p>
+</div>
+<a id="day16" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_16_python"><a class="anchor" href="#_day_16_python"></a><a class="link" href="#_day_16_python">Day 16: python</a></h3>
+<div class="sect3">
+<h4 id="_day_15_2"><a class="anchor" href="#_day_15_2"></a><a class="link" href="#_day_15_2">Day 15</a></h4>
+<div class="paragraph">
+<p>This solution is written in python.</p>
+</div>
+<div class="paragraph">
+<p>The following libraries are used to implement the solution:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typer (<a href="https://typer.tiangolo.com/" class="bare">https://typer.tiangolo.com/</a>) to generate a nice command line interface</p>
+</li>
+<li>
+<p>pathlib (<a href="https://docs.python.org/3/library/pathlib.html" class="bare">https://docs.python.org/3/library/pathlib.html</a>)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_main_idea_16"><a class="anchor" href="#_main_idea_16"></a><a class="link" href="#_main_idea_16">Main idea</a></h5>
+<div class="paragraph">
+<p>I did really struggle totday. I tried to create all positions and filter those for part one.
+This wouldn&#8217;t work for part two. So I had to change the approach to calculate which ranges of
+a row are covered by the sensors.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_did_i_learn_16"><a class="anchor" href="#_what_did_i_learn_16"></a><a class="link" href="#_what_did_i_learn_16">What did I learn</a></h5>
+<div class="paragraph">
+<p>Regex can be really useful to parse files ;)</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_run_14"><a class="anchor" href="#_how_to_run_14"></a><a class="link" href="#_how_to_run_14">How to run</a></h5>
+<div class="paragraph">
+<p>Run using:
+<code>$ python day_15.py --help</code></p>
+</div>
+<a id="day17" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_17_python"><a class="anchor" href="#_day_17_python"></a><a class="link" href="#_day_17_python">Day 17: python</a></h3>
+<div class="sect3">
+<h4 id="_day_15_3"><a class="anchor" href="#_day_15_3"></a><a class="link" href="#_day_15_3">Day 15</a></h4>
+<div class="paragraph">
+<p>This solution is written in python.</p>
+</div>
+<div class="paragraph">
+<p>The following libraries are used to implement the solution:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typer (<a href="https://typer.tiangolo.com/" class="bare">https://typer.tiangolo.com/</a>) to generate a nice command line interface</p>
+</li>
+<li>
+<p>pathlib (<a href="https://docs.python.org/3/library/pathlib.html" class="bare">https://docs.python.org/3/library/pathlib.html</a>)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_main_idea_17"><a class="anchor" href="#_main_idea_17"></a><a class="link" href="#_main_idea_17">Main idea</a></h5>
+<div class="paragraph">
+<p>I did really struggle today. I tried to create all positions and filter those for part one.
+This wouldn&#8217;t work for part two. So I had to change the approach to calculate which ranges of
+a row are covered by the sensors.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_did_i_learn_17"><a class="anchor" href="#_what_did_i_learn_17"></a><a class="link" href="#_what_did_i_learn_17">What did I learn</a></h5>
+<div class="paragraph">
+<p>Regex can be really useful to parse files ;)</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_run_15"><a class="anchor" href="#_how_to_run_15"></a><a class="link" href="#_how_to_run_15">How to run</a></h5>
+<div class="paragraph">
+<p>Run using:
+<code>$ python day_15.py --help</code></p>
+</div>
+<a id="day18" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_18_python"><a class="anchor" href="#_day_18_python"></a><a class="link" href="#_day_18_python">Day 18: python</a></h3>
+<div class="sect3">
+<h4 id="_day_18"><a class="anchor" href="#_day_18"></a><a class="link" href="#_day_18">Day 18</a></h4>
+<div class="paragraph">
+<p>This solution is written in python.</p>
+</div>
+<div class="paragraph">
+<p>The following libraries are used to implement the solution:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typer (<a href="https://typer.tiangolo.com/" class="bare">https://typer.tiangolo.com/</a>) to generate a nice command line interface</p>
+</li>
+<li>
+<p>pathlib (<a href="https://docs.python.org/3/library/pathlib.html" class="bare">https://docs.python.org/3/library/pathlib.html</a>)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_main_idea_18"><a class="anchor" href="#_main_idea_18"></a><a class="link" href="#_main_idea_18">Main idea</a></h5>
+<div class="paragraph">
+<p>First I just counted cubes. For the second part I had to change my approach. I implemented
+a flooding algorithm to find the outside. After that I calculated all neighbours of the cubes and
+counted only the ones visible from the outside.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_did_i_learn_18"><a class="anchor" href="#_what_did_i_learn_18"></a><a class="link" href="#_what_did_i_learn_18">What did I learn</a></h5>
+<div class="paragraph">
+<p>I extended my knowledge of list comprehension. Such a cool feature!</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_run_16"><a class="anchor" href="#_how_to_run_16"></a><a class="link" href="#_how_to_run_16">How to run</a></h5>
+<div class="paragraph">
+<p>Run using:
+<code>$ python day_18.py --help</code></p>
+</div>
+<a id="day19" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_19_python"><a class="anchor" href="#_day_19_python"></a><a class="link" href="#_day_19_python">Day 19: python</a></h3>
+<div class="sect3">
+<h4 id="_day_19"><a class="anchor" href="#_day_19"></a><a class="link" href="#_day_19">Day 19</a></h4>
+<div class="paragraph">
+<p>This solution is written in python.</p>
+</div>
+<div class="paragraph">
+<p>The following libraries are used to implement the solution:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typer (<a href="https://typer.tiangolo.com/" class="bare">https://typer.tiangolo.com/</a>) to generate a nice command line interface</p>
+</li>
+<li>
+<p>pathlib (<a href="https://docs.python.org/3/library/pathlib.html" class="bare">https://docs.python.org/3/library/pathlib.html</a>)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_main_idea_19"><a class="anchor" href="#_main_idea_19"></a><a class="link" href="#_main_idea_19">Main idea</a></h5>
+<div class="paragraph">
+<p>I didn&#8217;t really have an idea for today. Brute force seemed to be to slow. With some inspiration from
+reddit I was able to finally solve today.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_did_i_learn_19"><a class="anchor" href="#_what_did_i_learn_19"></a><a class="link" href="#_what_did_i_learn_19">What did I learn</a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="_how_to_run_17"><a class="anchor" href="#_how_to_run_17"></a><a class="link" href="#_how_to_run_17">How to run</a></h5>
+<div class="paragraph">
+<p>Run using:
+<code>$ python day_19.py --help</code></p>
+</div>
+<a id="day20" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_20_python"><a class="anchor" href="#_day_20_python"></a><a class="link" href="#_day_20_python">Day 20: python</a></h3>
+<div class="sect3">
+<h4 id="_day_20"><a class="anchor" href="#_day_20"></a><a class="link" href="#_day_20">Day 20</a></h4>
+<div class="paragraph">
+<p>This solution is written in python.</p>
+</div>
+<div class="paragraph">
+<p>The following libraries are used to implement the solution:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typer (<a href="https://typer.tiangolo.com/" class="bare">https://typer.tiangolo.com/</a>) to generate a nice command line interface</p>
+</li>
+<li>
+<p>pathlib (<a href="https://docs.python.org/3/library/pathlib.html" class="bare">https://docs.python.org/3/library/pathlib.html</a>)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_main_idea_20"><a class="anchor" href="#_main_idea_20"></a><a class="link" href="#_main_idea_20">Main idea</a></h5>
+<div class="paragraph">
+<p>Solved today using <code>deque</code> from the <code>collections</code> module. This was my first idea.
+However, I then tried using indices and modulo arithmetic instead. Couldn&#8217;t get a nice
+solution and finally got back to the <code>deque</code> approach.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_did_i_learn_20"><a class="anchor" href="#_what_did_i_learn_20"></a><a class="link" href="#_what_did_i_learn_20">What did I learn</a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="_how_to_run_18"><a class="anchor" href="#_how_to_run_18"></a><a class="link" href="#_how_to_run_18">How to run</a></h5>
+<div class="paragraph">
+<p>Run using:
+<code>$ python day_20.py --help</code></p>
+</div>
+<a id="day21" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_21_python"><a class="anchor" href="#_day_21_python"></a><a class="link" href="#_day_21_python">Day 21: python</a></h3>
+<div class="sect3">
+<h4 id="_day_21"><a class="anchor" href="#_day_21"></a><a class="link" href="#_day_21">Day 21</a></h4>
+<div class="paragraph">
+<p>This solution is written in python.</p>
+</div>
+<div class="paragraph">
+<p>The following libraries are used to implement the solution:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typer (<a href="https://typer.tiangolo.com/" class="bare">https://typer.tiangolo.com/</a>) to generate a nice command line interface</p>
+</li>
+<li>
+<p>pathlib (<a href="https://docs.python.org/3/library/pathlib.html" class="bare">https://docs.python.org/3/library/pathlib.html</a>)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_main_idea_21"><a class="anchor" href="#_main_idea_21"></a><a class="link" href="#_main_idea_21">Main idea</a></h5>
+<div class="paragraph">
+<p>Implemented something similar to a binary search. The main idea was to increase the
+steps in each iteration and change directions when the sign of the difference between the result and
+the expected value changes.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_did_i_learn_21"><a class="anchor" href="#_what_did_i_learn_21"></a><a class="link" href="#_what_did_i_learn_21">What did I learn</a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="_how_to_run_19"><a class="anchor" href="#_how_to_run_19"></a><a class="link" href="#_how_to_run_19">How to run</a></h5>
+<div class="paragraph">
+<p>Run using:
+<code>$ python day_21.py --help</code></p>
+</div>
+<a id="day22" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_22_python"><a class="anchor" href="#_day_22_python"></a><a class="link" href="#_day_22_python">Day 22: python</a></h3>
+<div class="sect3">
+<h4 id="_day_22"><a class="anchor" href="#_day_22"></a><a class="link" href="#_day_22">Day 22</a></h4>
+<div class="paragraph">
+<p>This solution is written in python.</p>
+</div>
+<div class="paragraph">
+<p>The following libraries are used to implement the solution:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Typer (<a href="https://typer.tiangolo.com/" class="bare">https://typer.tiangolo.com/</a>) to generate a nice command line interface</p>
+</li>
+<li>
+<p>pathlib (<a href="https://docs.python.org/3/library/pathlib.html" class="bare">https://docs.python.org/3/library/pathlib.html</a>)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_main_idea_22"><a class="anchor" href="#_main_idea_22"></a><a class="link" href="#_main_idea_22">Main idea</a></h5>
+<div class="paragraph">
+<p>Only solved part one today.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_what_did_i_learn_22"><a class="anchor" href="#_what_did_i_learn_22"></a><a class="link" href="#_what_did_i_learn_22">What did I learn</a></h5>
+<div class="paragraph">
+<p>When zipping two lists make sure they are of equal lenght.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_run_20"><a class="anchor" href="#_how_to_run_20"></a><a class="link" href="#_how_to_run_20">How to run</a></h5>
+<div class="paragraph">
+<p>Run using:
+<code>$ python day_22.py --help</code></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></p>
+
+	</div>
+
+</div>
+<div id="push"></div>
+</div>
+
+
+    <div id="footer">
+      <div class="container">
+          <p class="muted credit">&copy; 2022 | Mixed with Bootstrap v3.1.1 | generated with <a href="https://doctoolchain.org">docToolchain</a> | Baked with JBake v2.6.4</p>
+      </div>
+    </div>
+    
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/prettify.js"></script>
+    
+
+
+</body>
+</html>

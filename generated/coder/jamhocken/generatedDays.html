@@ -1,0 +1,2337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Aoc 2022: jamhocken</title>
+    <meta charset="UTF-8">
+<meta name="google-site-verification" content="JZ7jk3duxzxHDLuOHKPxc-uoz0JPlSBLeaAxh3wGn9Q" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Just for fun">
+    <meta name="author" content="Ralf D. Müller">
+    <meta name="keywords" content="aoc">
+    <meta name="generator" content="JBake">
+
+    <!-- Le styles -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/asciidoctor.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link href="../../../css/prettify.css" rel="stylesheet">
+      <link href="../../../css/retro.css" rel="stylesheet">
+      <style>
+      @media only screen and (min-width:768px){
+          #toctitle{font-size:1.375em}
+          #toc.toc{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #efefed;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto; padding-top: 60px;}
+          #toc.toc #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+          #toc.toc>ul{font-size:.9em;margin-bottom:0}
+          #toc.toc ul ul{margin-left:0;padding-left:1em}
+          #toc.toc ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+          body.toc2{ padding-left: 15.5em;padding-right:0; width: 100% !important;}
+          body.toc2 div#wrap div.content {width: auto !important;}
+          #toc.toc{width:15em; padding-top: 60px;}
+      }
+      @media only screen and (min-width:1280px){
+          body.toc2{ padding-left: 20.5em;padding-right:0; width: 100% !important;}
+          body.toc2 div#wrap div.content {width: auto !important;}
+          #toc.toc{width:20em; padding-top: 60px;}
+          #toc.toc #toctitle{font-size:1.375em}
+          #toc.toc>ul{font-size:.95em}
+          #toc.toc ul ul{padding-left:1.25em}
+      }
+      body {
+          overflow-y: scroll;
+      }
+      html, body {
+          font-size: 1.06rem;
+      }
+      body.toc2{ overflow-x: auto}
+      #toc.toc ul {
+          padding-inline-start: 0;
+      }
+      :target::before {
+          content: "";
+          display: block;
+          height: 60px; /* fixed header height*/
+          margin: -60px 0 0; /* negative fixed header height */
+      }
+      .navbar {
+          background-image: url(/aoc-2022/images/treeback.png);
+          background-size: contain;
+          background-repeat: repeat-x;
+          border-bottom: 0;
+          padding-bottom: 20px;
+          background-color: transparent;
+          box-shadow: none;
+      }
+      html {
+          background: url(/aoc-2022/images/snowback.png) no-repeat center center fixed;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+      }
+
+      </style>
+      <script>
+          //smart redirectg
+          if (document.location.href.includes("netlify")) {
+              document.location.href=document.location.href.replace("aoc-2022.netlify.app/","doctoolchain.org/aoc-2022/");
+          }
+      </script>
+<!-- /aoc-2022/ -->
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+      <link rel="apple-touch-icon" sizes="180x180" href="/aoc-2022//apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/aoc-2022//favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/aoc-2022//favicon-16x16.png">
+      <link rel="manifest" href="/aoc-2022//site.webmanifest">
+      <link rel="mask-icon" href="/aoc-2022//safari-pinned-tab.svg" color="#5bbad5">
+      <meta name="msapplication-TileColor" content="#da532c">
+      <meta name="theme-color" content="#ffffff">
+  </head>
+
+<body onload="prettyPrint()" class="toc2 toc-left" >
+<div id="wrap">
+
+	
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../../../">AoC-2022</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+              
+                
+                  <li><a href="../../../rules/">Rules</a></li>
+                
+              
+                
+                  <li><a href="../../../solutions/">Solutions</a></li>
+                
+              
+                
+                  <li><a href="../../../about/">About</a></li>
+                
+              
+          </ul>
+            <!-- tag::search[] -->
+            <form class="navbar-form navbar-right" action="https://google.de/search" style="border: none;">
+                <div class="form-group">
+                    <input type="hidden" name="q" value="site:doctoolchain.org/aoc-2022">
+                    <input type="text" name="q" class="form-control" id="search">
+                    <button type="submit" class="btn btn-default hidden-sm ">Find</button>
+                </div>
+            </form>
+            <!-- end::search[] -->
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+	<div class="container content">
+	<p><div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_jamhocken">jamhocken</a>
+<ul class="sectlevel2">
+<li><a href="#_about_me">About me</a></li>
+<li><a href="#_day_00_python">Day 00: python</a>
+<ul class="sectlevel3">
+<li><a href="#_python">Python</a></li>
+<li><a href="#_run_script">Run script</a></li>
+</ul>
+</li>
+<li><a href="#_day_01_python">Day 01: python</a>
+<ul class="sectlevel3">
+<li><a href="#_what_i_learned">What I learned</a></li>
+<li><a href="#_approach">Approach</a></li>
+<li><a href="#_run_script_2">Run script</a></li>
+</ul>
+</li>
+<li><a href="#_day_02_python">Day 02: python</a>
+<ul class="sectlevel3">
+<li><a href="#_what_i_learned_2">What I learned</a></li>
+<li><a href="#_approach_2">Approach</a></li>
+<li><a href="#_run_script_3">Run script</a></li>
+</ul>
+</li>
+<li><a href="#_day_03_python">Day 03: python</a>
+<ul class="sectlevel3">
+<li><a href="#_what_i_learned_3">What I learned</a></li>
+<li><a href="#_approach_3">Approach</a></li>
+<li><a href="#_run_script_4">Run script</a></li>
+</ul>
+</li>
+<li><a href="#_day_04_python">Day 04: python</a>
+<ul class="sectlevel3">
+<li><a href="#_what_i_learned_4">What I learned</a></li>
+<li><a href="#_approach_4">Approach</a></li>
+<li><a href="#_run_script_5">Run script</a></li>
+</ul>
+</li>
+<li><a href="#_day_05_python">Day 05: python</a>
+<ul class="sectlevel3">
+<li><a href="#_what_i_learned_5">What I learned</a></li>
+<li><a href="#_approach_5">Approach</a></li>
+<li><a href="#_run_script_6">Run script</a></li>
+</ul>
+</li>
+<li><a href="#_day_06_python">Day 06: python</a>
+<ul class="sectlevel3">
+<li><a href="#_what_i_learned_6">What I learned</a></li>
+<li><a href="#_approach_6">Approach</a></li>
+<li><a href="#_run_script_7">Run script</a></li>
+</ul>
+</li>
+<li><a href="#_day_07_python">Day 07: python</a>
+<ul class="sectlevel3">
+<li><a href="#_what_i_learned_7">What I learned</a></li>
+<li><a href="#_approach_7">Approach</a></li>
+<li><a href="#_run_script_8">Run script</a></li>
+</ul>
+</li>
+<li><a href="#_day_08_python">Day 08: python</a>
+<ul class="sectlevel3">
+<li><a href="#_what_i_learned_8">What I learned</a></li>
+<li><a href="#_approach_8">Approach</a></li>
+<li><a href="#_run_script_9">Run script</a></li>
+</ul>
+</li>
+<li><a href="#_day_09_python">Day 09: python</a>
+<ul class="sectlevel3">
+<li><a href="#_what_i_learned_9">What I learned</a></li>
+<li><a href="#_approach_9">Approach</a></li>
+<li><a href="#_run_script_10">Run script</a></li>
+</ul>
+</li>
+<li><a href="#_day_10_python">Day 10: python</a>
+<ul class="sectlevel3">
+<li><a href="#_what_i_learned_10">What I learned</a></li>
+<li><a href="#_approach_10">Approach</a></li>
+<li><a href="#_run_script_11">Run script</a></li>
+</ul>
+</li>
+<li><a href="#_day_11_python">Day 11: python</a>
+<ul class="sectlevel3">
+<li><a href="#_what_i_learned_11">What I learned</a></li>
+<li><a href="#_approach_11">Approach</a></li>
+<li><a href="#_run_script_12">Run script</a></li>
+</ul>
+</li>
+<li><a href="#_day_12_python">Day 12: python</a>
+<ul class="sectlevel3">
+<li><a href="#_what_i_learned_12">What I learned</a></li>
+<li><a href="#_approach_12">Approach</a></li>
+<li><a href="#_run_script_13">Run script</a></li>
+</ul>
+</li>
+<li><a href="#_day_13_python">Day 13: python</a>
+<ul class="sectlevel3">
+<li><a href="#_what_i_learned_13">What I learned</a></li>
+<li><a href="#_approach_13">Approach</a></li>
+<li><a href="#_run_script_14">Run script</a></li>
+</ul>
+</li>
+<li><a href="#_day_14_python">Day 14: python</a>
+<ul class="sectlevel3">
+<li><a href="#_what_i_learned_14">What I learned</a></li>
+<li><a href="#_approach_14">Approach</a></li>
+<li><a href="#_run_script_15">Run script</a></li>
+</ul>
+</li>
+<li><a href="#_day_15_python">Day 15: python</a>
+<ul class="sectlevel3">
+<li><a href="#_what_i_learned_15">What I learned</a></li>
+<li><a href="#_approach_15">Approach</a></li>
+<li><a href="#_run_script_16">Run script</a></li>
+</ul>
+</li>
+<li><a href="#_day_16_python">Day 16: python</a>
+<ul class="sectlevel3">
+<li><a href="#_what_i_learned_16">What I learned</a></li>
+<li><a href="#_approach_16">Approach</a></li>
+<li><a href="#_run_script_17">Run script</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_jamhocken"><a class="anchor" href="#_jamhocken"></a><a class="link" href="#_jamhocken">jamhocken</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="https://avatars.githubusercontent.com/u/75045692?v=4" alt="75045692?v=4"></span></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>jamhocken</strong><br>
+<span class="icon"><i class="fa fa-github"></i></span>: <a href="https://github.com/jamhocken">jamhocken</a></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_about_me"><a class="anchor" href="#_about_me"></a><a class="link" href="#_about_me">About me</a></h3>
+<div class="paragraph">
+<p>Nothing here yet. Update your profile at <a href="https://github.com/docToolchain/aoc-2022/blob/master/profiles/jamhocken.adoc">/profiles/jamhocken.adoc</a></p>
+</div>
+<a id="day00" />
+</div>
+<div class="sect2">
+<h3 id="_day_00_python"><a class="anchor" href="#_day_00_python"></a><a class="link" href="#_day_00_python">Day 00: python</a></h3>
+<div class="paragraph">
+<p>Day 0 of year 2022</p>
+</div>
+<div class="sect3">
+<h4 id="_python"><a class="anchor" href="#_python"></a><a class="link" href="#_python">Python</a></h4>
+<div class="paragraph">
+<p>I thought about trying another language, but my youngest son is going to try his hand at AOC this year.
+ And, so, I&#8217;ll stick to Python.</p>
+</div>
+<div class="paragraph">
+<p>Judging from the past, he has a good chance to get 1 star on a few of the first ones.</p>
+</div>
+<div class="paragraph">
+<p>I&#8217;ll post both solutions. :-) It&#8217;ll be an adventure.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_script"><a class="anchor" href="#_run_script"></a><a class="link" href="#_run_script">Run script</a></h4>
+<div class="paragraph">
+<p>Run the solution with <code>python solution.py</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-python" data-lang="python">def main():
+    print("Hello, World!")
+
+
+main()</code></pre>
+</div>
+</div>
+<a id="day01" />
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_01_python"><a class="anchor" href="#_day_01_python"></a><a class="link" href="#_day_01_python">Day 01: python</a></h3>
+<div class="paragraph">
+<p>Day 1 of year 2022
+<a href="https://adventofcode.com/2022/day/1" class="bare">https://adventofcode.com/2022/day/1</a></p>
+</div>
+<div class="sect3">
+<h4 id="_what_i_learned"><a class="anchor" href="#_what_i_learned"></a><a class="link" href="#_what_i_learned">What I learned</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>This one was straightforward and I just had to get into the groove again.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_approach"><a class="anchor" href="#_approach"></a><a class="link" href="#_approach">Approach</a></h4>
+<div class="paragraph">
+<p>I put the calories per elf into a list.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>For star 1, I just found the max of my list.</p>
+</li>
+<li>
+<p>For star 2, I sorted the list in descending order and added up the first 3 values.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_script_2"><a class="anchor" href="#_run_script_2"></a><a class="link" href="#_run_script_2">Run script</a></h4>
+<div class="paragraph">
+<p>Run the solution with <code>python solution.py</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-python" data-lang="python">def process_input(file_contents):
+    lines_stripped = [line.strip() for line in file_contents]
+    cal = 0
+    calories = []
+    for line in lines_stripped:
+        if not line:
+            calories.append(cal)
+            cal = 0
+        else:
+            cal += int(line)
+
+    return calories
+
+def main():
+    with open("input.txt",'r') as input_file:
+        input_lines = input_file.readlines()
+
+    calories = process_input(input_lines)
+
+    #star 1
+    print("The elf with the most calories is carrying",max(calories),"calories.")
+
+    #star 2
+    calories.sort(reverse=True)
+    print("The top three elves are carrying",sum(calories[0:3]),"calories.")
+
+main()</code></pre>
+</div>
+</div>
+<a id="day02" />
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_02_python"><a class="anchor" href="#_day_02_python"></a><a class="link" href="#_day_02_python">Day 02: python</a></h3>
+<div class="paragraph">
+<p>Day 2 of year 2022
+<a href="https://adventofcode.com/2022/day/2" class="bare">https://adventofcode.com/2022/day/2</a></p>
+</div>
+<div class="sect3">
+<h4 id="_what_i_learned_2"><a class="anchor" href="#_what_i_learned_2"></a><a class="link" href="#_what_i_learned_2">What I learned</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>This one was again straightforward.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_approach_2"><a class="anchor" href="#_approach_2"></a><a class="link" href="#_approach_2">Approach</a></h4>
+<div class="paragraph">
+<p>I just put the inputs into a list.
+For each star created a dictionary with the scores based on the rules described.
+Since there are only 9 cases each time, I didn&#8217;t write code for this but just entered them per hand into the dictionary.
+Then, you feed the list into the dictionary and sum the result.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_script_3"><a class="anchor" href="#_run_script_3"></a><a class="link" href="#_run_script_3">Run script</a></h4>
+<div class="paragraph">
+<p>Run the solution with <code>python solution.py</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-python" data-lang="python">def process_input(file_contents):
+    strategy = [line.strip() for line in file_contents]
+
+    return strategy
+
+def main():
+    with open("input.txt",'r') as input_file:
+        input_lines = input_file.readlines()
+
+    strategy = process_input(input_lines)
+
+    #star 1
+    score_dict = {
+        "A X": 1+3,
+        "A Y": 2+6,
+        "A Z": 3+0,
+        "B X": 1+0,
+        "B Y": 2+3,
+        "B Z": 3+6,
+        "C X": 1+6,
+        "C Y": 2+0,
+        "C Z": 3+3
+    }
+
+    scores = [score_dict[x] for x in strategy]
+    print("The total score is",sum(scores))
+
+    #star 2
+    score_dict = {
+        "A X": 3+0,
+        "A Y": 1+3,
+        "A Z": 2+6,
+        "B X": 1+0,
+        "B Y": 2+3,
+        "B Z": 3+6,
+        "C X": 2+0,
+        "C Y": 3+3,
+        "C Z": 1+6
+    }
+
+    scores = [score_dict[x] for x in strategy]
+    print("The total score is",sum(scores))
+
+main()</code></pre>
+</div>
+</div>
+<a id="day03" />
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_03_python"><a class="anchor" href="#_day_03_python"></a><a class="link" href="#_day_03_python">Day 03: python</a></h3>
+<div class="paragraph">
+<p>Day 3 of year 2022
+<a href="https://adventofcode.com/2022/day/3" class="bare">https://adventofcode.com/2022/day/3</a></p>
+</div>
+<div class="sect3">
+<h4 id="_what_i_learned_3"><a class="anchor" href="#_what_i_learned_3"></a><a class="link" href="#_what_i_learned_3">What I learned</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I used <code>ord</code> for the first time.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_approach_3"><a class="anchor" href="#_approach_3"></a><a class="link" href="#_approach_3">Approach</a></h4>
+<div class="paragraph">
+<p>I put all of the rucksacks in a list.</p>
+</div>
+<div class="paragraph">
+<p><strong>Star 1</strong><br>
+I just took each letter from the first half of each rucksack and check if it is present in the second half. If so,
+it&#8217;s the duplicate and I go to the next rucksack.
+To get the priorities, I used ord and did the math.</p>
+</div>
+<div class="paragraph">
+<p><strong>Star 2</strong><br>
+It&#8217;s similar. I take each letter from the first rucksack and see if it is in both of the next
+2 rucksacks. If so, it&#8217;s the badge and I skip to the next 3 rucksacks.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_script_4"><a class="anchor" href="#_run_script_4"></a><a class="link" href="#_run_script_4">Run script</a></h4>
+<div class="paragraph">
+<p>Run the solution with <code>python solution.py</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-python" data-lang="python">def process_input(file_contents):
+    rucksack = [line.strip() for line in file_contents]
+
+    return rucksack
+
+def main():
+    with open("input.txt",'r') as input_file:
+        input_lines = input_file.readlines()
+
+    contents = process_input(input_lines)
+
+    #star 1
+    duplicates = []
+    for rucksack in contents:
+        for letter in rucksack[0:len(rucksack)//2]:
+            if letter in rucksack[len(rucksack)//2:]:
+                duplicates.append(letter)
+                break
+
+    scores = [ord(item)-96 if ord(item)&gt;96 else ord(item)-64+26 for item in duplicates]
+    print("The sum of the priorities is ",sum(scores))
+
+    #star 2
+    position = 0
+    badge = []
+    while position &lt; len(contents):
+        for letter in contents[position]:
+            if letter in contents[position+1] and letter in contents[position+2]:
+                badge.append(letter)
+                position += 3
+                break
+
+    scores = [ord(item)-96 if ord(item)&gt;96 else ord(item)-64+26 for item in badge]
+    print("The sum of the priorities is ",sum(scores))
+
+main()</code></pre>
+</div>
+</div>
+<a id="day04" />
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_04_python"><a class="anchor" href="#_day_04_python"></a><a class="link" href="#_day_04_python">Day 04: python</a></h3>
+<div class="paragraph">
+<p>Day 4 of year 2022
+<a href="https://adventofcode.com/2022/day/4" class="bare">https://adventofcode.com/2022/day/4</a></p>
+</div>
+<div class="sect3">
+<h4 id="_what_i_learned_4"><a class="anchor" href="#_what_i_learned_4"></a><a class="link" href="#_what_i_learned_4">What I learned</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Remembered more or less how to use regex again.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_approach_4"><a class="anchor" href="#_approach_4"></a><a class="link" href="#_approach_4">Approach</a></h4>
+<div class="paragraph">
+<p>I use a regex to fish out the 4 numbers on each line and put them into a list of lists.</p>
+</div>
+<div class="paragraph">
+<p><strong>Star 1</strong><br>
+I just checked if the first pair is contained in the second or vice versa and put a 1 in a list if true. Then you just sum that list.</p>
+</div>
+<div class="paragraph">
+<p><strong>Star 2</strong><br>
+It&#8217;s similar. You just check essentially that the 2 pairs are not disjoint. If so, put a 1 in the list. Sum the list.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_script_5"><a class="anchor" href="#_run_script_5"></a><a class="link" href="#_run_script_5">Run script</a></h4>
+<div class="paragraph">
+<p>Run the solution with <code>python solution.py</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-python" data-lang="python">import regex as re
+
+def process_input(file_contents):
+    lines_stripped = [line.strip() for line in file_contents]
+    input_pattern = re.compile("(\d+)-(\d+),(\d+)-(\d+)")
+    sections=[]
+    for line in lines_stripped:
+        input_match = re.match(input_pattern, line)
+        section = [int(input_match.group(i)) for i in [1, 2, 3,4]]
+        sections.append(section)
+    return sections
+
+def main():
+    with open("input.txt",'r') as input_file:
+        input_lines = input_file.readlines()
+
+    sections = process_input(input_lines)
+
+    #star 1
+    fully_contain = [1 if (pair[0]&lt;=pair[2] and pair[1]&gt;=pair[3]) or
+                     (pair[0]&gt;=pair[2] and pair[1]&lt;=pair[3]) else 0
+                     for pair in sections]
+    print(sum(fully_contain),"pairs have one range fully contained by the other.")
+
+    #star 2
+    overlap = [1 if (pair[0]&lt;=pair[2] and pair[1]&gt;=pair[2]) or
+                     (pair[0]&gt;=pair[2] and pair[0]&lt;=pair[3]) else 0
+                     for pair in sections]
+    print(sum(overlap),"pairs overlap.")
+
+main()</code></pre>
+</div>
+</div>
+<a id="day05" />
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_05_python"><a class="anchor" href="#_day_05_python"></a><a class="link" href="#_day_05_python">Day 05: python</a></h3>
+<div class="paragraph">
+<p>Day 5 of year 2022
+<a href="https://adventofcode.com/2022/day/5" class="bare">https://adventofcode.com/2022/day/5</a></p>
+</div>
+<div class="sect3">
+<h4 id="_what_i_learned_5"><a class="anchor" href="#_what_i_learned_5"></a><a class="link" href="#_what_i_learned_5">What I learned</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I was reminded that copy in python is a shallow copy.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_approach_5"><a class="anchor" href="#_approach_5"></a><a class="link" href="#_approach_5">Approach</a></h4>
+<div class="paragraph">
+<p>The hardest part was parsing the file.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I parse the first lines of the file to figure out how many stacks there are and the maximum starting stack height.</p>
+</li>
+<li>
+<p>Then I fish out the initial stack contents for each stack and put them into a list of stacks (deque).</p>
+</li>
+<li>
+<p>Then I parse the instructions and put the 3 numbers for each of the instructions into a list of lists. This was straightforward with regex since the pattern of each line is fixed.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Star 1</strong><br>
+I go through the instructions and pop the right number of crates from the giving stack and immediately append each to the stack of the receiving stack.</p>
+</div>
+<div class="paragraph">
+<p><strong>Star 2</strong><br>
+It&#8217;s similar. The popped stacks go onto a temporary stack. Then I pop them from the temporary stack and append them to the receiving stack.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_script_6"><a class="anchor" href="#_run_script_6"></a><a class="link" href="#_run_script_6">Run script</a></h4>
+<div class="paragraph">
+<p>Run the solution with <code>python solution.py</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-python" data-lang="python">import regex as re
+from collections import deque
+
+def process_input(file_contents):
+    lines_stripped = [line.strip() for line in file_contents]
+
+    for index,line in enumerate(lines_stripped):
+        if line[0:1] == "1":
+            stack_height = index
+            no_stacks = int(line[-1])
+            break
+
+    stacks = {index:deque() for index in range(no_stacks)}
+    for stack in range(no_stacks):
+        for position in range(stack_height):
+            if file_contents[stack_height-position-1][(stack)*4+1] != ' ':
+                stacks[stack].append(file_contents[stack_height-position-1][stack*4+1])
+            else:
+                break
+
+    input_pattern = re.compile("move (\d+) from (\d+) to (\d+)")
+    instructions = []
+    for line_no in range(stack_height+2,len(lines_stripped)):
+        input_match = re.match(input_pattern, lines_stripped[line_no])
+        instruction = [int(input_match.group(i)) for i in [1, 2, 3]]
+        instructions.append(instruction)
+
+    return stacks, instructions
+
+def main():
+    with open("input.txt",'r') as input_file:
+        input_lines = input_file.readlines()
+
+    [stacks, instructions] = process_input(input_lines)
+
+    #star 1
+    for instruction in instructions:
+        for crate_no in range(instruction[0]):
+            stacks[instruction[2]-1].append(stacks[instruction[1]-1].pop())
+
+    print(''.join([stacks[i].pop() for i in range(len(stacks))]))
+
+    #star 2
+    [stacks, instructions] = process_input(input_lines)
+
+    for instruction in instructions:
+        temp_stack = deque()
+        for crate_no in range(instruction[0]):
+            temp_stack.append(stacks[instruction[1]-1].pop())
+        for crate_no in range(len(temp_stack)):
+            stacks[instruction[2]-1].append(temp_stack.pop())
+
+    print(''.join([stacks[i].pop() for i in range(len(stacks))]))
+
+main()</code></pre>
+</div>
+</div>
+<a id="day06" />
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_06_python"><a class="anchor" href="#_day_06_python"></a><a class="link" href="#_day_06_python">Day 06: python</a></h3>
+<div class="paragraph">
+<p>Day 6 of year 2022
+<a href="https://adventofcode.com/2022/day/6" class="bare">https://adventofcode.com/2022/day/6</a></p>
+</div>
+<div class="sect3">
+<h4 id="_what_i_learned_6"><a class="anchor" href="#_what_i_learned_6"></a><a class="link" href="#_what_i_learned_6">What I learned</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I am much faster if the parsing work at the beginning isn&#8217;t complicated. :-)</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_approach_6"><a class="anchor" href="#_approach_6"></a><a class="link" href="#_approach_6">Approach</a></h4>
+<div class="paragraph">
+<p>I read in the string to start.</p>
+</div>
+<div class="paragraph">
+<p><strong>Star 1</strong><br>
+I use a moving window of 4 characters through the string. I convert the window to a set. If the set has a length of 4, that&#8217;s the marker.</p>
+</div>
+<div class="paragraph">
+<p><strong>Star 2</strong><br>
+It&#8217;s similar; you just use a window of 14 instead.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_script_7"><a class="anchor" href="#_run_script_7"></a><a class="link" href="#_run_script_7">Run script</a></h4>
+<div class="paragraph">
+<p>Run the solution with <code>python solution.py</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-python" data-lang="python">def check_window(input_lines,length):
+    window = input_lines[0:length]
+    position = length
+    if len(set(window))==length:
+        return position
+    else:
+        for letter in input_lines[length:]:
+            position += 1
+            window = input_lines[position - length:position]
+            if len(set(window))==length:
+                return position
+
+    return
+
+def main():
+    with open("input.txt",'r') as input_file:
+        input_lines = input_file.readlines()[0]
+
+    #star 1
+    position = check_window(input_lines,4)
+    print(position)
+
+    #star 2
+    position = check_window(input_lines,14)
+    print(position)
+
+main()</code></pre>
+</div>
+</div>
+<a id="day07" />
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_07_python"><a class="anchor" href="#_day_07_python"></a><a class="link" href="#_day_07_python">Day 07: python</a></h3>
+<div class="paragraph">
+<p>Day 7 of year 2022
+<a href="https://adventofcode.com/2022/day/7" class="bare">https://adventofcode.com/2022/day/7</a></p>
+</div>
+<div class="sect3">
+<h4 id="_what_i_learned_7"><a class="anchor" href="#_what_i_learned_7"></a><a class="link" href="#_what_i_learned_7">What I learned</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Don&#8217;t use something as a key if it is not unique. (Which I knew principally, but I forgot to check for uniqueness before starting).</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_approach_7"><a class="anchor" href="#_approach_7"></a><a class="link" href="#_approach_7">Approach</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I read in the commands and put them into a list of lists.</p>
+</li>
+<li>
+<p>I set up a dictionary.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>The keys are the directory names with an additional counter (since the names are <strong>not</strong> unique), represented as a tuple.</p>
+</li>
+<li>
+<p>The values are lists with:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>The parent directory</p>
+</li>
+<li>
+<p>The size of the directory and its sub-directories and files (initialized to zero).</p>
+</li>
+<li>
+<p>The size of each file in the directory and the tuples for any child directories.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>I calculate the size of each directory recursively and put those values into the dictionary.</p>
+</div>
+<div class="paragraph">
+<p><strong>Star 1</strong><br>
+You just go through the dictionary and sum up all values below the threshold.</p>
+</div>
+<div class="paragraph">
+<p><strong>Star 2</strong><br>
+It&#8217;s similar. I go through and if a value is big enough but less than the last one found, it&#8217;s the new minimum.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_script_8"><a class="anchor" href="#_run_script_8"></a><a class="link" href="#_run_script_8">Run script</a></h4>
+<div class="paragraph">
+<p>Run the solution with <code>python solution.py</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-python" data-lang="python">def process_input(file_contents):
+    lines_stripped = [line.strip() for line in file_contents]
+    commands = [line.split() for line in lines_stripped]
+
+    return commands
+
+def dir_size(parent_child, directory):
+    if parent_child[directory][1] == 0:
+        for item in parent_child[directory][2:]:
+            if type(item) != tuple:
+                parent_child[directory][1] = parent_child[directory][1] + item
+            else:
+                dir_size(parent_child,item)
+                parent_child[directory][1] = parent_child[directory][1] + parent_child[item][1]
+    return
+
+def main():
+    with open("input.txt",'r') as input_file:
+        input_lines = input_file.readlines()
+
+    commands = process_input(input_lines)
+
+    current_directory = ("/",0)
+    parent_child = {}
+    parent = ("/",0)
+    parent_child[parent] = [current_directory,0]
+    keys_used = {"/":0}
+    for command in commands:
+        if command[0] == "$" and command[1] == "cd":
+            if command[2] != ".." and command[2] != "/":
+                parent = current_directory
+                for value in parent_child[current_directory]:
+                    if type(value) == tuple:
+                        if value[0] == command[2]:
+                            current_directory = value
+            else:
+                current_directory = parent
+                parent = parent_child[current_directory][0]
+        elif command[0] == "$" and command[1] == "ls":
+            parent_child[current_directory] = [parent,0]
+        else:
+            if command[0] != "dir":
+                parent_child[current_directory].append(int(command[0]))
+            elif command[1] not in keys_used.keys():
+                keys_used[command[1]] = 0
+                parent_child[current_directory].append((command[1],0))
+            else:
+                keys_used[command[1]] = keys_used[command[1]]+1
+                parent_child[current_directory].append((command[1],keys_used[command[1]]))
+
+    dir_size(parent_child,("/",0))
+
+    #star 1
+    count = 0
+    for value in parent_child.values():
+        if value[1] &lt;= 100000:
+            count += value[1]
+
+    print(count)
+
+    #star 2
+    space_free = 70000000 - parent_child[("/",0)][1]
+    space_needed = 30000000 - space_free
+
+    smallest = 70000000
+    for value in parent_child.values():
+        if value[1] &gt; space_needed and value[1] &lt; smallest:
+            smallest = value[1]
+
+    print(smallest)
+
+main()</code></pre>
+</div>
+</div>
+<a id="day08" />
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_08_python"><a class="anchor" href="#_day_08_python"></a><a class="link" href="#_day_08_python">Day 08: python</a></h3>
+<div class="paragraph">
+<p>Day 8 of year 2022
+<a href="https://adventofcode.com/2022/day/8" class="bare">https://adventofcode.com/2022/day/8</a></p>
+</div>
+<div class="sect3">
+<h4 id="_what_i_learned_8"><a class="anchor" href="#_what_i_learned_8"></a><a class="link" href="#_what_i_learned_8">What I learned</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>That a nested list is not a matrix. I always somehow forget this.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_approach_8"><a class="anchor" href="#_approach_8"></a><a class="link" href="#_approach_8">Approach</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I read in the tree heights and put them into a 2d numpy array (a 2d matrix).</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Star 1</strong><br>
+I skip the trees on the edges (they are all visible so you just add them to the sum). And then for each of the trees, I look for the max of the other trees in the 4 cardinal directions and see if the tree is higher than the max. If it is true in any direction, that tree is visible.</p>
+</div>
+<div class="paragraph">
+<p><strong>Star 2</strong><br>
+It&#8217;s similar. In each of the four directions, you go through each tree until one is higher or equal and then add up the number of trees you had to look at in that direction. Multiple those 4 numbers and check if it bigger than the max score up until now.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_script_9"><a class="anchor" href="#_run_script_9"></a><a class="link" href="#_run_script_9">Run script</a></h4>
+<div class="paragraph">
+<p>Run the solution with <code>python solution.py</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-python" data-lang="python">import numpy as np
+
+def process_input(file_contents):
+    lines_stripped = [line.strip() for line in file_contents]
+    trees = np.array([[int(entry) for entry in line] for line in lines_stripped])
+
+    return trees
+
+def main():
+    with open("input.txt",'r') as input_file:
+        input_lines = input_file.readlines()
+
+    trees = process_input(input_lines)
+
+    # star 1
+    visible = (len(trees)-1)*4
+    for row_no,row in enumerate(trees):
+        if row_no != 0 and row_no != len(trees)-1:
+            for col_no,tree in enumerate(row):
+                if col_no != 0 and col_no != len(row)-1:
+                    if tree &gt; max(trees[row_no,:col_no]) or tree &gt; max(trees[:row_no,col_no]) \
+                        or tree &gt; max(trees[row_no,col_no+1:]) or tree &gt; max(trees[row_no+1:,col_no]):
+                            visible += 1
+
+    print(visible)
+
+    # star 2
+    max_scenic_score = 0
+    for row_no,row in enumerate(trees):
+        if row_no != 0 and row_no != len(trees)-1:
+            for col_no,tree in enumerate(row):
+                if col_no != 0 and col_no != len(row)-1:
+                    for index1,next_tree in enumerate(np.flip(trees[row_no,:col_no])):
+                        if next_tree &gt;= tree:
+                            scenic1 = index1+1
+                            break
+                        else:
+                            scenic1 = col_no
+                    for index1,next_tree in enumerate(trees[row_no,col_no+1:]):
+                        if next_tree &gt;= tree:
+                            scenic2 = index1+1
+                            break
+                        else:
+                            scenic2 = len(trees)-col_no-1
+                    for index1,next_tree in enumerate(np.flip(trees[:row_no,col_no])):
+                        if next_tree &gt;= tree:
+                            scenic3 = index1+1
+                            break
+                        else:
+                            scenic3 = row_no
+                    for index1,next_tree in enumerate(trees[row_no+1:,col_no]):
+                        if next_tree &gt;= tree:
+                            scenic4 = index1+1
+                            break
+                        else:
+                            scenic4 = len(trees)-row_no-1
+
+                    scenic_score = scenic1*scenic2*scenic3*scenic4
+                    if scenic_score &gt; max_scenic_score:
+                        max_scenic_score = scenic_score
+
+    print(max_scenic_score)
+
+main()</code></pre>
+</div>
+</div>
+<a id="day09" />
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_09_python"><a class="anchor" href="#_day_09_python"></a><a class="link" href="#_day_09_python">Day 09: python</a></h3>
+<div class="paragraph">
+<p>Day 9 of year 2022
+<a href="https://adventofcode.com/2022/day/9" class="bare">https://adventofcode.com/2022/day/9</a></p>
+</div>
+<div class="sect3">
+<h4 id="_what_i_learned_9"><a class="anchor" href="#_what_i_learned_9"></a><a class="link" href="#_what_i_learned_9">What I learned</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>For once, I solved star 1 in a way that didn&#8217;t require much refactoring for star 2. :-)</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_approach_9"><a class="anchor" href="#_approach_9"></a><a class="link" href="#_approach_9">Approach</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I read in the commands and turn the directions into tuples representing the direction.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Star 1</strong><br>
+You just go through and check if the new position of the head is within the 9 adjacent positions or is the same position. If so, do nothing with the tail. Otherwise, move as required.</p>
+</div>
+<div class="paragraph">
+<p><strong>Star 2</strong><br>
+Here you have the same basic situation but you have to keep track of multiple ropes.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_script_10"><a class="anchor" href="#_run_script_10"></a><a class="link" href="#_run_script_10">Run script</a></h4>
+<div class="paragraph">
+<p>Run the solution with <code>python solution.py</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-python" data-lang="python">def process_input(file_contents):
+    lines_stripped = [line.strip() for line in file_contents]
+    moves = [((1,0),int(line[2:])) if line[0] == "R" \
+             else ((-1,0),int(line[2:])) if line[0] == "L" \
+                   else ((0,1),int(line[2:])) if line[0] == "U" \
+                       else ((0,-1),int(line[2:])) \
+                           for line in lines_stripped]
+
+    return moves
+
+def move_ropes(move,current_h,current_t):
+
+    current_h[0] += move[0][0]
+    current_h[1] += move[0][1]
+    difference = [current_h[0] - current_t[0],current_h[1] - current_t[1]]
+    if difference in [[0,0],[0,1],[0,-1],[1,0],[1,1],[1,-1],[-1,0],[-1,1],[-1,-1]]:
+        pass
+    else:
+        if difference[1] &gt;= 1:
+            current_t[1] += 1
+        elif difference[1] &lt;= -1:
+            current_t[1] -= 1
+        if difference[0] &gt;= 1:
+            current_t[0] += 1
+        elif difference[0] &lt;= -1:
+            current_t[0] -= 1
+
+    return current_h, current_t, tuple(current_t)
+
+def main():
+    with open("input.txt",'r') as input_file:
+        input_lines = input_file.readlines()
+
+    moves = process_input(input_lines)
+
+    # star 1
+    positions = set([(0,0)])
+    current_h = [0,0]
+    current_t = [0,0]
+
+    for move in moves:
+        for index in range(move[1]):
+            current_h, current_t,positions_temp = move_ropes(move, current_h, current_t)
+            positions.add(positions_temp)
+    print(len(positions))
+
+    # star 2
+    positions = set([(0,0)])
+    current_rope = [[0,0] for index in range(10)]
+    for move in moves:
+        for index1 in range(move[1]):
+            move_temp = move
+            for index in range(9):
+                current_h = current_rope[index]
+                current_t = current_rope[index+1]
+                current_h, current_t,positions_temp = move_ropes(move_temp, current_h, current_t)
+                move_temp = ((current_t[0]-current_rope[index+1][0],current_t[1]-current_rope[index+1][1]),move[1])
+                current_rope[index] = current_h
+            positions.add(positions_temp)
+
+    print(len(positions))
+
+main()</code></pre>
+</div>
+</div>
+<a id="day10" />
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_10_python"><a class="anchor" href="#_day_10_python"></a><a class="link" href="#_day_10_python">Day 10: python</a></h3>
+<div class="paragraph">
+<p>Day 10 of year 2022
+<a href="https://adventofcode.com/2022/day/10" class="bare">https://adventofcode.com/2022/day/10</a></p>
+</div>
+<div class="sect3">
+<h4 id="_what_i_learned_10"><a class="anchor" href="#_what_i_learned_10"></a><a class="link" href="#_what_i_learned_10">What I learned</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I was happy to solve a puzzle involving drawing with no major issues.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_approach_10"><a class="anchor" href="#_approach_10"></a><a class="link" href="#_approach_10">Approach</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I take the input and turn it into a list of tuples with the number of CPU cycles used and the value to be added (0 for noop).</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Star 1</strong><br>
+. I create a list of the CPU cycles and the value. If the CPU cycle is greater than the next relevant multiple of 40, then you add the last value before that to the list. Afterwards, you do the math.</p>
+</div>
+<div class="paragraph">
+<p><strong>Star 2</strong><br>
+. I created a dictionary with all of the sprite positions. You do the drawing with 2 nested for loops.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_script_11"><a class="anchor" href="#_run_script_11"></a><a class="link" href="#_run_script_11">Run script</a></h4>
+<div class="paragraph">
+<p>Run the solution with <code>python solution.py</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-python" data-lang="python">def process_input(file_contents):
+    lines_stripped = [line.strip() for line in file_contents]
+
+    instructions = [(1,0) if inst[0]=="n" else (2,int(inst[5:])) for inst in lines_stripped]
+
+    return instructions
+
+def main():
+    with open("input.txt",'r') as input_file:
+        input_lines = input_file.readlines()
+
+    instructions = process_input(input_lines)
+
+    # star 1
+    cpu = list()
+    cpu.append([0,1])
+    values = list()
+
+    for index,inst in enumerate(instructions):
+        cpu.append([cpu[index][0]+inst[0],cpu[index][1]+inst[1]])
+        if cpu[index+1][0] &gt;= 20 + len(values)*40:
+            values.append(cpu[index][1])
+
+    print(sum([value*(20+40*index) for index,value in enumerate(values)]))
+
+    # star 2
+    sprite = {c[0]:[c[1]-1,c[1],c[1]+1] for c in cpu}
+    keys = sprite.keys()
+    for i in range(240):
+        if i in keys:
+            current_sprite = sprite[i]
+        else:
+            sprite[i] = current_sprite
+
+    for y in range(6):
+        for x in range(40):
+            if x in sprite[x+y*40]:
+                print("#",end='')
+            else:
+                print(".",end='')
+        print("")
+
+main()</code></pre>
+</div>
+</div>
+<a id="day11" />
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_11_python"><a class="anchor" href="#_day_11_python"></a><a class="link" href="#_day_11_python">Day 11: python</a></h3>
+<div class="paragraph">
+<p>Day 11 of year 2022
+<a href="https://adventofcode.com/2022/day/11" class="bare">https://adventofcode.com/2022/day/11</a></p>
+</div>
+<div class="sect3">
+<h4 id="_what_i_learned_11"><a class="anchor" href="#_what_i_learned_11"></a><a class="link" href="#_what_i_learned_11">What I learned</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The first day this year that you really had to think a bit. No new programming tricks, just had to think about the math (especially what happens to remainders).</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_approach_11"><a class="anchor" href="#_approach_11"></a><a class="link" href="#_approach_11">Approach</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I take the input and turn it into a monkey dictionary with the worry values of each item that monkey has, the operator and number (or "old"), the divisor and to which monkeys the items go in a list.</p>
+</li>
+<li>
+<p>This worked fine for star 1 but was not well suited for star 2.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Star 1</strong><br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You go through a loop 20 times, each time you do the math and move the monkeys around. The worries grow, but with 20 loops its not an issue. Each round through you count how many items that monkey looked at. At the end, you grab the number of looks for each monkey, sort the list and multiple the first 2.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Star 2</strong><br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>My first attempt was to move the worry numbers out of the monkey dictionary into a seperate dictionary. That way, I saved a copy and the performance was better, but the numbers get too big at some point. So, this way was a day end.</p>
+</li>
+<li>
+<p>I thought about the math a bit. Actually, you only need the remainder each time to decide where to send the item. So, I calculated the remainder of each item divided by the rule of each monkey. If you think about it, adding a number can be added to the remainder, multiplying as well and squaring and doubling as well. You just need to mod it again afterwards. So, I just keep track of the remainders (which never get big obviously&#8230;&#8203;). It ran in a second or 2.</p>
+</li>
+<li>
+<p>I think I could have saved the extra dictionary in the end, but I left it since it works fine.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_script_12"><a class="anchor" href="#_run_script_12"></a><a class="link" href="#_run_script_12">Run script</a></h4>
+<div class="paragraph">
+<p>Run the solution with <code>python solution.py</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-python" data-lang="python">import regex as re
+
+def process_input(file_contents):
+    lines_stripped = [line.strip() for line in file_contents]
+
+    monkeys = dict()
+    item_pattern = re.compile("(\d+)")
+
+    for monkey in range((len(lines_stripped)+1)//7):
+        first_line = monkey*7
+        items = [int(item) for item in re.findall(item_pattern, lines_stripped[first_line+1])]
+        operation = (lines_stripped[first_line+2][21],lines_stripped[first_line+2][23:])
+        test = int(re.findall(item_pattern, lines_stripped[first_line+3])[0])
+        is_true = int(re.findall(item_pattern, lines_stripped[first_line+4])[0])
+        is_false = int(re.findall(item_pattern, lines_stripped[first_line+5])[0])
+
+        monkeys[int(lines_stripped[first_line][7])] = [items,operation,test,is_true,is_false,0]
+
+    return monkeys
+
+def process_monkey(monkeys,monkey,worry_divider):
+    item_no = len(monkeys[monkey][0])
+    for item in monkeys[monkey][0]:
+        if monkeys[monkey][1][0] == '*':
+            if monkeys[monkey][1][1].isdigit():
+                new_worry = item*int(monkeys[monkey][1][1])
+            else:
+                new_worry = item*item
+        else:
+            if monkeys[monkey][1][1].isdigit():
+                new_worry = item+int(monkeys[monkey][1][1])
+            else:
+                new_worry = item+item
+        new_worry = new_worry // worry_divider
+        if new_worry % monkeys[monkey][2] == 0:
+            monkeys[monkeys[monkey][3]][0].append(new_worry)
+        else:
+            monkeys[monkeys[monkey][4]][0].append(new_worry)
+
+    monkeys[monkey][0] = list()
+    monkeys[monkey][5] += item_no
+
+    return
+
+def process_monkey2(monkeys,monkey,items):
+    item_no = len(monkeys[monkey][0])
+    for item in monkeys[monkey][0]:
+        if monkeys[monkey][1][0] == '*':
+            if monkeys[monkey][1][1].isdigit():
+                items[item] = [(items[item][i]*int(monkeys[monkey][1][1]))%monkeys[i][2] for i in range(len(monkeys))]
+            else:
+                items[item] = [(items[item][i]**2)%monkeys[i][2] for i in range(len(monkeys))]
+        else:
+            if monkeys[monkey][1][1].isdigit():
+                items[item] = [(items[item][i]+int(monkeys[monkey][1][1]))%monkeys[i][2] for i in range(len(monkeys))]
+            else:
+                items[item] = [(items[item][i]*2)%monkeys[i][2] for i in range(len(monkeys))]
+        if items[item][monkey] == 0:
+            monkeys[monkeys[monkey][3]][0].append(item)
+        else:
+            monkeys[monkeys[monkey][4]][0].append(item)
+
+    monkeys[monkey][0] = list()
+    monkeys[monkey][5] += item_no
+
+    return
+
+def main():
+    with open("input.txt",'r') as input_file:
+        input_lines = input_file.readlines()
+
+    # star 1
+    monkeys = process_input(input_lines)
+
+    for i in range(20):
+        for monkey in monkeys:
+            process_monkey(monkeys,monkey,3)
+
+    inspections = [value[5] for value in monkeys.values()]
+    inspections.sort(reverse=True)
+    print(inspections[0]*inspections[1])
+
+    # star 2
+    monkeys = process_input(input_lines)
+
+    index = 0
+    items = dict()
+    for monkey in monkeys:
+        for i,item in enumerate(monkeys[monkey][0]):
+            items[index] = [item % m[2] for m in monkeys.values()]
+            monkeys[monkey][0][i] = index
+            index += 1
+
+    for i in range(10000):
+        for monkey in monkeys:
+            process_monkey2(monkeys,monkey,items)
+
+    inspections = [value[5] for value in monkeys.values()]
+    inspections.sort(reverse=True)
+    print(inspections[0]*inspections[1])
+
+main()</code></pre>
+</div>
+</div>
+<a id="day12" />
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_12_python"><a class="anchor" href="#_day_12_python"></a><a class="link" href="#_day_12_python">Day 12: python</a></h3>
+<div class="paragraph">
+<p>Day 12 of year 2022
+<a href="https://adventofcode.com/2022/day/12" class="bare">https://adventofcode.com/2022/day/12</a></p>
+</div>
+<div class="sect3">
+<h4 id="_what_i_learned_12"><a class="anchor" href="#_what_i_learned_12"></a><a class="link" href="#_what_i_learned_12">What I learned</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Refreshed Dijkstra&#8217;s algorithm which I used last year for Day 15.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_approach_12"><a class="anchor" href="#_approach_12"></a><a class="link" href="#_approach_12">Approach</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I took the input and created a list of lists from it. The list contains an index, the letter, a distance, the neighbors of the entry and a zero (for the parent, which isn&#8217;t known yet). The distance is zero if the letter is "S" and Inf for anything else. I then clean up the neighbors to only include those that you can reach (lower or at most one letter bigger than the current letter. "S" counts as "a" and "E" counts as z, as exceptions).</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Star 1</strong><br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You just use Dijkstra&#8217;s algorithm and stop the loop whenever you hit "E". The current distance is then the answer.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Star 2</strong><br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Again, Dijkstra&#8217;s, but multiple times. You just have to reinitialize your list of lists to set the distances right (you are starting at a particular "a" and not "S" anymore). You also have the case now that you can&#8217;t actually reach "E" from an "a". Then, I set the distance to Inf. You find the min over all of your runs for the answer.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_script_13"><a class="anchor" href="#_run_script_13"></a><a class="link" href="#_run_script_13">Run script</a></h4>
+<div class="paragraph">
+<p>Run the solution with <code>python solution.py</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-python" data-lang="python">def process_input(file_contents):
+    lines_stripped = [line.strip() for line in file_contents]
+
+    nodes = list()
+    line_length = len(lines_stripped[0])
+    no_rows = len(lines_stripped)
+    for i,line in enumerate(lines_stripped):
+        for j,letter in enumerate(line):
+            adjacent = set()
+            index = i*line_length+j
+            if i != 0:
+                adjacent.add(index-line_length)
+            if i != no_rows-1:
+                adjacent.add(index+line_length)
+            if index % line_length != 0:
+                adjacent.add(index-1)
+            if (index+1) % (line_length) != 0:
+                adjacent.add(index+1)
+            if letter == "S":
+                distance = 0
+            else:
+                distance = float('Inf')
+            nodes.append([index,letter,distance,adjacent,0])
+
+    for node in range(len(nodes)):
+        temp_neighbors = nodes[node][3].copy()
+        for neighbor in nodes[node][3]:
+            if nodes[neighbor][1] == "S":
+                temp_neighbor = "a"
+            elif nodes[neighbor][1] == "E":
+                temp_neighbor = "z"
+            else:
+                temp_neighbor = nodes[neighbor][1]
+            if nodes[node][1] == "S":
+                temp_node = "a"
+            elif nodes[node][1] == "E":
+                temp_node = "z"
+            else:
+                temp_node = nodes[node][1]
+            if ord(temp_neighbor) &gt; ord(temp_node)+1:
+                temp_neighbors.remove(neighbor)
+        nodes[node][3] = temp_neighbors
+
+    return nodes
+
+def find_shortest_path(nodes,current_node):
+    visited = set()
+
+    valued = {current_node}
+    while nodes[current_node][1] != 'E':
+        neighbors = nodes[current_node][3]
+        valued.update(neighbors-visited)
+        for neighbor in neighbors:
+            if neighbor not in visited:
+                if nodes[neighbor][2] &gt; nodes[current_node][2]+1:
+                    nodes[neighbor][2] = nodes[current_node][2]+1
+                    nodes[neighbor][4] = current_node
+
+        visited.add(current_node)
+        valued.remove(current_node)
+
+        if valued != set():
+            min_distance = min([nodes[node][2] for node in valued])
+        else:
+            return float('Inf')
+
+        for node in valued:
+            if nodes[node][2] == min_distance:
+                current_node = node
+
+    risk = nodes[current_node][2]
+
+    return risk
+
+
+def main():
+    with open("input.txt",'r') as input_file:
+        input_lines = input_file.readlines()
+
+    #star 1
+    nodes = process_input(input_lines)
+
+    for node in nodes:
+        if node[1] == 'S':
+            current_node = node[0]
+            node_S = node[0]
+
+    risk = find_shortest_path(nodes,current_node)
+
+    print(risk)
+
+    #star 2
+
+    for node in nodes:
+        if node[1] == "a":
+            nodes = process_input(input_lines)
+            nodes[node_S][2] = float('Inf')
+            nodes[node[0]][2] = 0
+            temp_risk = find_shortest_path(nodes,node[0])
+            if temp_risk &lt; risk:
+                risk = temp_risk
+
+    print(risk)
+
+main()</code></pre>
+</div>
+</div>
+<a id="day13" />
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_13_python"><a class="anchor" href="#_day_13_python"></a><a class="link" href="#_day_13_python">Day 13: python</a></h3>
+<div class="paragraph">
+<p>Day 13 of year 2022
+<a href="https://adventofcode.com/2022/day/13" class="bare">https://adventofcode.com/2022/day/13</a></p>
+</div>
+<div class="sect3">
+<h4 id="_what_i_learned_13"><a class="anchor" href="#_what_i_learned_13"></a><a class="link" href="#_what_i_learned_13">What I learned</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Mostly it was a pain to figure out the right parsing. And I also used bubble sort, which I learned way back in the 80&#8217;s. (It&#8217;s not the best, but it&#8217;s easy to understand).</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_approach_13"><a class="anchor" href="#_approach_13"></a><a class="link" href="#_approach_13">Approach</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I parse through each line using a function called parse_line. If you find a list somewhere as an entry, you find the closing ] and push that string into parse_line. Otherwise, it&#8217;s fairly straightforward. At the end, I have a list of lists that correspond to the strings in the input file.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Star 1</strong><br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I made a function called compare_signals. For each of the cases, I created the logic. If you are comparing lists instead of digits, you call compare_signals again. We return as soon as we have a True or False. Then I just do the math as defined in the problem statement.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Star 2</strong><br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I add the 2 new packets to my list. And then just run bubble sort using my compare_signals function. I used bubble sort because I could 1-1 reuse my function and it&#8217;s also easy to understand. The performance isn&#8217;t an issue with such a sort list.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_script_14"><a class="anchor" href="#_run_script_14"></a><a class="link" href="#_run_script_14">Run script</a></h4>
+<div class="paragraph">
+<p>Run the solution with <code>python solution.py</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-python" data-lang="python">def process_input(file_contents):
+    lines_stripped = [line.strip() for line in file_contents]
+
+    signals = list()
+    for line in lines_stripped:
+        if line != '':
+            signal = process_line(line)
+            signals.append(signal)
+
+    return signals
+
+def process_line(line):
+    signal = list()
+    n = 1
+    while line[n] != ']':
+        if line[n].isdigit():
+            m = n
+            while line[n] not in [',',']']:
+                n = n+1
+            signal.append(int(line[m:n]))
+            if line[n] == ",":
+                n = n+1
+        else:
+            m = n
+            n = n+1
+            count = 0
+            while count != 1:
+                if line[n] == "[":
+                    count -= 1
+                elif line[n] == "]":
+                    count += 1
+
+                n = n + 1
+            signal.append(process_line(line[m:n]))
+            if line[n] == ',':
+                n = n+1
+
+    return signal
+
+def compare_signals(signal1,signal2):
+    if not signal1:
+        if not signal2:
+            return
+        else:
+            return True
+
+    for index,item in enumerate(signal1):
+        if type(item) is int:
+            if index == len(signal2):
+                if len(signal1)&gt;len(signal2):
+                    return False
+
+            if type(signal2[index]) is int:
+                if item &gt; signal2[index]:
+                    return False
+                elif item &lt; signal2[index]:
+                    return True
+            else:
+                status = compare_signals([item],signal2[index])
+                if status in [True,False]:
+                    return status
+
+            if index == len(signal1)-1:
+                if len(signal1)&lt;len(signal2):
+                    return True
+        else:
+            if index == len(signal2):
+                if len(signal1)&gt;len(signal2):
+                    return False
+
+            if type(signal2[index]) is int:
+                status = compare_signals(item,[signal2[index]])
+                if status in [True,False]:
+                    return status
+            else:
+                status = compare_signals(item,signal2[index])
+                if status in [True,False]:
+                    return status
+
+            if index == len(signal1)-1:
+                if len(signal1)&lt;len(signal2):
+                    return True
+
+    return
+
+def bubble_sort(array):
+    n = len(array)
+
+    for i in range(n):
+        already_sorted = True
+
+        for j in range(n - i - 1):
+            if not compare_signals(array[j], array[j + 1]):
+                array[j], array[j + 1] = array[j + 1], array[j]
+                already_sorted = False
+
+        if already_sorted:
+
+            break
+
+    return array
+
+def main():
+    with open("input.txt",'r') as input_file:
+        input_lines = input_file.readlines()
+
+    #star 1
+    signals = process_input(input_lines)
+
+    i = 0
+    sum_indices = 0
+    while i &lt; len(signals):
+        if compare_signals(signals[i],signals[i+1]):
+            sum_indices += i//2 +1
+        i = i+2
+
+    print(sum_indices)
+
+    #star 2
+    signals.extend([[[2]],[[6]]])
+
+    new_signals = bubble_sort(signals)
+
+    decoder = 1
+    i = 1
+    for signal in new_signals:
+        if signal in [[[2]],[[6]]]:
+             decoder *= i
+        i = i +1
+
+    print(decoder)
+
+
+main()</code></pre>
+</div>
+</div>
+<a id="day14" />
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_14_python"><a class="anchor" href="#_day_14_python"></a><a class="link" href="#_day_14_python">Day 14: python</a></h3>
+<div class="paragraph">
+<p>Day 14 of year 2022
+<a href="https://adventofcode.com/2022/day/14" class="bare">https://adventofcode.com/2022/day/14</a></p>
+</div>
+<div class="sect3">
+<h4 id="_what_i_learned_14"><a class="anchor" href="#_what_i_learned_14"></a><a class="link" href="#_what_i_learned_14">What I learned</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The most challenging was to think about how to parse the file easily.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_approach_14"><a class="anchor" href="#_approach_14"></a><a class="link" href="#_approach_14">Approach</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I use regex to fish out all of the numbers in the lines of the input file. Then I go through them pair-wise and create a set of tuples with all of the occupied spots in the cave. Fortunately, it&#8217;s not too big. :-)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Star 1</strong><br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I just let the sand fall and check if it hits an occupied spot and follow the rules. After I find it&#8217;s resting spot, i put it into my set containing all of the occupied spots. I do this until a sand falls below my deepest point.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Star 2</strong><br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Yoohoo! No major changes necessary. I just add one to my deepest point and exit the loop when (500,0) is occupied. You have to get lucky sometimes.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_script_15"><a class="anchor" href="#_run_script_15"></a><a class="link" href="#_run_script_15">Run script</a></h4>
+<div class="paragraph">
+<p>Run the solution with <code>python solution.py</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-python" data-lang="python">import regex as re
+
+def process_input(file_contents):
+    lines_stripped = [line.strip() for line in file_contents]
+
+    input_pattern = re.compile("(\d+)")
+
+    rocks = set()
+    for line in lines_stripped:
+        ends = [int(coord) for coord in (re.findall(input_pattern,line))]
+        index = 0
+        while index != len(ends)-2:
+            if ends[index] == ends[index+2]:
+                if ends[index+1] &lt;= ends[index+3]:
+                    rocks.update([(ends[index],j) for j in list(range(ends[index+1],ends[index+3]+1))])
+                else:
+                    rocks.update([(ends[index],j) for j in list(range(ends[index+1],ends[index+3]-1,-1))])
+            else:
+                if ends[index] &lt;= ends[index+2]:
+                    rocks.update([(j,ends[index+1]) for j in list(range(ends[index],ends[index+2]+1))])
+                else:
+                    rocks.update([(j,ends[index+1]) for j in list(range(ends[index],ends[index+2]-1,-1))])
+            index += 2
+
+    return rocks
+
+def falling_sand(sand,deepest_point,rocks):
+    while sand[1] &lt; deepest_point:
+        y = sand[1]
+        while ((sand[0],y) not in rocks) and y&lt;deepest_point+1:
+            y += 1
+        sand = (sand[0],y)
+        if y == deepest_point+1:
+            return (sand[0],y-1)
+        if (sand[0]-1,sand[1]) in rocks:
+            if (sand[0]+1,sand[1]) in rocks:
+                return (sand[0],sand[1]-1)
+            else:
+                sand = (sand[0]+1,sand[1])
+        else:
+            sand = (sand[0]-1,sand[1])
+
+    return sand
+
+def main():
+    with open("input.txt",'r') as input_file:
+        input_lines = input_file.readlines()
+
+    #star 1
+    rocks = process_input(input_lines)
+
+    deepest_point = max([rock[1] for rock in list(rocks)])
+
+    unit_no = 0
+    sand = (500,0)
+    while sand[1] &lt; deepest_point:
+        sand = (500,0)
+        sand = falling_sand(sand,deepest_point,rocks)
+        rocks.add(sand)
+        unit_no += 1
+
+    print(unit_no-1)
+
+    #star 2
+    rocks = process_input(input_lines)
+
+    deepest_point = max([rock[1] for rock in list(rocks)]) + 1
+
+    unit_no = 0
+    sand = (500,0)
+
+    while (500,0) not in rocks:
+        sand = (500,0)
+        sand = falling_sand(sand,deepest_point,rocks)
+        rocks.add(sand)
+        unit_no += 1
+
+    print(unit_no)
+
+main()</code></pre>
+</div>
+</div>
+<a id="day15" />
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_15_python"><a class="anchor" href="#_day_15_python"></a><a class="link" href="#_day_15_python">Day 15: python</a></h3>
+<div class="paragraph">
+<p>Day 15 of year 2022
+<a href="https://adventofcode.com/2022/day/15" class="bare">https://adventofcode.com/2022/day/15</a></p>
+</div>
+<div class="sect3">
+<h4 id="_what_i_learned_15"><a class="anchor" href="#_what_i_learned_15"></a><a class="link" href="#_what_i_learned_15">What I learned</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If you do it brute force, it&#8217;s actually kind of straightforward.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_approach_15"><a class="anchor" href="#_approach_15"></a><a class="link" href="#_approach_15">Approach</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I go through each line of the input, fish out the 4 numbers and put them into a list of lists.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Star 1</strong><br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I create a dictionary with the positions of the beacons and sensors. I add up the sensors on the horizontal line already since they can&#8217;t also be beacons.</p>
+</li>
+<li>
+<p>I go through each sensor and count up the positions on the specified horizontal line that can&#8217;t contain beacons. I also put them into a dictionary to make sure I don&#8217;t count them twice.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Star 2</strong><br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I create a new dictionary with the sensor coordinates as the keys and the distance to the beacon as the value.</p>
+</li>
+<li>
+<p>Then I go around the outer perimeter of the diamond defined by the distance from each sensor. Essentially 1 space further than the last spot that can&#8217;t have a beacon. I then check for each spot on the perimeter whether it is within the distance to any sensor; if so, it can&#8217;t contain a beacon. If it is not in the distance of any sensor, that&#8217;s the spot we are looking for.</p>
+</li>
+<li>
+<p>My code is not super efficient (at least I don&#8217;t think so). But, it got to the answer in a couple of minutes on my 5 year old low-end business laptop.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_script_16"><a class="anchor" href="#_run_script_16"></a><a class="link" href="#_run_script_16">Run script</a></h4>
+<div class="paragraph">
+<p>Run the solution with <code>python solution.py</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-python" data-lang="python">import regex as re
+
+def process_input(file_contents):
+    lines_stripped = [line.strip() for line in file_contents]
+
+    input_pattern = re.compile("(-*\d+)")
+
+    sensor_beacons = list()
+    for line in lines_stripped:
+        next_sensors_beacons = [int(coord) for coord in (re.findall(input_pattern,line))]
+        sensor_beacons.append(next_sensors_beacons)
+
+    return sensor_beacons
+
+def manhattan_distance(x,y):
+    return abs(x[0]-y[0]) + abs(x[1]-y[1])
+
+def main():
+    with open("input.txt",'r') as input_file:
+        input_lines = input_file.readlines()
+
+    #star 1
+    sensor_beacons = process_input(input_lines)
+
+    count = 0
+    y = 2000000
+
+    positions = dict()
+    for pair in sensor_beacons:
+        if (pair[0],pair[1]) not in positions:
+            positions[(pair[0],pair[1])] = "S"
+            if pair[1] == y:
+                count +=1
+        if (pair[2],pair[3]) not in positions:
+            positions[(pair[2],pair[3])] = "B"
+
+    for pair in sensor_beacons:
+        distance = abs(pair[0]-pair[2]) + abs(pair[1]-pair[3])
+        if pair[1] &gt; y:
+            y_offset = pair[1] - y
+        else:
+            y_offset = y - pair[1]
+        if y_offset &lt;= distance:
+            for x_offset in range(-1*distance+y_offset,distance-y_offset+1):
+                if (pair[0]+x_offset,y) not in positions:
+                    positions[(pair[0]+x_offset,y)] = "#"
+                    count += 1
+
+    print(count)
+
+    #star 2
+    sensors_dist = dict()
+    for pair in sensor_beacons:
+        distance = manhattan_distance([pair[0],pair[1]],[pair[2],pair[3]])
+        sensors_dist[(pair[0],pair[1])] = distance
+    sensors = sensors_dist.keys()
+
+    search_field = 4000000
+
+    for sensor in sensors:
+        for x in range(max(0,-1*sensors_dist[sensor]-1+sensor[0]),min(sensors_dist[sensor]+2+sensor[0],search_field+1)):
+            x_offset = x-sensor[0]
+            for y_offset in [-1*sensors_dist[sensor]-1+abs(x_offset),sensors_dist[sensor]+1-abs(x_offset)]:
+                if y_offset+sensor[1] &lt; 0 or y_offset+sensor[1]&gt;search_field:
+                    pass
+                else:
+                    test = 1
+                    for other_sensor in sensors:
+                        if manhattan_distance((sensor[0]+x_offset,sensor[1]+y_offset),other_sensor)&lt;sensors_dist[other_sensor]:
+                            test = 0
+                            break
+                    if test == 1:
+                        print((sensor[0]+x_offset)*4000000+(sensor[1]+y_offset))
+                        break
+            if test == 1:
+                break
+        if test == 1:
+            break
+
+main()</code></pre>
+</div>
+</div>
+<a id="day16" />
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_16_python"><a class="anchor" href="#_day_16_python"></a><a class="link" href="#_day_16_python">Day 16: python</a></h3>
+<div class="paragraph">
+<p>Day 16 of year 2022
+<a href="https://adventofcode.com/2022/day/16" class="bare">https://adventofcode.com/2022/day/16</a></p>
+</div>
+<div class="sect3">
+<h4 id="_what_i_learned_16"><a class="anchor" href="#_what_i_learned_16"></a><a class="link" href="#_what_i_learned_16">What I learned</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>This day was incredibly frustrating. :-(</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_approach_16"><a class="anchor" href="#_approach_16"></a><a class="link" href="#_approach_16">Approach</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I create a few data structures from the input.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>"valves" is a dictionary and if you give it the index of a room, it will give back the neighbors of that room as well as the valve pressure for that room.</p>
+</li>
+<li>
+<p>I find the index of room "AA".</p>
+</li>
+<li>
+<p>A dictionary to hold the different variants that we have to check. The key is a tuple with the index of the room that you are in currently and the state of all valves and the current time. The value is the pressure that will be released cumatively until the end of the defined time.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Star 1</strong><br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The basic idea is to go through and try all of the variants and find the one that gives you the maximum pressure.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Each round, you can move to an adjacent room.</p>
+</li>
+<li>
+<p>Or open the valve in the current room if it is closed.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Since there is more than one way to get to a state within the round (from different previous states), you have to be careful to find the max pressure for that state.</p>
+</li>
+<li>
+<p>If you open the valve, you add the pressure that will be released until the end of the specified time.</p>
+</li>
+<li>
+<p>It&#8217;s not very optimal, but I made it a little bit better by throwing out the states that have no chance of leading to the max anymore.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Star 2</strong><br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I modified the key for the state dictionary to include a tuple with the 2 positions.</p>
+</li>
+<li>
+<p>I make my own move. And then based on that, let the elephant do his.</p>
+</li>
+<li>
+<p>It took a while on my laptop (with only 8GB RAM), but worked. The star 2 example does <strong>not</strong> work. The answer is off by one and I have no idea why. And after spending so much time, I decided that I don&#8217;t care.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_script_17"><a class="anchor" href="#_run_script_17"></a><a class="link" href="#_run_script_17">Run script</a></h4>
+<div class="paragraph">
+<p>Run the solution with <code>python solution.py</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-python" data-lang="python">import regex as re
+
+def process_input(file_contents):
+
+    valve_pattern = re.compile("Valve (..)")
+    neighbor_pattern = re.compile("([A-Z][A-Z])[,\n]")
+    rate_pattern = re.compile("rate=(\d+)")
+
+    temp_valves = {re.match(valve_pattern,line).group(1):[int(re.findall(rate_pattern,line)[0]),re.findall(neighbor_pattern,line)] for line in file_contents}
+
+    valve_index = {key:i for i,key in enumerate(temp_valves.keys())}
+    valves = {valve_index[key]:[value[0],[valve_index[i] for i in value[1]]] for key,value in temp_valves.items()}
+
+    position_AA = valve_index["AA"]
+
+    return valves,position_AA
+
+def find_max_flow(valves,position_state,t_max):
+    t= 1
+
+    pressure = 0
+    while t &lt; t_max+1:
+        temp_position_state = position_state.copy()
+
+        pressure = max(position_state.values())
+
+#        print("Time = ", t)
+#        print(pressure)
+
+        max_pressure = [valves[i][0]*(t_max-t-1) for i in range(len(valves))]
+        for current_state in temp_position_state:
+            find_neighbors(valves,current_state,position_state,t_max-t,t+1,max_pressure,pressure)
+
+        temp_position_state = position_state.copy()
+        position_state = dict()
+        for current_state in temp_position_state:
+            if current_state[2] == t+1:
+                if sum([0 if current_state[1][i] == True else max_pressure[i] for i in range(len(valves))]) + temp_position_state[current_state] &gt;= pressure:
+                    position_state[current_state] = temp_position_state[current_state]
+
+#        print(len(position_state))
+
+        t += 1
+
+    return pressure
+
+def find_neighbors(valves,current_state,position_state,time_left,t,max_pressure,pressure):
+    if type(current_state[0]) is not tuple:
+        neighbors = set()
+        current_pressure = position_state[current_state]
+        neighbors.update(tuple([tuple([valves[current_state[0]][1][i],current_state[1],t]) for i in range(len(valves[current_state[0]][1]))]))
+        for neighbor in neighbors:
+            if sum([0 if neighbor[1][i] == True else max_pressure[i] for i in range(len(valves))]) + current_pressure &gt;= pressure:
+                if neighbor not in position_state:
+                    position_state[neighbor] = current_pressure
+                elif position_state[neighbor] &lt; current_pressure:
+                    position_state[neighbor] = current_pressure
+        if current_state[1][current_state[0]] == False and valves[current_state[0]][0] != 0:
+            if tuple([current_state[0],tuple([current_state[1][i] if i!= current_state[0] else True for i in range(len(current_state[1]))]),t]) not in position_state:
+                position_state[tuple([current_state[0],tuple([current_state[1][i] if i!= current_state[0] else True for i in range(len(current_state[1]))]),t])]\
+                = current_pressure + time_left*valves[current_state[0]][0]
+            elif position_state[tuple([current_state[0],tuple([current_state[1][i] if i!= current_state[0] else True for i in range(len(current_state[1]))]),t])] \
+                &lt; current_pressure + time_left*valves[current_state[0]][0]:
+                position_state[tuple([current_state[0],tuple([current_state[1][i] if i!= current_state[0] else True for i in range(len(current_state[1]))]),t])] = current_pressure + time_left*valves[current_state[0]][0]
+    else:
+        # The first position moves or opens if possible
+        neighbors = set()
+        invalid_neighbor = set()
+        current_pressure = position_state[current_state]
+        neighbors.update(tuple([tuple([(valves[current_state[0][0]][1][i],current_state[0][1]),current_state[1],t]) for i in range(len(valves[current_state[0][0]][1]))]))
+        for neighbor in neighbors:
+            if sum([0 if neighbor[1][i] == True else max_pressure[i] for i in range(len(valves))]) + current_pressure &gt;= pressure:
+                if neighbor not in position_state:
+                    position_state[neighbor] = current_pressure
+                elif position_state[neighbor] &lt; current_pressure:
+                    position_state[neighbor] = current_pressure
+            else:
+                invalid_neighbor.add(neighbor)
+        neighbors = neighbors - invalid_neighbor
+        if current_state[1][current_state[0][0]] == False and valves[current_state[0][0]][0] != 0:
+            if tuple([current_state[0],tuple([current_state[1][i] if i!= current_state[0][0] else True for i in range(len(current_state[1]))]),t]) not in position_state:
+                neighbors.add(tuple([current_state[0],tuple([current_state[1][i] if i!= current_state[0][0] else True for i in range(len(current_state[1]))]),t]))
+                position_state[tuple([current_state[0],tuple([current_state[1][i] if i!= current_state[0][0] else True for i in range(len(current_state[1]))]),t])]\
+                = current_pressure + time_left*valves[current_state[0][0]][0]
+            elif position_state[tuple([current_state[0],tuple([current_state[1][i] if i!= current_state[0][0] else True for i in range(len(current_state[1]))]),t])] \
+                &lt; current_pressure + time_left*valves[current_state[0][0]][0]:
+                position_state[tuple([current_state[0],tuple([current_state[1][i] if i!= current_state[0][0] else True for i in range(len(current_state[1]))]),t])] = current_pressure + time_left*valves[current_state[0][0]][0]
+        # And the second one (elephant or me) does its moving or opening
+        only1move = neighbors.copy()
+        for state in only1move:
+            neighbors = set()
+            current_pressure = position_state[state]
+            neighbors.update(tuple([tuple([(state[0][0],valves[state[0][1]][1][i]),state[1],t]) for i in range(len(valves[state[0][1]][1]))]))
+            for neighbor in neighbors:
+                if neighbor not in position_state:
+                    position_state[neighbor] = current_pressure
+                elif position_state[neighbor] &lt; current_pressure:
+                    position_state[neighbor] = current_pressure
+            if state[1][state[0][1]] == False and valves[state[0][1]][0] != 0:
+                if tuple([state[0],tuple([state[1][i] if i!= state[0][1] else True for i in range(len(state[1]))]),t]) not in position_state:
+                    neighbors.add(tuple([state[0],tuple([state[1][i] if i!= state[0][1] else True for i in range(len(state[1]))]),t]))
+                    position_state[tuple([state[0],tuple([state[1][i] if i!= state[0][1] else True for i in range(len(state[1]))]),t])]\
+                    = current_pressure + time_left*valves[state[0][1]][0]
+                elif position_state[tuple([state[0],tuple([state[1][i] if i!= state[0][1] else True for i in range(len(state[1]))]),t])] \
+                    &lt; current_pressure + time_left*valves[state[0][1]][0]:
+                    position_state[tuple([state[0],tuple([state[1][i] if i!= state[0][1] else True for i in range(len(current_state[1]))]),t])] = current_pressure + time_left*valves[state[0][1]][0]
+
+    return
+
+def main():
+    with open("input.txt",'r') as input_file:
+        input_lines = input_file.readlines()
+        input_lines[-1] = input_lines[-1] + "\n"
+
+    valves,position_AA = process_input(input_lines)
+
+    #star 1
+
+    start_position = (position_AA,tuple([False for i in range(len(valves))]),0)
+    position_state = {start_position:0}
+    t_max = 30
+
+    pressure = find_max_flow(valves,position_state,t_max)
+
+    print(pressure)
+
+    #star 2
+
+    start_position = ((position_AA,position_AA),tuple([False for i in range(len(valves))]),0)
+    position_state = {start_position:0}
+    t_max = 26
+
+    pressure = find_max_flow(valves,position_state,t_max)
+
+    print(pressure)
+
+main()</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></p>
+
+	</div>
+
+</div>
+<div id="push"></div>
+</div>
+
+
+    <div id="footer">
+      <div class="container">
+          <p class="muted credit">&copy; 2022 | Mixed with Bootstrap v3.1.1 | generated with <a href="https://doctoolchain.org">docToolchain</a> | Baked with JBake v2.6.4</p>
+      </div>
+    </div>
+    
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/prettify.js"></script>
+    
+
+
+</body>
+</html>

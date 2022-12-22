@@ -1,0 +1,4025 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Aoc 2022: corneil</title>
+    <meta charset="UTF-8">
+<meta name="google-site-verification" content="JZ7jk3duxzxHDLuOHKPxc-uoz0JPlSBLeaAxh3wGn9Q" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Just for fun">
+    <meta name="author" content="Ralf D. Müller">
+    <meta name="keywords" content="aoc">
+    <meta name="generator" content="JBake">
+
+    <!-- Le styles -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/asciidoctor.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link href="../../../css/prettify.css" rel="stylesheet">
+      <link href="../../../css/retro.css" rel="stylesheet">
+      <style>
+      @media only screen and (min-width:768px){
+          #toctitle{font-size:1.375em}
+          #toc.toc{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #efefed;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto; padding-top: 60px;}
+          #toc.toc #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+          #toc.toc>ul{font-size:.9em;margin-bottom:0}
+          #toc.toc ul ul{margin-left:0;padding-left:1em}
+          #toc.toc ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+          body.toc2{ padding-left: 15.5em;padding-right:0; width: 100% !important;}
+          body.toc2 div#wrap div.content {width: auto !important;}
+          #toc.toc{width:15em; padding-top: 60px;}
+      }
+      @media only screen and (min-width:1280px){
+          body.toc2{ padding-left: 20.5em;padding-right:0; width: 100% !important;}
+          body.toc2 div#wrap div.content {width: auto !important;}
+          #toc.toc{width:20em; padding-top: 60px;}
+          #toc.toc #toctitle{font-size:1.375em}
+          #toc.toc>ul{font-size:.95em}
+          #toc.toc ul ul{padding-left:1.25em}
+      }
+      body {
+          overflow-y: scroll;
+      }
+      html, body {
+          font-size: 1.06rem;
+      }
+      body.toc2{ overflow-x: auto}
+      #toc.toc ul {
+          padding-inline-start: 0;
+      }
+      :target::before {
+          content: "";
+          display: block;
+          height: 60px; /* fixed header height*/
+          margin: -60px 0 0; /* negative fixed header height */
+      }
+      .navbar {
+          background-image: url(/aoc-2022/images/treeback.png);
+          background-size: contain;
+          background-repeat: repeat-x;
+          border-bottom: 0;
+          padding-bottom: 20px;
+          background-color: transparent;
+          box-shadow: none;
+      }
+      html {
+          background: url(/aoc-2022/images/snowback.png) no-repeat center center fixed;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+      }
+
+      </style>
+      <script>
+          //smart redirectg
+          if (document.location.href.includes("netlify")) {
+              document.location.href=document.location.href.replace("aoc-2022.netlify.app/","doctoolchain.org/aoc-2022/");
+          }
+      </script>
+<!-- /aoc-2022/ -->
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+      <link rel="apple-touch-icon" sizes="180x180" href="/aoc-2022//apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/aoc-2022//favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/aoc-2022//favicon-16x16.png">
+      <link rel="manifest" href="/aoc-2022//site.webmanifest">
+      <link rel="mask-icon" href="/aoc-2022//safari-pinned-tab.svg" color="#5bbad5">
+      <meta name="msapplication-TileColor" content="#da532c">
+      <meta name="theme-color" content="#ffffff">
+  </head>
+
+<body onload="prettyPrint()" class="toc2 toc-left" >
+<div id="wrap">
+
+	
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../../../">AoC-2022</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+              
+                
+                  <li><a href="../../../rules/">Rules</a></li>
+                
+              
+                
+                  <li><a href="../../../solutions/">Solutions</a></li>
+                
+              
+                
+                  <li><a href="../../../about/">About</a></li>
+                
+              
+          </ul>
+            <!-- tag::search[] -->
+            <form class="navbar-form navbar-right" action="https://google.de/search" style="border: none;">
+                <div class="form-group">
+                    <input type="hidden" name="q" value="site:doctoolchain.org/aoc-2022">
+                    <input type="text" name="q" class="form-control" id="search">
+                    <button type="submit" class="btn btn-default hidden-sm ">Find</button>
+                </div>
+            </form>
+            <!-- end::search[] -->
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+	<div class="container content">
+	<p><div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_corneil">corneil</a>
+<ul class="sectlevel2">
+<li><a href="#_about_me">About me</a></li>
+<li><a href="#_day_00_kotlin">Day 00: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_hello_world">Hello World!</a></li>
+</ul>
+</li>
+<li><a href="#_day_01_kotlin">Day 01: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_calorie_counting">Calorie Counting</a>
+<ul class="sectlevel4">
+<li><a href="#_parsing">Parsing</a></li>
+<li><a href="#_part_1">Part 1</a></li>
+<li><a href="#_part_2">Part 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_02_kotlin">Day 02: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_rock_paper_scissors">Rock Paper Scissors</a></li>
+</ul>
+</li>
+<li><a href="#_day_03_kotlin">Day 03: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_rucksack_reorganization">Rucksack Reorganization</a>
+<ul class="sectlevel4">
+<li><a href="#_calculating_the_priority">Calculating the priority</a></li>
+<li><a href="#_part1">Part1</a></li>
+<li><a href="#_part_2_2">Part 2</a></li>
+<li><a href="#_takeaways">Takeaways</a></li>
+<li><a href="#_full_source">Full source</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_04_kotlin">Day 04: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_camp_cleanup">Camp Cleanup</a>
+<ul class="sectlevel4">
+<li><a href="#_part_1_2">Part 1</a></li>
+<li><a href="#_part_2_3">Part 2</a></li>
+<li><a href="#_takeaways_2">Takeaways</a></li>
+<li><a href="#_full_source_2">Full source</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_05_kotlin">Day 05: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_supply_stacks">Supply Stacks</a>
+<ul class="sectlevel4">
+<li><a href="#_data_structures">Data Structures</a></li>
+<li><a href="#_parsing_2">Parsing</a></li>
+<li><a href="#_part_1_3">Part 1</a></li>
+<li><a href="#_part_2_4">Part 2</a></li>
+<li><a href="#_takeaways_3">Takeaways</a></li>
+<li><a href="#_full_source_3">Full source</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_06_kotlin">Day 06: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_tuning_trouble">Tuning Trouble</a>
+<ul class="sectlevel4">
+<li><a href="#_solution">Solution</a></li>
+<li><a href="#_full_source_4">Full source</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_07_kotlin">Day 07: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_no_space_left_on_device">No Space Left On Device</a>
+<ul class="sectlevel4">
+<li><a href="#_data_model">Data Model</a></li>
+<li><a href="#_parsing_3">Parsing</a></li>
+<li><a href="#_solutions">Solutions</a></li>
+<li><a href="#_full_source_5">Full source</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_08_kotlin">Day 08: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_treetop_tree_house">Treetop Tree House</a>
+<ul class="sectlevel4">
+<li><a href="#_model">Model</a></li>
+<li><a href="#_parsing_4">Parsing</a></li>
+<li><a href="#_part_1_5">Part 1</a></li>
+<li><a href="#_part_2_6">Part 2</a></li>
+<li><a href="#_full_source_6">Full source</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_09_kotlin">Day 09: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_rope_bridge">Rope Bridge</a>
+<ul class="sectlevel4">
+<li><a href="#_model_2">Model</a></li>
+<li><a href="#_parsing_5">Parsing</a></li>
+<li><a href="#_simulating_the_rope">Simulating the rope</a></li>
+<li><a href="#_full_source_7">Full source</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_10_kotlin">Day 10: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_cathode_ray_tube">Cathode-Ray Tube</a>
+<ul class="sectlevel4">
+<li><a href="#_input_model">Input Model</a></li>
+<li><a href="#_parsing_6">Parsing</a></li>
+<li><a href="#_processor_model">Processor Model</a></li>
+<li><a href="#_part_1_6">Part 1</a></li>
+<li><a href="#_part_2_7">Part 2</a></li>
+<li><a href="#_full_source_8">Full source</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_11_kotlin">Day 11: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_monkey_in_the_middle">Monkey in the Middle</a>
+<ul class="sectlevel4">
+<li><a href="#_model_3">Model</a></li>
+<li><a href="#_parsing_7">Parsing</a></li>
+<li><a href="#_processing">Processing</a></li>
+<li><a href="#_part_1_7">Part 1</a></li>
+<li><a href="#_part_2_8">Part 2</a></li>
+<li><a href="#_full_source_9">Full source</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_12_kotlin">Day 12: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_hill_climbing_algorithm">Hill Climbing Algorithm</a>
+<ul class="sectlevel4">
+<li><a href="#_model_4">Model</a></li>
+<li><a href="#_parsing_8">Parsing</a></li>
+<li><a href="#_processing_2">Processing</a></li>
+<li><a href="#_part_1_8">Part 1</a></li>
+<li><a href="#_part_2_9">Part 2</a></li>
+<li><a href="#_full_source_10">Full source</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_13_kotlin">Day 13: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_distress_signal">Distress Signal</a>
+<ul class="sectlevel4">
+<li><a href="#_sample_input">Sample Input</a></li>
+<li><a href="#_model_5">Model</a></li>
+<li><a href="#_parsing_9">Parsing</a></li>
+<li><a href="#_processing_3">Processing</a></li>
+<li><a href="#_part_1_9">Part 1</a></li>
+<li><a href="#_part_2_10">Part 2</a></li>
+<li><a href="#_full_source_11">Full source</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_day_14_kotlin">Day 14: kotlin</a>
+<ul class="sectlevel3">
+<li><a href="#_regolith_reservoir">Regolith Reservoir</a>
+<ul class="sectlevel4">
+<li><a href="#_sample_input_2">Sample Input</a></li>
+<li><a href="#_model_6">Model</a></li>
+<li><a href="#_parsing_10">Parsing</a></li>
+<li><a href="#_processing_4">Processing</a></li>
+<li><a href="#_part_1_10">Part 1</a></li>
+<li><a href="#_part_2_11">Part 2</a></li>
+<li><a href="#_full_source_12">Full source</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_corneil"><a class="anchor" href="#_corneil"></a><a class="link" href="#_corneil">corneil</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="https://avatars.githubusercontent.com/u/466422?v=4" alt="466422?v=4" width="100px"></span></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>corneil</strong><br>
+Corneil du Plessis<br>
+Github: <a href="https://github.com/corneil">corneil</a><br>
+Twitter: <a href="https://twitter.com/corneil">@corneil</a><br>
+Mastodon: <a href="https://hachyderm.io/@corneil">@<a href="mailto:corneil@hachyderm.io">corneil@hachyderm.io</a></a></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_about_me"><a class="anchor" href="#_about_me"></a><a class="link" href="#_about_me">About me</a></h3>
+<div class="paragraph">
+<p>I am a Staff Software Engineer at VMware working on the Spring Cloud Data Flow team. I enjoyed AoC 2019 and decided to give it another go this year.</p>
+</div>
+<div class="paragraph">
+<p>I love coding in Kotlin and I try write the code solving the puzzles in a way that someone else can understand the solution.</p>
+</div>
+<a id="day00" />
+</div>
+<div class="sect2">
+<h3 id="_day_00_kotlin"><a class="anchor" href="#_day_00_kotlin"></a><a class="link" href="#_day_00_kotlin">Day 00: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_hello_world"><a class="anchor" href="#_hello_world"></a><a class="link" href="#_hello_world">Hello World!</a></h4>
+<div class="paragraph">
+<p>This is a simple Hello World program in <a href="https://kotlinlang.org">Kotlin</a>, if you want to experiment with Kotlin use the <a href="https://play.kotlinlang.org">Kotlin Playground</a></p>
+</div>
+<div class="paragraph">
+<p>My aim with <a href="https://adventofcode.com/2021">Advent of Code</a> is to write code solving the puzzles in a way that is understandable to a wide audience.
+Feel free to reach out with comments at the links above.</p>
+</div>
+<a id="day01" />
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_01_kotlin"><a class="anchor" href="#_day_01_kotlin"></a><a class="link" href="#_day_01_kotlin">Day 01: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_calorie_counting"><a class="anchor" href="#_calorie_counting"></a><a class="link" href="#_calorie_counting">Calorie Counting</a></h4>
+<div class="paragraph">
+<p>In order to follow these solutions you will need to login to <a href="https://adventofcode.com/2022">Advent of Code</a> and complete each day.</p>
+</div>
+<div class="paragraph">
+<p>The day was lines representing the calories of food items carried by elves and separated by blank lines.
+Kotlin File has a readLines function that makes it easy to parse the input, calculate the calories for each elf and add to a list.</p>
+</div>
+<div class="sect4">
+<h5 id="_parsing"><a class="anchor" href="#_parsing"></a><a class="link" href="#_parsing">Parsing</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">  fun findCalories(input: List&lt;String&gt;): List&lt;Int&gt; {
+    val elves = mutableListOf&lt;Int&gt;()
+    var calories = 0
+    for (line in input) {
+      if (line.isBlank()) {
+        elves.add(calories)
+        calories = 0
+      } else {
+        calories += line.toInt()
+      }
+    }
+    elves.add(calories)
+    return elves
+  }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_part_1"><a class="anchor" href="#_part_1"></a><a class="link" href="#_part_1">Part 1</a></h5>
+<div class="paragraph">
+<p>For part one the max value it the answer.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">  fun findMaxCalories(input: List&lt;String&gt;): Int {
+    val calories = findCalories(input)
+    return calories.max()
+  }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_part_2"><a class="anchor" href="#_part_2"></a><a class="link" href="#_part_2">Part 2</a></h5>
+<div class="paragraph">
+<p>For part two the result is the sum of the first three when sorted in descending order. Kotlin has the <code>take</code> method on collections which is very useful in this case.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">  fun topThree(input: List&lt;String&gt;): Int {
+    val calories = findCalories(input)
+    return calories.sortedDescending().take(3).sum()
+  }</code></pre>
+</div>
+</div>
+<a id="day02" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_02_kotlin"><a class="anchor" href="#_day_02_kotlin"></a><a class="link" href="#_day_02_kotlin">Day 02: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_rock_paper_scissors"><a class="anchor" href="#_rock_paper_scissors"></a><a class="link" href="#_rock_paper_scissors">Rock Paper Scissors</a></h4>
+<div class="paragraph">
+<p>Part 1 meant we needed to parse input representing an opponent hand when playing RPS, and we had to assume the 2nd input was an answer we needed to provide while "cheating".</p>
+</div>
+<div class="paragraph">
+<p>Part 2 came with a curveball in that the 2nd input should be treated as an outcome. This means we needed to find the correct hand for the outcome.
+The score calculation was a function of the outcome and the hand we selected.</p>
+</div>
+<div class="paragraph">
+<p>Below is the final code and there are loaders for creating the rounds for part 1 and part 2.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">enum class Rps(val identifiers: String, val shapeScore: Int) {
+  ROCK("AX", 1),
+  PAPER("BY", 2),
+  SCISSORS("CZ", 3)
+}
+
+enum class Outcome(val identifier: String, val score: Int) {
+  LOSE("X", 0),
+  DRAW("Y", 3),
+  WIN("Z", 6)
+}
+
+data class Hand(val them: Rps, val me: Rps)
+
+object Rules {
+
+  data class Rule(val loser: Rps, val winner: Rps)
+
+  private val beats = mapOf(
+    Rps.ROCK to Rule(Rps.SCISSORS, Rps.PAPER),
+    Rps.PAPER to Rule(Rps.ROCK, Rps.SCISSORS),
+    Rps.SCISSORS to Rule(Rps.PAPER, Rps.ROCK)
+  )
+
+  fun winner(shape: Rps): Rps {
+    val winner = beats[shape] ?: error("Cannot find $shape")
+    return winner.winner
+  }
+
+  fun loser(shape: Rps): Rps {
+    val loser = beats[shape] ?: error("Cannot find $shape")
+    return loser.loser
+  }
+
+  fun didIWin(round: Hand): Boolean {
+    val shape = loser(round.me)
+    return shape == round.them
+  }
+
+}
+
+fun main() {
+
+  fun toRps(hint: String): Rps {
+    return Rps.values().find { it.identifiers.contains(hint) }
+              ?: error("Invalid RPS $hint")
+  }
+
+  fun toOutcome(outcome: String): Outcome {
+    return Outcome.values().find { it.identifier == outcome }
+              ?: error("Invalid Outcome:$outcome")
+  }
+
+  fun readRounds(input: List&lt;String&gt;): List&lt;Hand&gt; {
+    return input.map {
+      val hints = it.split(" ")
+      Hand(toRps(hints[0]), toRps(hints[1]))
+    }
+  }
+
+  // choose a shape to match the outcome
+  fun chooseShape(shape: Rps, outcome: Outcome): Rps {
+    return when (outcome) {
+      Outcome.DRAW -&gt; shape
+      Outcome.WIN -&gt; Rules.winner(shape)
+      Outcome.LOSE -&gt; Rules.loser(shape)
+    }
+  }
+
+  // convert 2nd to outcome and then find a shape to match outcome given 1st
+  fun readRounds2(input: List&lt;String&gt;): List&lt;Hand&gt; {
+    return input.map {
+      val hints = it.split(" ")
+      Pair(toRps(hints[0]), toOutcome(hints[1]))
+    }.map {
+      Hand(it.first, chooseShape(it.first, it.second))
+    }
+  }
+
+  fun calcRound(round: Hand): Int {
+    return when {
+      round.them == round.me -&gt; Outcome.DRAW.score
+      Rules.didIWin(round) -&gt; Outcome.WIN.score
+      else -&gt; Outcome.LOSE.score
+    }
+  }
+
+  fun calcScore(round: Hand): Int {
+    return round.me.shapeScore + calcRound(round)
+  }
+
+  fun calcTotal(rounds: List&lt;Hand&gt;): Int {
+    return rounds.sumOf { calcScore(it) }
+  }
+
+  fun part1() {
+
+    val testScore = calcTotal(readRounds(readInput("day02_test")))
+    println("Test Total = $testScore")
+    check(testScore == 15)
+
+    val total = calcTotal(readRounds(readInput("day02")))
+    println("Total = $total")
+
+  }
+
+  fun part2() {
+
+    val testScore2 = calcTotal(readRounds2(readInput("day02_test")))
+    println("Test Total 2 = $testScore2")
+    check(testScore2 == 12)
+
+    val total2 = calcTotal(readRounds2(readInput("day02")))
+    println("Total 2 = $total2")
+  }
+
+  part1()
+  part2()
+}</code></pre>
+</div>
+</div>
+<a id="day03" />
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_03_kotlin"><a class="anchor" href="#_day_03_kotlin"></a><a class="link" href="#_day_03_kotlin">Day 03: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_rucksack_reorganization"><a class="anchor" href="#_rucksack_reorganization"></a><a class="link" href="#_rucksack_reorganization">Rucksack Reorganization</a></h4>
+<div class="paragraph">
+<p>Today puzzle was about manipulating strings and calculating the values of characters according rules.</p>
+</div>
+<div class="sect4">
+<h5 id="_calculating_the_priority"><a class="anchor" href="#_calculating_the_priority"></a><a class="link" href="#_calculating_the_priority">Calculating the priority</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun calcPriority(value: Char): Int = when (value) {
+  in 'a'..'z' -&gt; value - 'a' + 1
+  in 'A'..'Z' -&gt; value - 'A' + 27
+  else -&gt; error("Invalid input $value")
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_part1"><a class="anchor" href="#_part1"></a><a class="link" href="#_part1">Part1</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun calcRucksacks(input: List&lt;String&gt;): Int =
+  input.map {
+      Pair(it.substring(0 until it.length / 2), it.substring(it.length / 2)) <i class="conum" data-value="1"></i><b>(1)</b>
+    }
+    .map {
+      it.first.toSet().intersect(it.second.toSet()).first() <i class="conum" data-value="2"></i><b>(2)</b>
+    }
+    .sumOf { calcPriority(it) } <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Split string into equal parts to represent compartments</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Determine common character by converting to set of characters and finding union</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Calculate the sum of the priorities</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_part_2_2"><a class="anchor" href="#_part_2_2"></a><a class="link" href="#_part_2_2">Part 2</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun calcBadges(input: List&lt;String&gt;): Int =
+  input.mapIndexed { index, s -&gt; index / 3 to s }
+    .groupBy({ it.first }, { it.second })           <i class="conum" data-value="1"></i><b>(1)</b>
+    .map { e -&gt;
+      e.value
+        .map { it.toSet() }
+        .reduce { a, b -&gt; a.intersect(b) }
+        .first()                                    <i class="conum" data-value="2"></i><b>(2)</b>
+    }
+    .sumOf { calcPriority(it) }                     <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Group strings by 3.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Determine common character from all 3 strings.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Calculate the sum of the priorities</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_takeaways"><a class="anchor" href="#_takeaways"></a><a class="link" href="#_takeaways">Takeaways</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><code>String.toSet</code> gives to a <code>Set</code> of <code>Char</code></p>
+</li>
+<li>
+<p><code>reduce</code> is a great way to determine the intersection on multiple sets.</p>
+</li>
+<li>
+<p><code>groupBy</code> can take two parameters and with the second parameter you can determine the type of the value.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_full_source"><a class="anchor" href="#_full_source"></a><a class="link" href="#_full_source">Full source</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun main() {
+
+  fun calcPriority(value: Char): Int = when (value) {
+    in 'a'..'z' -&gt; value - 'a' + 1
+    in 'A'..'Z' -&gt; value - 'A' + 27
+    else -&gt; error("Invalid input $value")
+  }
+
+  fun calcRucksacks(input: List&lt;String&gt;): Int =
+    input.map {
+        Pair(it.substring(0 until it.length / 2), it.substring(it.length / 2))
+      }
+      .map { it.first.toSet().intersect(it.second.toSet()).first() }
+      .sumOf { calcPriority(it) }
+
+  fun calcBadges(input: List&lt;String&gt;): Int =
+    input.mapIndexed { index, s -&gt; index / 3 to s }
+      .groupBy({ it.first }, { it.second })
+      .map { e -&gt; e.value.map { it.toSet() }
+          .reduce { a, b -&gt; a.intersect(b) }
+          .first()
+      }
+      .sumOf { calcPriority(it) }
+
+  fun part1() {
+    val testPriorities = calcRucksacks(readInput("day03_test"))
+    println("Test Priorities = $testPriorities")
+    check(testPriorities == 157)
+
+    val priorities = calcRucksacks(readInput("day03"))
+    println("Priorities = $priorities")
+    check(priorities == 8123)
+  }
+
+  fun part2() {
+    val testPriorities = calcBadges(readInput("day03_test"))
+    println("Test Priorities = $testPriorities")
+    check(testPriorities == 70)
+
+    val priorities = calcBadges(readInput("day03"))
+    println("Priorities = $priorities")
+    check(priorities == 2620)
+  }
+  part1()
+  part2()
+}</code></pre>
+</div>
+</div>
+<a id="day04" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_04_kotlin"><a class="anchor" href="#_day_04_kotlin"></a><a class="link" href="#_day_04_kotlin">Day 04: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_camp_cleanup"><a class="anchor" href="#_camp_cleanup"></a><a class="link" href="#_camp_cleanup">Camp Cleanup</a></h4>
+<div class="paragraph">
+<p>I wasted some time today because I misunderstood the <strong>fully contains</strong> applying to a pair of assignments. I was trying to check across assignments. Re-reading when I got the wrong answer meant some <em>facepalms</em>.</p>
+</div>
+<div class="paragraph">
+<p>We needed to convert the input depicting 2 ranges into sets of sections representing by numbers. So that meant converting <code>2-4,6-8</code> to a <code>Pair</code> of <code>IntRange</code> and then to a <code>Pair</code> of <code>Set&lt;Int&gt;</code> which it as simple as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun convertRange(input: String): IntRange {
+  val values = input.split("-")
+  return values[0].toInt()..values[1].toInt()
+}
+
+fun convertRanges(input: List&lt;String&gt;): List&lt;Pair&lt;Set&lt;Int&gt;, Set&lt;Int&gt;&gt;&gt; =
+  input.map { it.split(",") }
+    .map { Pair(convertRange(it[0]).toSet(), convertRange(it[1]).toSet()) }</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_part_1_2"><a class="anchor" href="#_part_1_2"></a><a class="link" href="#_part_1_2">Part 1</a></h5>
+<div class="paragraph">
+<p>Determining <strong>fully contains</strong> for part 1 was as simple as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun calcContains(ranges: List&lt;Pair&lt;Set&lt;Int&gt;, Set&lt;Int&gt;&gt;&gt;): Int {
+  return ranges.count {
+    it.first.containsAll(it.second) || it.second.containsAll(it.first)
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_part_2_3"><a class="anchor" href="#_part_2_3"></a><a class="link" href="#_part_2_3">Part 2</a></h5>
+<div class="paragraph">
+<p>And determining an <strong>overlap</strong> for part1 was as simple as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun calcOverlap(ranges: List&lt;Pair&lt;Set&lt;Int&gt;, Set&lt;Int&gt;&gt;&gt;): Int {
+  return ranges.count { it.first.intersect(it.second).isNotEmpty() }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_takeaways_2"><a class="anchor" href="#_takeaways_2"></a><a class="link" href="#_takeaways_2">Takeaways</a></h5>
+<div class="paragraph">
+<p>Re-read the problem because a lot of effort was made to explain with a complete example.</p>
+</div>
+<div class="paragraph">
+<p><strong>If you first answer is incorrect you may have misunderstood something.</strong></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_full_source_2"><a class="anchor" href="#_full_source_2"></a><a class="link" href="#_full_source_2">Full source</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun main() {
+  fun convertRange(input: String): IntRange {
+    val values = input.split("-")
+    return values[0].toInt()..values[1].toInt()
+  }
+
+  fun convertRanges(input: List&lt;String&gt;): List&lt;Pair&lt;Set&lt;Int&gt;, Set&lt;Int&gt;&gt;&gt; =
+    input.map { it.split(",") }
+      .map { Pair(convertRange(it[0]).toSet(), convertRange(it[1]).toSet()) }
+
+  fun calcContains(ranges: List&lt;Pair&lt;Set&lt;Int&gt;, Set&lt;Int&gt;&gt;&gt;): Int {
+    return ranges.count {
+      it.first.containsAll(it.second) || it.second.containsAll(it.first)
+    }
+  }
+
+  fun calcOverlap(ranges: List&lt;Pair&lt;Set&lt;Int&gt;, Set&lt;Int&gt;&gt;&gt;): Int {
+    return ranges.count { it.first.intersect(it.second).isNotEmpty() }
+  }
+
+  fun part1() {
+    val testInput = readInput("day04_test")
+    val testCount = calcContains(convertRanges(testInput))
+    println("Part 1 Test Count = $testCount")
+    check(testCount == 2)
+
+    val input = readInput("day04")
+    val count = calcContains(convertRanges(input))
+    println("Part 1 Count = $count")
+    check(count == 524)
+  }
+
+  fun part2() {
+    val testInput = readInput("day04_test")
+    val testCount = calcOverlap(convertRanges(testInput))
+    println("Part 2 Test Count = $testCount")
+    check(testCount == 4)
+
+    val input = readInput("day04")
+    val count = calcOverlap(convertRanges(input))
+    println("Part 2 Count = $count")
+    check(count == 798)
+  }
+  part1()
+  part2()
+}</code></pre>
+</div>
+</div>
+<a id="day05" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_05_kotlin"><a class="anchor" href="#_day_05_kotlin"></a><a class="link" href="#_day_05_kotlin">Day 05: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_supply_stacks"><a class="anchor" href="#_supply_stacks"></a><a class="link" href="#_supply_stacks">Supply Stacks</a></h4>
+<div class="paragraph">
+<p>Today we had to implement a parser to read the state of stacks of containers and instructions for moving the containers. The result was a list of the top container labels.
+I decided to create a data structure for the instructions and a simple Stack.</p>
+</div>
+<div class="sect4">
+<h5 id="_data_structures"><a class="anchor" href="#_data_structures"></a><a class="link" href="#_data_structures">Data Structures</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">data class Instruction(val count: Int, val from: Int, val to: Int)
+
+class Stack&lt;T&gt;(private val elements: MutableList&lt;T&gt; = mutableListOf&lt;T&gt;()) {
+  fun empty(): Boolean = elements.isEmpty()
+  fun peek(): T = elements[elements.lastIndex]
+  fun pop(): T = elements.removeAt(elements.lastIndex)
+  fun push(value: T) {
+    elements.add(value)
+  }
+
+  fun items() = elements.toList()
+  fun size() = elements.size
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_parsing_2"><a class="anchor" href="#_parsing_2"></a><a class="link" href="#_parsing_2">Parsing</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun readStack(lines: List&lt;String&gt;, stack: Int): Stack&lt;Char&gt; {
+  val result = mutableListOf&lt;Char&gt;()
+  val offset = stack * 4 + 1
+  for (line in lines) {
+    if (line.length &gt; offset) {
+      val crate = line[offset]
+      if (crate in 'A'..'Z') {
+        result.add(crate)
+      }
+    }
+  }
+  result.reverse()
+  println("Stack[${stack + 1}]=${result.joinToString("")}")
+  return Stack(result)
+}
+
+fun loadStacks(input: List&lt;String&gt;): List&lt;Stack&lt;Char&gt;&gt; {
+  val lines = input.toMutableList()
+  val numbers = lines.last()
+        .split(" ")
+        .filter { it.isNotEmpty() }
+        .map { it.toInt() }
+  lines.removeAt(lines.lastIndex)
+  val stacks = mutableListOf&lt;Stack&lt;Char&gt;&gt;()
+  for (stack in numbers.indices) {
+    stacks.add(readStack(lines, stack))
+  }
+  return stacks.toList()
+}
+
+fun loadInstructions(input: List&lt;String&gt;): List&lt;Instruction&gt; {
+  val regex = """move (\d+) from (\d+) to (\d+)""".toRegex()
+  return input.mapNotNull { line -&gt;
+    regex.find(line)?.let {
+      val (count, from, to) = it.destructured
+      Instruction(count.toInt(), from.toInt(), to.toInt())
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_part_1_3"><a class="anchor" href="#_part_1_3"></a><a class="link" href="#_part_1_3">Part 1</a></h5>
+<div class="paragraph">
+<p>Perform all the instructions and provide the list of top level crates:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun perform(stacks: List&lt;Stack&lt;Char&gt;&gt;, instruction: Instruction) {
+  for (i in 1..instruction.count) {
+    val crate = stacks[instruction.from - 1].pop()
+    stacks[instruction.to - 1].push(crate)
+  }
+}
+fun performAndFindTops(
+  stacks: List&lt;Stack&lt;Char&gt;&gt;,
+  instructions: List&lt;Instruction&gt;
+): String {
+  instructions.forEach {
+    perform(stacks, it)
+  }
+  return stacks.joinToString("") { it.peek().toString() }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_part_2_4"><a class="anchor" href="#_part_2_4"></a><a class="link" href="#_part_2_4">Part 2</a></h5>
+<div class="paragraph">
+<p>The crane can now move multiple containers at the same time retaining their order.
+I decided to use a local stack to pop all the container and then push them again which will retain the order. The alternative would have been to adjust the Stack to remove multiple items at once.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun perform9001(stacks: List&lt;Stack&lt;Char&gt;&gt;, instruction: Instruction) {
+  println(instruction)
+  val tmp = Stack&lt;Char&gt;()
+  for (i in 1..instruction.count) {
+    val crate = stacks[instruction.from - 1].pop()
+    tmp.push(crate)
+  }
+  while (!tmp.empty()) {
+    stacks[instruction.to - 1].push(tmp.pop())
+  }
+}
+fun performAndFindTops9001(
+    stacks: List&lt;Stack&lt;Char&gt;&gt;,
+    instructions: List&lt;Instruction&gt;
+): String {
+  instructions.forEach {
+    perform9001(stacks, it)
+  }
+  return stacks.joinToString("") { it.peek().toString() }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_takeaways_3"><a class="anchor" href="#_takeaways_3"></a><a class="link" href="#_takeaways_3">Takeaways</a></h5>
+<div class="paragraph">
+<p>Sometimes a requirement change can impact your data structures in huge ways. Using a stack to represent the piles of crates was fine until we needed to move multiple crates at a time. In a real system the performance differences of moving multiple crates at the same time will be huge if it is a core part of the system.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_full_source_3"><a class="anchor" href="#_full_source_3"></a><a class="link" href="#_full_source_3">Full source</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">data class Instruction(val count: Int, val from: Int, val to: Int)
+class Stack&lt;T&gt;(private val elements: MutableList&lt;T&gt; = mutableListOf&lt;T&gt;()) {
+  fun empty(): Boolean = elements.isEmpty()
+  fun peek(): T = elements[elements.lastIndex]
+  fun pop(): T = elements.removeAt(elements.lastIndex)
+  fun push(value: T) {
+    elements.add(value)
+  }
+
+  fun items() = elements.toList()
+  fun size() = elements.size
+}
+
+fun main() {
+
+  fun readStack(lines: List&lt;String&gt;, stack: Int): Stack&lt;Char&gt; {
+    val result = mutableListOf&lt;Char&gt;()
+    val offset = stack * 4 + 1
+    for (line in lines) {
+      if (line.length &gt; offset) {
+        val crate = line[offset]
+        if (crate in 'A'..'Z') {
+          result.add(crate)
+        }
+      }
+    }
+    result.reverse()
+    println("Stack[${stack + 1}]=${result.joinToString("")}")
+    return Stack(result)
+  }
+
+  fun loadStacks(input: List&lt;String&gt;): List&lt;Stack&lt;Char&gt;&gt; {
+    val lines = input.toMutableList()
+    val numbers = lines.last().split(" ").mapNotNull { if(it.isNotBlank()) it.toInt() else null }
+    lines.removeAt(lines.lastIndex)
+    val stacks = mutableListOf&lt;Stack&lt;Char&gt;&gt;()
+    for (stack in numbers.indices) {
+      stacks.add(readStack(lines, stack))
+    }
+    return stacks.toList()
+  }
+
+  fun loadInstructions(input: List&lt;String&gt;): List&lt;Instruction&gt; {
+    val regex = """move (\d+) from (\d+) to (\d+)""".toRegex()
+    return input.mapNotNull { line -&gt;
+      regex.find(line)?.let {
+        val (count, from, to) = it.destructured
+        Instruction(count.toInt(), from.toInt(), to.toInt())
+      }
+    }
+  }
+
+  fun perform(stacks: List&lt;Stack&lt;Char&gt;&gt;, instruction: Instruction) {
+    for (i in 1..instruction.count) {
+      val crate = stacks[instruction.from - 1].pop()
+      stacks[instruction.to - 1].push(crate)
+    }
+  }
+
+  fun perform9001(stacks: List&lt;Stack&lt;Char&gt;&gt;, instruction: Instruction) {
+    val tmp = Stack&lt;Char&gt;()
+    for (i in 1..instruction.count) {
+      val crate = stacks[instruction.from - 1].pop()
+      tmp.push(crate)
+    }
+    while (!tmp.empty()) {
+      stacks[instruction.to - 1].push(tmp.pop())
+    }
+  }
+
+  fun performAndFindTops(stacks: List&lt;Stack&lt;Char&gt;&gt;, instructions: List&lt;Instruction&gt;): String {
+    instructions.forEach {
+      perform(stacks, it)
+    }
+    stacks.forEach { stack -&gt; println("[${stack.items().joinToString("")}]") }
+    return stacks.joinToString("") { it.peek().toString() }
+  }
+
+  fun performAndFindTops9001(stacks: List&lt;Stack&lt;Char&gt;&gt;, instructions: List&lt;Instruction&gt;): String {
+    instructions.forEach {
+      perform9001(stacks, it)
+    }
+    stacks.forEach { stack -&gt; println("[${stack.items().joinToString("")}]") }
+    return stacks.joinToString("") { it.peek().toString() }
+  }
+
+  val test = """    [D]
+[N] [C]
+[Z] [M] [P]
+ 1   2   3
+
+move 1 from 2 to 1
+move 3 from 1 to 3
+move 2 from 2 to 1
+move 1 from 1 to 2
+"""
+
+  val testInputs = test.split("\n\n").map { readText(it) }
+  val input = readFileGroup("day05")
+  fun part1() {
+    val testTops = performAndFindTops(loadStacks(testInputs[0]), loadInstructions(testInputs[1]))
+    println("Part 1 Test Tops = $testTops")
+    check(testTops == "CMZ")
+    val tops = performAndFindTops(loadStacks(input[0]), loadInstructions(input[1]))
+    println("Part 1 Tops = $tops")
+    check(tops == "PTWLTDSJV")
+  }
+
+  fun part2() {
+    val testTops = performAndFindTops9001(loadStacks(testInputs[0]), loadInstructions(testInputs[1]))
+    println("Part 2 Test Tops = $testTops")
+    check(testTops == "MCD")
+    val tops = performAndFindTops9001(loadStacks(input[0]), loadInstructions(input[1]))
+    println("Part 2 Tops = $tops")
+    check(tops == "WZMFVGGZP")
+  }
+
+  part1()
+  part2()
+
+}</code></pre>
+</div>
+</div>
+<a id="day06" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_06_kotlin"><a class="anchor" href="#_day_06_kotlin"></a><a class="link" href="#_day_06_kotlin">Day 06: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_tuning_trouble"><a class="anchor" href="#_tuning_trouble"></a><a class="link" href="#_tuning_trouble">Tuning Trouble</a></h4>
+<div class="paragraph">
+<p>Today was probably the easiest one so far from my perspective. We had to write a simple parser to find the first unique sequence of characters with a given length and report the number of characters read.</p>
+</div>
+<div class="paragraph">
+<p>The Kotlin collections method <code>windowed</code> provides a way to create a window over an <code>Iterable</code> and provides a simple way to solve this. Checking that the content of the window as a unique set is the same size as the window.</p>
+</div>
+<div class="sect4">
+<h5 id="_solution"><a class="anchor" href="#_solution"></a><a class="link" href="#_solution">Solution</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun findUniquePacketEnd(input: String, packetSize: Int): Int {
+  return input.toList()
+    .windowed(packetSize)
+    .indexOfFirst { it.toSet().size == packetSize } + packetSize
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_full_source_4"><a class="anchor" href="#_full_source_4"></a><a class="link" href="#_full_source_4">Full source</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun main() {
+  fun findUniquePacketEnd(input: String, packetSize: Int): Int {
+    return input.toList()
+      .windowed(packetSize)
+      .indexOfFirst { it.toSet().size == packetSize } + packetSize
+  }
+
+  val input = readFileToString("day06")
+
+  fun part1() {
+    val testStart = findUniquePacketEnd("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 4)
+    println("Part1 Test Start = $testStart")
+    check(testStart == 10)
+    val start = findUniquePacketEnd(input, 4)
+    println("Part1 Start = $start")
+    check(start == 1965)
+  }
+
+  fun part2() {
+    val testStart = findUniquePacketEnd("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 14)
+    println("Part 2 Test Message = $testStart")
+    check(testStart == 29)
+    val start = findUniquePacketEnd(input, 14)
+    println("Part 2 Start = $start")
+    check(start == 2773)
+  }
+  part1()
+  part2()
+}</code></pre>
+</div>
+</div>
+<a id="day07" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_07_kotlin"><a class="anchor" href="#_day_07_kotlin"></a><a class="link" href="#_day_07_kotlin">Day 07: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_no_space_left_on_device"><a class="anchor" href="#_no_space_left_on_device"></a><a class="link" href="#_no_space_left_on_device">No Space Left On Device</a></h4>
+<div class="paragraph">
+<p>We had to parse a series of commands and output representing changing to and listing directories as in the example below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-shell" data-lang="shell">$ cd /
+$ ls
+dir a
+14848514 b.txt
+8504156 c.dat
+dir d
+$ cd a
+$ ls
+dir e
+29116 f
+2557 g
+62596 h.lst
+$ cd e
+$ ls
+584 i
+$ cd ..
+$ cd ..
+$ cd d
+$ ls
+4060174 j
+8033020 d.log
+5626152 d.ext
+7214296 k</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The aim was to determine directory sizes.
+In the first case the challenge was to find directories with a total size including children of below a threshold and the second problem was to find the smallest directory above a certain size.</p>
+</div>
+<div class="sect4">
+<h5 id="_data_model"><a class="anchor" href="#_data_model"></a><a class="link" href="#_data_model">Data Model</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">  data class FileInfo(val name: String, val size: Int)
+
+  class Directory(val name: String) {
+    private val files = mutableMapOf&lt;String, FileInfo&gt;()
+    private val directories = mutableMapOf&lt;String, Directory&gt;()
+    fun listDirectories() = directories.values.toList()
+    fun hasDir(dirname: String): Boolean = directories.containsKey(dirname)
+    fun getDir(dirname: String) = directories[dirname]
+    fun addDir(dirname: String): Directory = directories.getOrPut(dirname) { Directory(dirname) }
+    fun addFile(name: String, size: Int): FileInfo {
+      val file = FileInfo(name, size)
+      files[name] = file
+      return file
+    }
+    fun listFiles(): List&lt;FileInfo&gt; = files.values.toList()
+    fun fileSizes(): Int = files.values.sumOf { it.size }
+    fun totalSize(): Int = fileSizes() + directories.values.sumOf { it.totalSize() }
+
+    override fun toString(): String {
+      return "Directory(name='$name'," +
+                "directories=${directories.values.map { it.name }.toList()}," +
+                "files=${files.values.map { "${it.name}:${it.size}" }}" +
+              ")"
+    }
+    override fun equals(other: Any?): Boolean {
+      if (this === other) return true
+      if (javaClass != other?.javaClass) return false
+
+      other as Directory
+
+      if (name != other.name) return false
+
+      return true
+    }
+    override fun hashCode(): Int {
+      return name.hashCode()
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_parsing_3"><a class="anchor" href="#_parsing_3"></a><a class="link" href="#_parsing_3">Parsing</a></h5>
+<div class="paragraph">
+<p>The parsing meant keeping track of the directory tree and the current directory.
+I used the <code>Stack</code> from Day 05 to maintain the parent directories.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun parseCommandsAndOutput(lines: List&lt;String&gt;): Directory {
+  val root = Directory("/")
+  val dirs = Stack&lt;Directory&gt;()
+  dirs.push(root)
+  var current = root
+  for(line in lines) {
+    val data = line.split(" ")
+    when {
+      data[0] == "$" &amp;&amp; data[1] == "cd" &amp;&amp; data[2] == "/" -&gt; { dirs.clear(); dirs.push(root) }
+      data[0] == "$" &amp;&amp; data[1] == "cd" &amp;&amp; data[2] == ".." -&gt; { dirs.pop(); current = dirs.peek()}
+      data[0] == "$" &amp;&amp; data[1] == "cd" -&gt; { dirs.push(current.addDir(data[2])); current = dirs.peek() }
+      data[0] == "$" &amp;&amp; data[1] == "ls" -&gt; println("listing ${dirs.items().joinToString("/") { it.name }}")
+      data[0] == "dir" -&gt; current.addDir(data[1])
+      else -&gt; {
+        val file = current.addFile(data[1], data[0].toInt())
+        println("file=dir:${current.name} + ${file.name}:${file.size}")
+      }
+    }
+  }
+  return root
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_solutions"><a class="anchor" href="#_solutions"></a><a class="link" href="#_solutions">Solutions</a></h5>
+<div class="paragraph">
+<p>Both solutions need to obtain a list of all directories.</p>
+</div>
+<div class="sect5">
+<h6 id="_shared"><a class="anchor" href="#_shared"></a><a class="link" href="#_shared">Shared</a></h6>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun listAllDirectories(directories: Directory): List&lt;Directory&gt; {
+  val result = mutableListOf&lt;Directory&gt;()
+  directories.listDirectories().forEach {
+    result.add(it)
+    result.addAll(listAllDirectories(it))
+  }
+  return result
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_part_1_4"><a class="anchor" href="#_part_1_4"></a><a class="link" href="#_part_1_4">Part 1</a></h6>
+<div class="paragraph">
+<p>Find the directory sizes at most 100000 and calculate the total.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun calcDirectoriesBelow(input: List&lt;String&gt;, maxValue: Int): Int {
+  val root = parseCommandsAndOutput(input)
+  val directories = listAllDirectories(root)
+  return directories.map { it.totalSize() }.filter { it &lt;= maxValue }.sum()
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_part_2_5"><a class="anchor" href="#_part_2_5"></a><a class="link" href="#_part_2_5">Part 2</a></h6>
+<div class="paragraph">
+<p>Find the small of the directories large enough to delete in order to free up enough space so that at least 30000000 of 70000000 is unused.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun calcDirectoriesToFree(input: List&lt;String&gt;, diskSize: Int, freeSpace: Int): Int {
+  val root = parseCommandsAndOutput(input)
+  val directories = listAllDirectories(root)
+  val unused = diskSize - root.totalSize()
+  val requiredDelete = freeSpace - unused
+  return directories.map { it.totalSize() }.filter { it &gt; requiredDelete }.min()
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_full_source_5"><a class="anchor" href="#_full_source_5"></a><a class="link" href="#_full_source_5">Full source</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun main() {
+  val test = readFile("day07_test")
+  val input = readFile("day07")
+
+  data class FileInfo(val name: String, val size: Int)
+  class Directory(val name: String) {
+    private val files = mutableMapOf&lt;String, FileInfo&gt;()
+    private val directories = mutableMapOf&lt;String, Directory&gt;()
+    fun listDirectories() = directories.values.toList()
+
+    fun hasDir(dirname: String): Boolean =
+            directories.containsKey(dirname)
+    fun getDir(dirname: String) = directories[dirname]
+    fun addDir(dirname: String): Directory =
+            directories.getOrPut(dirname) { Directory(dirname) }
+    fun addFile(name: String, size: Int): FileInfo {
+      val file = FileInfo(name, size)
+      files[name] = file
+      return file
+    }
+
+    fun listFiles(): List&lt;FileInfo&gt; = files.values.toList()
+    fun fileSizes(): Int = files.values.sumOf { it.size }
+    fun totalSize(): Int =
+            fileSizes() + directories.values.sumOf { it.totalSize() }
+    override fun toString(): String {
+      return "Directory(name='$name',directories=${
+        directories.values.map { it.name }.toList()
+      },files=${files.values.map { "${it.name}:${it.size}" }})"
+    }
+
+    override fun equals(other: Any?): Boolean {
+      if (this === other) return true
+      if (javaClass != other?.javaClass) return false
+
+      other as Directory
+
+      if (name != other.name) return false
+
+      return true
+    }
+
+    override fun hashCode(): Int {
+      return name.hashCode()
+    }
+
+    private fun printTree(dir: Directory, depth: Int) {
+      println("- ${dir.name} (dir)")
+      val prefix = 0 until depth
+      dir.listDirectories().forEach {
+        prefix.forEach { _ -&gt; print(' ') }
+        printTree(it, depth + 2)
+      }
+      dir.listFiles().forEach {
+        prefix.forEach { _ -&gt; print(' ') }
+        println("- ${it.name} (file, size = ${it.size})")
+      }
+    }
+
+    fun printTree() = printTree(this, 0)
+  }
+
+  fun listAllDirectories(directories: Directory): List&lt;Directory&gt; {
+    val result = mutableListOf&lt;Directory&gt;()
+    directories.listDirectories().forEach {
+      result.add(it)
+      result.addAll(listAllDirectories(it))
+    }
+    return result
+  }
+
+  fun parseCommandsAndOutput(input: List&lt;String&gt;): Directory {
+    val root = Directory("/")
+    val dirs = Stack&lt;Directory&gt;()
+    dirs.push(root)
+    var current = root
+    input.forEach { line -&gt;
+      val data = line.split(" ")
+      when {
+        data[0] == "$" &amp;&amp; data[1] == "cd" &amp;&amp; data[2] == "/" -&gt; { dirs.clear(); dirs.push(root) }
+        data[0] == "$" &amp;&amp; data[1] == "cd" &amp;&amp; data[2] == ".." -&gt; { dirs.pop(); current = dirs.peek()}
+        data[0] == "$" &amp;&amp; data[1] == "cd" -&gt; { dirs.push(current.addDir(data[2])); current = dirs.peek() }
+        data[0] == "$" &amp;&amp; data[1] == "ls" -&gt; println("listing ${dirs.items().joinToString("/") { it.name }}")
+        data[0] == "dir" -&gt; current.addDir(data[1])
+        else -&gt; {
+          val file = current.addFile(data[1], data[0].toInt())
+          println("file=dir:${current.name} + ${file.name}:${file.size}")
+        }
+      }
+    }
+    return root
+  }
+
+
+  fun calcDirectoriesBelow(input: List&lt;String&gt;, maxValue: Int): Int {
+    val root = parseCommandsAndOutput(input)
+    root.printTree()
+    val directories = listAllDirectories(root)
+    return directories.map { it.totalSize() }.filter { it &lt;= maxValue }.sum()
+  }
+
+  fun calcDirectoriesToFree(input: List&lt;String&gt;, diskSize: Int, freeSpace: Int): Int {
+    val root = parseCommandsAndOutput(input)
+    val directories = listAllDirectories(root)
+    val unused = diskSize - root.totalSize()
+    val requiredDelete = freeSpace - unused
+    return directories.map { it.totalSize() }.filter { it &gt; requiredDelete }.min()
+  }
+
+
+  fun part1() {
+    val testResult = calcDirectoriesBelow(test, 100000)
+    println("Part 1 Answer = $testResult")
+    check(testResult == 95437)
+    separator()
+    val result = calcDirectoriesBelow(input, 100000)
+    check(result == 1792222)
+    println("Part 1 Answer = $result")
+    separator()
+  }
+
+  fun part2() {
+    val testResult = calcDirectoriesToFree(test, 70000000, 30000000)
+    println("Part 2 Answer = $testResult")
+    check(testResult == 24933642)
+    separator()
+    val result = calcDirectoriesToFree(input, 70000000, 30000000)
+    println("Part 2 Answer = $result")
+    check(result == 1112963)
+    separator()
+  }
+  println("Day - 07")
+  part1()
+  part2()
+}</code></pre>
+</div>
+</div>
+<a id="day08" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_08_kotlin"><a class="anchor" href="#_day_08_kotlin"></a><a class="link" href="#_day_08_kotlin">Day 08: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_treetop_tree_house"><a class="anchor" href="#_treetop_tree_house"></a><a class="link" href="#_treetop_tree_house">Treetop Tree House</a></h4>
+<div class="paragraph">
+<p>Today&#8217;s puzzle was all about creating a grid and determining the state of coordinates given certain conditions.</p>
+</div>
+<div class="sect4">
+<h5 id="_model"><a class="anchor" href="#_model"></a><a class="link" href="#_model">Model</a></h5>
+<div class="paragraph">
+<p>I decided to create a class to represent the grid as an array of int array.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">class Grid(val lines: Array&lt;IntArray&gt;) {
+    fun width() = lines[0].size
+    fun height() = lines.size
+    fun get(x: Int, y: Int) = lines[x][y]
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_parsing_4"><a class="anchor" href="#_parsing_4"></a><a class="link" href="#_parsing_4">Parsing</a></h5>
+<div class="paragraph">
+<p>The data was presents as lines of digits, each digits represented a tree and the value was the height of the tree.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-text" data-lang="text">30373
+25512
+65332
+33549
+35390</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Parsing meant converting each line to an array of int by converting each character to it&#8217;s integer representation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun parseGrid(input: List&lt;String&gt;): Grid {
+  return Grid(input.map { line -&gt;
+            line.toList()
+              .map { it - '0' }
+              .toIntArray()
+          }.toTypedArray())
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_part_1_5"><a class="anchor" href="#_part_1_5"></a><a class="link" href="#_part_1_5">Part 1</a></h5>
+<div class="paragraph">
+<p>We had to determine how many trees are visible considering it is invisible it there is a tree of similar or greater height above or below, to the left or right.</p>
+</div>
+<div class="paragraph">
+<p>I added a visible method to Grid</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun visible(x: Int, y: Int): Boolean {
+  val treeHeight = get(x, y)
+  var bottom = true
+  var top = true
+  var left = true
+  var right = true
+  for (i in 0 until x) {
+    val tree = get(i, y)
+    if (tree &gt;= treeHeight) {
+      top = false
+      break
+    }
+  }
+  for (i in x + 1 until height()) {
+   if (get(i, y) &gt;= treeHeight) {
+      bottom = false
+      break
+    }
+  }
+ for (i in y + 1 until width()) {
+   if (get(x, i) &gt;= treeHeight) {
+      right = false
+      break
+    }
+  }
+  for (i in 0 until y) {
+    if (get(x, i) &gt;= treeHeight) {
+      left = false
+      break
+    }
+  }
+  return top || bottom || left || right
+}
+
+fun calcVisible(grid: Grid): Int {
+  val height = grid.height()
+  val width = grid.width()
+  var result = (height * 2) + (width * 2) - 4
+  for (x in 1 until height - 1) {
+    for (y in 1 until width - 1) {
+      if (grid.visible(x, y)) {
+        result += 1
+      }
+    }
+  }
+  return result
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_part_2_6"><a class="anchor" href="#_part_2_6"></a><a class="link" href="#_part_2_6">Part 2</a></h5>
+<div class="paragraph">
+<p>We had to calculate a scenic value for each tree and determine the answer was maximum scenic.
+The scenic value was determined by how many trees were visible from a given tree.</p>
+</div>
+<div class="paragraph">
+<p>I added a scenic method to Grid.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun scenic(x: Int, y: Int): Int {
+  val treeHeight = get(x, y)
+  var bottom = 0
+  var top = 0
+  var left = 0
+  var right = 0
+  for (i in x + 1 until height()) {
+    bottom += 1
+    if (get(i, y) &gt;= treeHeight) {
+      break
+    }
+  }
+  for (i in x - 1 downTo  0 ) {
+    top += 1
+    if (get(i, y) &gt;= treeHeight) {
+      break
+    }
+  }
+  for (i in y + 1 until width()) {
+    right += 1
+    if (get(x, i) &gt;= treeHeight) {
+      break
+    }
+  }
+  for (i in y - 1 downTo  0 ) {
+    left += 1
+    if (get(x, i) &gt;= treeHeight) {
+      break
+    }
+  }
+  return bottom * left * right * top
+}
+
+fun calcMaxScenic(grid: Grid): Int {
+  val height = grid.height()
+  val width = grid.width()
+  var result = 0
+  for (x in 1 until height - 1) {
+    for (y in 1 until width - 1) {
+      result = max(result, grid.scenic(x, y))
+    }
+  }
+  return result
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_full_source_6"><a class="anchor" href="#_full_source_6"></a><a class="link" href="#_full_source_6">Full source</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">import kotlin.math.max
+
+fun main() {
+  val test = readLines(
+    """30373
+25512
+65332
+33549
+35390"""
+  )
+  val input = readFile("day08")
+
+  class Grid(val lines: Array&lt;IntArray&gt;) {
+    fun width() = lines[0].size
+    fun height() = lines.size
+    fun get(x: Int, y: Int) = lines[x][y]
+    fun visible(x: Int, y: Int): Boolean {
+      val treeHeight = get(x, y)
+      var bottom = true
+      var top = true
+      var left = true
+      var right = true
+      for (i in 0 until x) {
+        val tree = get(i, y)
+        if (tree &gt;= treeHeight) {
+          top = false
+          break
+        }
+      }
+      for (i in x + 1 until height()) {
+        if (get(i, y) &gt;= treeHeight) {
+          bottom = false
+          break
+        }
+      }
+      for (i in y + 1 until width()) {
+        if (get(x, i) &gt;= treeHeight) {
+          right = false
+          break
+        }
+      }
+      for (i in 0 until y) {
+        if (get(x, i) &gt;= treeHeight) {
+          left = false
+          break
+        }
+      }
+      return top || bottom || left || right
+    }
+
+    fun scenic(x: Int, y: Int): Int {
+      val treeHeight = get(x, y)
+      var bottom = 0
+      var top = 0
+      var left = 0
+      var right = 0
+      for (i in x + 1 until height()) {
+        bottom += 1
+        if (get(i, y) &gt;= treeHeight) {
+          break
+        }
+      }
+      for (i in x - 1 downTo  0 ) {
+        top += 1
+        if (get(i, y) &gt;= treeHeight) {
+          break
+        }
+      }
+      for (i in y + 1 until width()) {
+        right += 1
+        if (get(x, i) &gt;= treeHeight) {
+          break
+        }
+      }
+      for (i in y - 1 downTo  0 ) {
+        left += 1
+        if (get(x, i) &gt;= treeHeight) {
+          break
+        }
+      }
+      return bottom * left * right * top
+    }
+  }
+
+  fun parseGrid(input: List&lt;String&gt;): Grid {
+    return Grid(input.map { line -&gt;
+                 line.toList()
+                   .map { it - '0' }
+                   .toIntArray()
+             }.toTypedArray()
+     )
+  }
+
+  fun calcVisible(grid: Grid): Int {
+    val height = grid.height()
+    val width = grid.width()
+    var result = (height * 2) + (width * 2) - 4
+    for (x in 1 until height - 1) {
+      for (y in 1 until width - 1) {
+        if (grid.visible(x, y)) {
+          result += 1
+        }
+      }
+    }
+    return result
+  }
+
+  fun calcMaxScenic(grid: Grid): Int {
+    val height = grid.height()
+    val width = grid.width()
+    var result = 0
+    for (x in 1 until height - 1) {
+      for (y in 1 until width - 1) {
+        result = max(result, grid.scenic(x, y))
+      }
+    }
+    return result
+  }
+
+  fun part1() {
+    val testResult = calcVisible(parseGrid(test))
+    println("Part 1 Answer = $testResult")
+    check(testResult == 21)
+    val result = calcVisible(parseGrid(input))
+    println("Part 1 Answer = $result")
+    check(result == 1851)
+  }
+
+  fun part2() {
+    val testResult = calcMaxScenic(parseGrid(test))
+    println("Part 2 Answer = $testResult")
+    check(testResult == 8)
+    val result = calcMaxScenic(parseGrid(input))
+    println("Part 1 Answer = $result")
+    check(result == 574080)
+  }
+  println("Day - 08")
+  separator()
+  part1()
+  separator()
+  part2()
+}</code></pre>
+</div>
+</div>
+<a id="day09" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_09_kotlin"><a class="anchor" href="#_day_09_kotlin"></a><a class="link" href="#_day_09_kotlin">Day 09: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_rope_bridge"><a class="anchor" href="#_rope_bridge"></a><a class="link" href="#_rope_bridge">Rope Bridge</a></h4>
+<div class="paragraph">
+<p>Today&#8217;s puzzle was about simulating the movement of a rope or chain. The knots / links follow each other when the head is pulled in a direction. The simulation had to implement rules for the movement and record the movement of the tail and reporting the number of unique positions visited by the tail.</p>
+</div>
+<div class="paragraph">
+<p>In part 1 the rope has 2 knots and in part 2 the rope had 10 knots.</p>
+</div>
+<div class="sect4">
+<h5 id="_model_2"><a class="anchor" href="#_model_2"></a><a class="link" href="#_model_2">Model</a></h5>
+<div class="paragraph">
+<p>I decided to model the <code>Rope</code> as an array of <code>Position</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">data class Position(val row: Int, val col: Int) {
+  fun left() = Position(row, col - 1)
+  fun right() = Position(row, col + 1)
+  fun above() = Position(row - 1, col)
+  fun below() = Position(row + 1, col)
+  fun distance(pos: Position): Int = max(abs(pos.row - row), abs(pos.col - col))
+  operator fun minus(pos: Position) = Position(row - pos.row, col - pos.col)
+  operator fun plus(pos: Position) = Position(row + pos.row, col + pos.col)
+  fun sign(): Position = Position(row.sign,col.sign)
+  fun move(direction: Char): Position {
+    return when (direction) {
+      'U' -&gt; above()
+      'D' -&gt; below()
+      'L' -&gt; left()
+      'R' -&gt; right()
+      else -&gt; error("Expected one of U,D,L,R not ${direction}")
+    }
+  }
+  override fun toString(): String {
+    return "(col=$col, row=$row)"
+  }
+}
+
+class Rope(val knots: Array&lt;Position&gt;) {
+  val head: Position
+    get() = knots[0]
+  val tail: Position
+    get() = knots[knots.lastIndex]
+
+  operator fun set(index: Int, pos: Position) { knots[index] = pos }
+
+  operator fun get(index: Int) = knots[index]
+  fun indexOf(pos: Position) = knots.indexOf(pos)
+  override fun toString() = knots.contentToString()
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_parsing_5"><a class="anchor" href="#_parsing_5"></a><a class="link" href="#_parsing_5">Parsing</a></h5>
+<div class="paragraph">
+<p>The input was a list of steps with the direction as one of <code>U</code>,<code>D</code>,<code>L</code>,<code>R</code> and a number for the distance moved.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">data class Step(val direction: Char, val distance: Int)
+
+fun parseSteps(input: List&lt;String&gt;): List&lt;Step&gt; {
+  return input.map {
+    val words = it.split(" ")
+    Step(words[0][0], words[1].toInt())
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_simulating_the_rope"><a class="anchor" href="#_simulating_the_rope"></a><a class="link" href="#_simulating_the_rope">Simulating the rope</a></h5>
+<div class="paragraph">
+<p>After when I got to part 2 I had a situation where my answer to the provided data was correct but AOC report my answer with the input as low. I tried to find a case where I wasn&#8217;t handling the tail correctly. All this back and forth lead me to simplifying the calculation to the point where I calculated the difference between the knots and the movement was then a step in the direction of the first knot and it could be diagonally if the difference had values in both axis.</p>
+</div>
+<div class="paragraph">
+<p>This worked and was a lot simpler. When I looked at some other submissions in the Kotlin community I discovered <code>Int.sign()</code> which returns <code>0</code>,<code>1</code> or <code>-1</code> depending in the value. I added operators to <code>Position</code> for <code>-</code> and <code>+</code> and a <code>sign</code> method. This reduced the final expression to a very simple one.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">for (index in 1 until knots) {
+  val prev = rope[index - 1]                      <i class="conum" data-value="1"></i><b>(1)</b>
+  val next = rope[index]                          <i class="conum" data-value="2"></i><b>(2)</b>
+  if (prev != next &amp;&amp; prev.distance(next) &gt; 1) {  <i class="conum" data-value="3"></i><b>(3)</b>
+    val diff = prev - next                        <i class="conum" data-value="4"></i><b>(4)</b>
+    rope[index] = next + diff.sign()              <i class="conum" data-value="5"></i><b>(5)</b>
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The previous knot</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The knot we want to move</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>If they aren&#8217;t in same location and the <a href="https://en.wikipedia.org/wiki/Chebyshev_distance">Chebyshev</a> distance is more than 1.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Determine the difference between the positions</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Add the sign of the difference to the knot we want to move</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun calcVisits(steps: List&lt;Step&gt;, knots: Int, printStep: Boolean): Int {
+  val rope = Rope(Array(knots) { Position(0, 0) })
+  val start = rope.head
+  val visited = mutableSetOf&lt;Position&gt;()
+  visited.add(rope.tail)
+  steps.forEach { step -&gt;
+    for (i in 0 until step.distance) {
+      rope[0] = rope.head.move(step.direction)
+      for (index in 1 until knots) {
+        val prev = rope[index - 1]
+        val next = rope[index]
+        if (prev != next &amp;&amp; prev.distance(next) &gt; 1) {
+          val diff = prev - next
+          rope[index] = next + diff.sign()
+        }
+      }
+      visited.add(rope.tail)
+      if (printStep) {
+        println()
+        print(steps, visited, start, rope, knots, false)
+      }
+    }
+  }
+  println()
+  print(steps, visited, start, rope, knots, true)
+  return visited.size
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_full_source_7"><a class="anchor" href="#_full_source_7"></a><a class="link" href="#_full_source_7">Full source</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">import kotlin.math.abs
+import kotlin.math.max
+import kotlin.math.min
+import kotlin.math.sign
+
+fun main() {
+
+  val test = """R 4
+U 4
+L 3
+D 1
+R 4
+D 1
+L 5
+R 2"""
+  val test2 = """R 5
+U 8
+L 8
+D 3
+R 17
+D 10
+L 25
+U 20"""
+  val input = readFile("day09")
+
+  data class Step(val direction: Char, val distance: Int)
+  data class Position(val row: Int, val col: Int) {
+    fun left() = Position(row, col - 1)
+    fun right() = Position(row, col + 1)
+    fun above() = Position(row - 1, col)
+    fun below() = Position(row + 1, col)
+    fun distance(pos: Position): Int = max(abs(pos.row - row), abs(pos.col - col))
+    operator fun minus(pos: Position) = Position(row - pos.row, col - pos.col)
+    operator fun plus(pos: Position) = Position(row + pos.row, col + pos.col)
+    fun sign(): Position = Position(row.sign,col.sign)
+    fun move(direction: Char): Position {
+      return when (direction) {
+        'U' -&gt; above()
+        'D' -&gt; below()
+        'L' -&gt; left()
+        'R' -&gt; right()
+        else -&gt; error("Expected one of U,D,L,R not ${direction}")
+      }
+    }
+
+    override fun toString(): String {
+      return "(col=$col, row=$row)"
+    }
+  }
+
+  fun parseSteps(input: List&lt;String&gt;): List&lt;Step&gt; {
+    return input.map {
+      val words = it.split(" ")
+      Step(words[0][0], words[1].toInt())
+    }
+  }
+
+  class Rope(val knots: Array&lt;Position&gt;) {
+    val head: Position
+      get() = knots[0]
+    val tail: Position
+      get() = knots[knots.lastIndex]
+    operator fun set(index: Int, pos: Position) { knots[index] = pos }
+    operator fun get(index: Int) = knots[index]
+    fun indexOf(pos: Position) = knots.indexOf(pos)
+    override fun toString() = knots.contentToString()
+  }
+
+  fun print(
+    steps: List&lt;Step&gt;,
+    visited: Set&lt;Position&gt;,
+    start: Position,
+    rope: Rope,
+    knots: Int,
+    visitsOnly: Boolean = false
+  ) {
+    var maxRow = 0
+    var minRow = 0
+    var maxCol = 0
+    var minCol = 0
+    var dummy = Position(0, 0)
+    steps.forEach { step -&gt;
+      repeat(step.distance) {
+        dummy = dummy.move(step.direction)
+        maxRow = max(maxRow, dummy.row)
+        maxCol = max(maxCol, dummy.col)
+        minRow = min(minRow, dummy.row)
+        minCol = min(minCol, dummy.col)
+      }
+    }
+
+    for (row in minRow..maxRow) {
+      val covered = mutableSetOf&lt;Int&gt;()
+      for (col in minCol..maxCol) {
+        val pos = Position(row, col)
+        if (visitsOnly) {
+          if (pos == start) {
+            print('s')
+          } else {
+            print(if (visited.contains(pos)) '#' else '.')
+          }
+        } else {
+          val index = rope.indexOf(pos)
+          when {
+            index == 0 -&gt; print('H')
+            index &gt; 0 -&gt; print(if (knots == 2) 'T' else index.toString())
+            pos == start -&gt; print('s')
+            else -&gt; print(if (visited.contains(pos)) '#' else '.')
+          }
+          if(index &gt;= 0 &amp;&amp; covered.isEmpty()) {
+            if(pos == start) {
+              covered.add(rope.knots.size) // indicate 's'
+            }
+            covered.add(index)
+            for (i in index..rope.knots.lastIndex) {
+              if (pos == rope[i]) {
+                covered.add(i)
+              }
+            }
+            if(covered.size == 1) {
+              covered.clear()
+            }
+          }
+        }
+      }
+      if(covered.size &gt; 1) {
+        print("  (")
+        val coveredKnots = covered.sorted()
+        coveredKnots.forEachIndexed { index, knot -&gt;
+          if(index == 1) {
+            print(" covers ")
+          } else if(index &gt; 1) {
+            print(" ,")
+          }
+          when(knot) {
+            0 -&gt; print('H')
+            rope.knots.lastIndex -&gt; print('T')
+            rope.knots.size -&gt; print('s')
+            else -&gt; print("$knot")
+          }
+        }
+        println(')')
+      }
+      println()
+    }
+  }
+
+  fun calcVisits(steps: List&lt;Step&gt;, knots: Int, printStep: Boolean): Int {
+    val rope = Rope(Array(knots) { Position(0, 0) })
+    val start = rope.head
+    val visited = mutableSetOf&lt;Position&gt;()
+    visited.add(rope.tail)
+    steps.forEach { step -&gt;
+      for (i in 0 until step.distance) {
+        rope[0] = rope.head.move(step.direction)
+        for (index in 1 until knots) {
+          val prev = rope[index - 1]
+          val next = rope[index]
+
+          if (prev != next &amp;&amp; prev.distance(next) &gt; 1) {
+            val diff = prev - next
+            rope[index] = next + diff.sign()
+          }
+        }
+        visited.add(rope.tail)
+        if (printStep) {
+          println()
+          print(steps, visited, start, rope, knots, false)
+        }
+      }
+    }
+    println()
+    print(steps, visited, start, rope, knots, true)
+    return visited.size
+  }
+
+  fun part1() {
+    val testResult = calcVisits(parseSteps(readLines(test)), 2, true)
+    println("Part 1 Answer = $testResult")
+    check(testResult == 13)
+    val result = calcVisits(parseSteps(input), 2, false)
+    println("Part 1 Answer = $result")
+    check(result == 6503)
+  }
+
+  fun part2() {
+    check(calcVisits(parseSteps(readLines(test)), 10, true) == 1)
+    val testResult = calcVisits(parseSteps(readLines(test2)), 10, true)
+    println("Part 2 Answer = $testResult")
+    check(testResult == 36)
+    val result = calcVisits(parseSteps(input), 10, false)
+    println("Part 2 Answer = $result")
+    check(result == 2724)
+  }
+
+  println("Day - 09")
+  separator()
+  part1()
+  separator()
+  part2()
+}</code></pre>
+</div>
+</div>
+<a id="day10" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_10_kotlin"><a class="anchor" href="#_day_10_kotlin"></a><a class="link" href="#_day_10_kotlin">Day 10: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_cathode_ray_tube"><a class="anchor" href="#_cathode_ray_tube"></a><a class="link" href="#_cathode_ray_tube">Cathode-Ray Tube</a></h4>
+<div class="paragraph">
+<p>Today&#8217;s puzzle was about simulating a computer and the cathode ray tube.
+So far we have only 2 instructions to simulate: <code>noop</code> and <code>addx</code>. It very important to carefully read the instructions describing the clock cycles. In this case <code>noop</code> has one cycle and <code>addx</code> has two cycle.</p>
+</div>
+<div class="sect4">
+<h5 id="_input_model"><a class="anchor" href="#_input_model"></a><a class="link" href="#_input_model">Input Model</a></h5>
+<div class="paragraph">
+<p>I decided to model a instructions as a sealed class and the processor as a class to maintain the clock and register value with a lambda to be called on each tick.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">sealed class OpCode(val prefix: String) {
+  object NOOP: OpCode("noop")
+  data class ADDX(val value: Int): OpCode("addx")
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_parsing_6"><a class="anchor" href="#_parsing_6"></a><a class="link" href="#_parsing_6">Parsing</a></h5>
+<div class="paragraph">
+<p>Parsing will create the instances of the various inner classes of the sealed class.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun parseInstructions(lines: List&lt;String&gt;): List&lt;OpCode&gt; {
+  return lines.map { ins -&gt;
+    val words = ins.split(" ")
+    when (words[0]) {
+      "noop" -&gt; OpCode.NOOP
+      "addx" -&gt; OpCode.ADDX(words[1].toInt())
+      else -&gt; error("Unknown instruction: $ins")
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_processor_model"><a class="anchor" href="#_processor_model"></a><a class="link" href="#_processor_model">Processor Model</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">class Processor(val processing: Processor.() -&gt; Unit) {
+  var clock = 0
+    private set
+  var regX: Int = 1
+    private set
+
+  fun tick() {
+    clock += 1
+    processing(this) <i class="conum" data-value="1"></i><b>(1)</b>
+  }
+  fun execute(instructions: List&lt;OpCode&gt;) {
+    instructions.forEach { ins -&gt;
+      when (ins) {
+        is OpCode.NOOP -&gt; tick()
+        is OpCode.ADDX -&gt; addX(ins)
+      }
+    }
+  }
+
+  private fun addX(ins: OpCode.ADDX) {
+    tick()
+    val value = ins.value
+    tick()
+    regX += value
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>processing lambda is called after each clock tick.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_part_1_6"><a class="anchor" href="#_part_1_6"></a><a class="link" href="#_part_1_6">Part 1</a></h5>
+<div class="paragraph">
+<p>The first part had to calculate signal string based on the value of <code>regX</code> and on the 20th tick and each 40th tick thereafter.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun calcSignalStrength(instructions: List&lt;OpCode&gt;): Int {
+  var signalValue = 0
+  val cpu = Processor {               <i class="conum" data-value="1"></i><b>(1)</b>
+    if (clock % 40 == 20) {
+      signalValue += regX * clock     <i class="conum" data-value="2"></i><b>(2)</b>
+    }
+  }
+  cpu.execute(instructions)
+  return signalValue
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The lambda declaration after the Processor will be invoked on each tick</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The lambda cannot modify <code>clock</code> or <code>regX</code></td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_part_2_7"><a class="anchor" href="#_part_2_7"></a><a class="link" href="#_part_2_7">Part 2</a></h5>
+<div class="paragraph">
+<p>The second part had to render the CRT of 40 characters wide. The CRT prints from left to right on each clock tick and will print a <code>#</code> if the 3 character sprite overlaps with the <code>cursor</code> position, otherwise it prints <code>.</code>.
+I had to print spaces instead of dots before I could read the character spelled out by part 2.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun renderCrt(instructions: List&lt;OpCode&gt;): List&lt;String&gt; {
+  val pixels = mutableListOf&lt;Char&gt;()
+  val crt = mutableListOf&lt;String&gt;()
+  val cpu = Processor {
+    val sprite = regX - 1
+    val cursor = (clock - 1) % 40
+    if (cursor &gt;= sprite &amp;&amp; cursor &lt;= sprite + 2) {
+      pixels.add('#')
+    } else {
+      pixels.add('.')
+    }
+    if (cursor == 39) {
+      crt.add(pixels.joinToString(""))
+      pixels.clear()
+    }
+  }
+  cpu.execute(instructions)
+  return crt.toList()
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_full_source_8"><a class="anchor" href="#_full_source_8"></a><a class="link" href="#_full_source_8">Full source</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">import utils.*
+
+sealed class OpCode(val prefix: String) {
+  object NOOP: OpCode("noop")
+  data class ADDX(val value: Int): OpCode("addx")
+}
+
+fun main() {
+  val test = readFile("day10_test")
+  val input = readFile("day10")
+
+  fun parseInstructions(lines: List&lt;String&gt;): List&lt;OpCode&gt; {
+    return lines.map { ins -&gt;
+      val words = ins.split(" ")
+      when (words[0]) {
+        "noop" -&gt; OpCode.NOOP
+        "addx" -&gt; OpCode.ADDX(words[1].toInt())
+        else -&gt; error("Unknown instruction: $ins")
+      }
+    }
+  }
+
+  class Processor(val processing: Processor.() -&gt; Unit) {
+    var clock = 0
+      private set
+
+    fun tick() {
+      clock += 1
+      processing(this)
+    }
+
+    var regX: Int = 1
+      private set
+
+    fun execute(instructions: List&lt;OpCode&gt;) {
+      instructions.forEach { ins -&gt;
+        when (ins) {
+          is OpCode.NOOP -&gt; tick()
+          is OpCode.ADDX -&gt; addX(ins)
+        }
+      }
+    }
+
+    private fun addX(ins: OpCode.ADDX) {
+      tick()
+      val value = ins.value
+      tick()
+      regX += value
+    }
+  }
+
+
+  fun calcSignalStrength(instructions: List&lt;OpCode&gt;): Int {
+    var signalValue = 0
+    val cpu = Processor {
+      if (clock % 40 == 20) {
+        signalValue += regX * clock
+      }
+    }
+    cpu.execute(instructions)
+    return signalValue
+  }
+
+  fun renderCrt(instructions: List&lt;OpCode&gt;): List&lt;String&gt; {
+    val pixels = mutableListOf&lt;Char&gt;()
+    val crt = mutableListOf&lt;String&gt;()
+    val cpu = Processor {
+      val sprite = regX - 1
+      val cursor = (clock - 1) % 40
+      if (cursor &gt;= sprite &amp;&amp; cursor &lt;= sprite + 2) {
+        pixels.add('#')
+      } else {
+        pixels.add('.')
+      }
+      if (cursor == 39) {
+        crt.add(pixels.joinToString(""))
+        pixels.clear()
+      }
+    }
+    cpu.execute(instructions)
+
+    return crt.toList()
+  }
+
+  fun part1() {
+    val testResult = calcSignalStrength(parseInstructions(test))
+    println("Part 1 Answer = $testResult")
+    check(testResult == 13140)
+    val result = calcSignalStrength(parseInstructions(input))
+    println("Part 1 Answer = $result")
+  }
+
+  val expectedTestCrt = readLines(
+    """##..##..##..##..##..##..##..##..##..##..
+###...###...###...###...###...###...###.
+####....####....####....####....####....
+#####.....#####.....#####.....#####.....
+######......######......######......####
+#######.......#######.......#######....."""
+  )
+  val expectedCrt = readLines(
+    """####..##....##..##..###....##.###..####.
+#....#..#....#.#..#.#..#....#.#..#.#....
+###..#.......#.#..#.#..#....#.#..#.###..
+#....#.......#.####.###.....#.###..#....
+#....#..#.#..#.#..#.#....#..#.#.#..#....
+#.....##...##..#..#.#.....##..#..#.####."""
+  )
+
+  fun part2() {
+    val testCrt = renderCrt(parseInstructions(test))
+    println("Part 2 Test")
+    testCrt.forEach { println(it) }
+    check(testCrt == expectedTestCrt)
+    val crt = renderCrt(parseInstructions(input))
+    println("Part 2")
+    crt.forEach { println(it.replace('.',' ')) }
+    check(crt == expectedCrt)
+  }
+  println("Day - 10")
+  separator()
+  part1()
+  separator()
+  part2()
+}</code></pre>
+</div>
+</div>
+<a id="day11" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_11_kotlin"><a class="anchor" href="#_day_11_kotlin"></a><a class="link" href="#_day_11_kotlin">Day 11: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_monkey_in_the_middle"><a class="anchor" href="#_monkey_in_the_middle"></a><a class="link" href="#_monkey_in_the_middle">Monkey in the Middle</a></h4>
+<div class="paragraph">
+<p>Today&#8217;s puzzle require the parsing of rules describing monkeys that have some of your items.
+Each monkey will toss the item to another monkey based on the worried factor perceived by the monkey.</p>
+</div>
+<div class="sect4">
+<h5 id="_model_3"><a class="anchor" href="#_model_3"></a><a class="link" href="#_model_3">Model</a></h5>
+<div class="paragraph">
+<p>The model represents all the rules as well as tracking the number of inspections performed by the monkey.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">data class Monkey(
+  val number: Int,
+  val worriedLevel: Long,
+  val items: MutableList&lt;Long&gt;,
+  val boredTarget: Int,
+  val worriedTarget: Int,
+  val expression: (Long) -&gt; Long,
+) {
+  var inspected: Int = 0
+    private set
+  fun inspect(value: Int) {
+    inspected += value
+  }
+  fun findTarget(boredLevel: Long) =
+      if (boredLevel % worriedLevel != 0L) worriedTarget else boredTarget
+  override fun toString(): String {
+    return "Monkey(number=$number, " +
+        "inspected=$inspected, " +
+        "worriedLevel=$worriedLevel, " +
+        "boredTarget=$boredTarget, " +
+        "worriedTarget=$worriedTarget, "+
+        "items=$items)"
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_parsing_7"><a class="anchor" href="#_parsing_7"></a><a class="link" href="#_parsing_7">Parsing</a></h5>
+<div class="paragraph">
+<p>I decided to parse each monkey rules using a regular expression for each line.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">val regexMonkey = listOf(
+    "Monkey (\\d+):$",
+    "  Starting items:\\s*((\\S+(,\\s)*)*)\$",
+    "  Operation: new =\\s(\\S+)\\s(\\+|\\*)\\s(\\S+)\$",
+    "  Test: divisible by (\\d+)$",
+    "    If true: throw to monkey (\\d+)$",
+    "    If false: throw to monkey (\\d+)$"
+).map { it.toRegex() }
+fun parseMonkey(lines: List&lt;String&gt;): Monkey {
+  val result = regexMonkey.mapIndexed { index, regex -&gt;
+          regex.find(lines[index]) ?: error("Regex error for ${lines[index]}")
+      }.toTypedArray()
+
+  val items = result[1].groupValues[1].split(",")
+        .map { it.trim().toLong() }
+        .toMutableList()
+
+  val words = result[2].groupValues.drop(1)
+  check(words[0] == "old")
+  val isAdd = words[1] == "+"
+  val constant = words[2].toLongOrNull()
+  val lambda: (Long) -&gt; Long =
+          if (isAdd)
+            { old -&gt; Math.addExact(old, constant ?: old) }
+          else
+            { old -&gt; Math.multiplyExact(old, constant ?: old) } <i class="conum" data-value="1"></i><b>(1)</b>
+
+  return Monkey(
+      result[0].groupValues[1].toInt(),
+      result[3].groupValues[1].toLong(),
+      items,
+      result[4].groupValues[1].toInt(),
+      result[5].groupValues[1].toInt(),
+      lambda
+  )
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>Math.addExact</code> and <code>Math.multiplyExact</code> will result in an exception if there is an overflow</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_processing"><a class="anchor" href="#_processing"></a><a class="link" href="#_processing">Processing</a></h5>
+<div class="paragraph">
+<p>Each monkey must process their items in the sequence of the assigned number.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun processItems(
+    monkeys: Map&lt;Int, Monkey&gt;,
+    rounds: Int,
+    divisor: Long = 3L
+): Map&lt;Int, Monkey&gt; {
+  val divisors = monkeys.values
+      .map { monkey -&gt; monkey.worriedLevel }
+      .reduce { acc, l -&gt; acc * l * divisor } <i class="conum" data-value="1"></i><b>(1)</b>
+  val sorted = monkeys.values.sortedBy { it.number }
+  repeat(rounds) {
+    sorted.forEach { monkey -&gt;
+      monkey.items.forEach { item -&gt;
+        val level = monkey.expression(item)
+        val bored = level / divisor
+        val targetNumber = monkey.findTarget(bored)
+        val targetMonkey = monkeys[targetNumber]
+            ?: error("Cannot find target Monkey:$targetNumber")
+        targetMonkey.items.add(bored % divisors) <i class="conum" data-value="2"></i><b>(2)</b>
+      }
+      monkey.inspect(monkey.items.size)
+      monkey.items.clear()
+    }
+  }
+  return monkeys
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>multiplying all <code>worriedLevel</code> with each other and the required <code>divisor</code> provides a <a href="#lcd">least common divisor</a>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>mod with <a href="#lcd">least common divisor</a> to ensure the smallest valid value.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_part_1_7"><a class="anchor" href="#_part_1_7"></a><a class="link" href="#_part_1_7">Part 1</a></h5>
+<div class="paragraph">
+<p>Initially using <code>Int</code> values caused an overflow and I changed the worriedLevel and items to Long.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun calcShenanigans1(input: List&lt;String&gt;): Int {
+  val monkeys = input.chunked(7)
+          .map { parseMonkey(it) }
+          .associateBy { it.number }
+  val result = processItems(monkeys, 20)
+  return result.values
+          .map { it.inspected }
+          .sortedDescending()
+          .take(2)
+          .reduce { acc, i -&gt; acc * i }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_part_2_8"><a class="anchor" href="#_part_2_8"></a><a class="link" href="#_part_2_8">Part 2</a></h5>
+<div class="paragraph">
+<p>When we had to increase the number of rounds to 10000 the worriedLevel overflowed. Using BigInteger doesn&#8217;t solve the problem because the calculations for BigInteger take too long as the multiplication ofr BigInteger takes exponentially longer as the numbers increase.</p>
+</div>
+<div id="lcd" class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Using a smallest common divisor all the modulus and <code>/</code> operations will ensure that the overflow is prevented until the number of Monkeys become very large.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun calcShenanigans2(input: List&lt;String&gt;): Long {
+  val monkeys = input.chunked(7)
+          .map { parseMonkey(it) }
+          .associateBy { it.number }
+  val result = processItems(monkeys, 10000, 1)
+  return result.values
+          .map { it.inspected.toLong() }
+          .sortedDescending()
+          .take(2)
+          .reduce { acc, i -&gt; acc * i }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_full_source_9"><a class="anchor" href="#_full_source_9"></a><a class="link" href="#_full_source_9">Full source</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">import utils.readFile
+import utils.separator
+
+fun main() {
+
+  val test = readFile("day11_test")
+  val input = readFile("day11")
+
+  data class Monkey(
+    val number: Int,
+    val worriedLevel: Long,
+    val items: MutableList&lt;Long&gt;,
+    val boredTarget: Int,
+    val worriedTarget: Int,
+    val expression: (Long) -&gt; Long,
+  ) {
+    var inspected: Int = 0
+      private set
+    fun inspect(value: Int) {
+      inspected += value
+    }
+    fun findTarget(boredLevel: Long) = if (boredLevel % worriedLevel != 0L) worriedTarget else boredTarget
+    override fun toString(): String {
+      return "Monkey(number=$number, inspected=$inspected, worriedLevel=$worriedLevel, boredTarget=$boredTarget, worriedTarget=$worriedTarget, items=$items)"
+    }
+  }
+
+  val regexMonkey = listOf(
+    "Monkey (\\d+):$",
+    "  Starting items:\\s*((\\S+(,\\s)*)*)\$",
+    "  Operation: new =\\s(\\S+)\\s(\\+|\\*)\\s(\\S+)\$",
+    "  Test: divisible by (\\d+)$",
+    "    If true: throw to monkey (\\d+)$",
+    "    If false: throw to monkey (\\d+)$"
+  ).map { it.toRegex() }
+  fun parseMonkey(lines: List&lt;String&gt;): Monkey {
+    val result = regexMonkey.mapIndexed { index, regex -&gt;
+              regex.find(lines[index]) ?: error("Regex error for ${lines[index]}")
+        }.toTypedArray()
+
+    val items = result[1].groupValues[1].split(",")
+      .map { it.trim().toLong() }
+      .toMutableList()
+
+    val words = result[2].groupValues.drop(1)
+    check(words[0] == "old")
+    val isAdd = words[1] == "+"
+    val constant = words[2].toLongOrNull()
+    val lambda: (Long) -&gt; Long =
+        if (isAdd)
+          { old -&gt; old + (constant ?: old) }
+        else
+          { old -&gt; old * (constant ?: old) }
+
+    return Monkey(
+      result[0].groupValues[1].toInt(),
+      result[3].groupValues[1].toLong(),
+      items,
+      result[4].groupValues[1].toInt(),
+      result[5].groupValues[1].toInt(),
+      lambda
+    )
+  }
+
+  fun processItems(
+    monkeys: Map&lt;Int, Monkey&gt;,
+    rounds: Int,
+    divisor: Long = 3L
+  ): Map&lt;Int, Monkey&gt; {
+    // The mod of the total of worriedLevels overcomes the Long overflow
+    // using all divisors ensure that it is the smallest value that will
+    // still satisfy all the requirements when using a large number of rounds
+    val divisors = monkeys.values
+          .map { monkey -&gt; monkey.worriedLevel }
+          .reduce { acc, l -&gt; acc * l * divisor }
+    val sorted = monkeys.values.sortedBy { it.number }
+    repeat(rounds) {
+      sorted.forEach { monkey -&gt;
+        monkey.items.forEach { item -&gt;
+          val level = monkey.expression(item)
+          val bored = level / divisor
+          val targetNumber = monkey.findTarget(bored)
+          val targetMonkey = monkeys[targetNumber]
+                  ?: error("Cannot find target Monkey:$targetNumber")
+          targetMonkey.items.add(bored % divisors) // mod to ensure smallest valid value
+        }
+        monkey.inspect(monkey.items.size)
+        monkey.items.clear()
+      }
+    }
+    return monkeys
+  }
+
+  fun calcShenanigans1(input: List&lt;String&gt;): Int {
+    val monkeys = input.chunked(7)
+            .map { parseMonkey(it) }
+            .associateBy { it.number }
+    println("Before: ====")
+    monkeys.values.forEach { println(it.toString()) }
+    val result = processItems(monkeys, 20)
+    println("After: ====")
+    result.values.forEach { println(it.toString()) }
+    return result.values
+            .map { it.inspected }
+            .sortedDescending()
+            .take(2)
+            .reduce { acc, i -&gt; acc * i }
+  }
+
+  fun calcShenanigans2(input: List&lt;String&gt;): Long {
+    val monkeys = input.chunked(7)
+            .map { parseMonkey(it) }
+            .associateBy { it.number }
+    println("Before: ====")
+    monkeys.values.forEach { println(it.toString()) }
+    val result = processItems(monkeys, 10000, 1)
+    println("After: ====")
+    result.values.forEach { println(it.toString()) }
+    return result.values
+            .map { it.inspected.toLong() }
+            .sortedDescending()
+            .take(2)
+            .reduce { acc, i -&gt; acc * i }
+  }
+
+  fun part1() {
+    val testResult = calcShenanigans1(test)
+    println("Part 1 Answer = $testResult")
+    check(testResult == 10605)
+    val result = calcShenanigans1(input)
+    println("Part 1 Answer = $result")
+    check(result == 151312)
+  }
+
+  fun part2() {
+    val testResult = calcShenanigans2(test)
+    println("Part 2 Answer = $testResult")
+    check(testResult == 2713310158L)
+    val result = calcShenanigans2(input)
+    println("Part 2 Answer = $result")
+    check(result == 51382025916L)
+  }
+  println("Day - 11")
+  separator()
+  part1()
+  separator()
+  part2()
+}</code></pre>
+</div>
+</div>
+<a id="day12" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_12_kotlin"><a class="anchor" href="#_day_12_kotlin"></a><a class="link" href="#_day_12_kotlin">Day 12: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_hill_climbing_algorithm"><a class="anchor" href="#_hill_climbing_algorithm"></a><a class="link" href="#_hill_climbing_algorithm">Hill Climbing Algorithm</a></h4>
+<div class="paragraph">
+<p>Today&#8217;s puzzle required graph traversal. I decided to use <a href="https://github.com/corneil/aoc-2022-in-kotlin/tree/main/src/main/kotlin/utils">utilities</a> I created during the 2019 edition of Aoc.</p>
+</div>
+<div class="paragraph">
+<p>The problem used a grid of letter to describe a map. Each letter describes an elevation starting at <code>a</code> as the lowest and <code>z</code> the highest.
+The user may only navigate horizontally or vertically and only to one step higher, the same level, or lower by any amount. (You may jump off a cliff!)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-text" data-lang="text">Sabqponm
+abcryxxl
+accszExk
+acctuvwj
+abdefghi</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_model_4"><a class="anchor" href="#_model_4"></a><a class="link" href="#_model_4">Model</a></h5>
+<div class="paragraph">
+<p>The Graph requires a list of Edges. Each of the edges must contain two Comparable items that are linked with a distance.
+In our case the distance is always one and since you can go from low to only one step higher but jump off a cliff the graph will be directed and the distance between cells will always be 1.</p>
+</div>
+<div class="paragraph">
+<p>The Graph uses the Dijkstra algorithm to find the shortest path between nodes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="graph.png" alt="Class Diagram">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">data class Cell(
+  val c: Char,
+  val pos: Coord
+) : Comparable&lt;Cell&gt; {
+  override fun compareTo(other: Cell): Int {
+    var result = c.compareTo(other.c)
+    if (result == 0) {
+      result = pos.compareTo(other.pos)
+    }
+    return result
+  }
+  override fun equals(other: Any?): Boolean {
+    if (this === other) return true
+    other as Cell
+    if (c != other.c) return false
+    if (pos != other.pos) return false
+    return true
+  }
+  override fun hashCode(): Int {
+    return pos.hashCode() * c.hashCode()
+  }
+  fun actual(): Char = when (c) {
+    'S' -&gt; 'a'
+    'E' -&gt; 'z'
+    else -&gt; c
+  }
+  override fun toString(): String {
+    return "Cell($c, $pos)"
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_parsing_8"><a class="anchor" href="#_parsing_8"></a><a class="link" href="#_parsing_8">Parsing</a></h5>
+<div class="paragraph">
+<p>The parsing of the grid and creating of Cells and Edges will be in one function.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun createGrid(input: List&lt;String&gt;): List&lt;Edge&lt;Cell&gt;&gt; {
+  val edges = mutableListOf&lt;Edge&lt;Cell&gt;&gt;()
+  val cells = input.mapIndexed { y, line -&gt;
+    line.mapIndexed { x, c -&gt;
+      Cell(c, Coord(x, input.lastIndex - y))
+    }
+  }.flatMap { row -&gt; row.map { it } }.associateBy { it.pos }
+  cells.values.forEach { cell -&gt;
+    cell.pos.surrounds().forEach { coord -&gt;
+      val neighbour = cells[coord]
+      if (neighbour != null) {  <i class="conum" data-value="1"></i><b>(1)</b>
+        val height = neighbour.actual() - cell.actual()
+        if (height &lt;= 1) { <i class="conum" data-value="2"></i><b>(2)</b>
+          edges.add(Edge(cell, neighbour))
+        }
+      }
+    }
+  }
+  return edges
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>If there is no neighbour at the surrounding coordinates it will be skipped. This will happen for the cells on the edges of the grid.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>We are interested in cells that are 1 step higher or lower.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_processing_2"><a class="anchor" href="#_processing_2"></a><a class="link" href="#_processing_2">Processing</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun calculateSteps(
+  edges: List&lt;Edge&lt;Cell&gt;&gt;,
+  start: Cell,
+  end: Cell
+): Int? {
+  val graph = Graph(edges, true)
+  val path = graph.findPath(start, end)
+  return if (path.isEmpty()) null else path.size - 1 <i class="conum" data-value="1"></i><b>(1)</b>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The path includes the start and end node and we will subtract 1 from the path length to obtain the number of steps. Null is returned for an empty path.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_part_1_8"><a class="anchor" href="#_part_1_8"></a><a class="link" href="#_part_1_8">Part 1</a></h5>
+<div class="paragraph">
+<p>In part 1 we had to find the shortest path between <code>S</code> (which is the same as <code>a</code>) and <code>E</code> (which is the same elevation as <code>z</code>).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun calcSolution1(input: List&lt;String&gt;): Int {
+  val edges = createGrid(input)
+  val end = edges.map { edge -&gt; edge.c2 }
+    .find { it.c == 'E' } ?: error("Cannot find E")
+  val start = edges.map { edge -&gt; edge.c1 }
+    .find { it.c == 'S' } ?: error("Cannot find S")
+  return calculateSteps(edges, start, end)
+    ?: error("Cannot find solution from $start to $end")
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_part_2_9"><a class="anchor" href="#_part_2_9"></a><a class="link" href="#_part_2_9">Part 2</a></h5>
+<div class="paragraph">
+<p>In part 2 we had to find the shortest paths for all cells labelled <code>a</code> and report the shortest of those.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun calcSolution2(input: List&lt;String&gt;): Int {
+  val edges = createGrid(input)
+  val end = edges.map { edge -&gt; edge.c2 }
+    .find { it.c == 'E' } ?: error("Cannot find E")
+  return edges.map { edge -&gt; edge.c1 }
+    .filter { it.actual() == 'a' }
+    .mapNotNull { start -&gt; calculateSteps(edges, start, end) }
+    .min()
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_full_source_10"><a class="anchor" href="#_full_source_10"></a><a class="link" href="#_full_source_10">Full source</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">package day12
+
+import main.utils.Edge
+import main.utils.Graph
+import main.utils.measureAndPrint
+import utils.Coord
+import utils.readFile
+import utils.readLines
+
+fun main() {
+
+  val test = readLines(
+    """Sabqponm
+abcryxxl
+accszExk
+acctuvwj
+abdefghi"""
+  )
+  val input = readFile("day12")
+
+  data class Cell(
+    val c: Char,
+    val pos: Coord
+  ) : Comparable&lt;Cell&gt; {
+
+    override fun compareTo(other: Cell): Int {
+      var result = c.compareTo(other.c)
+      if (result == 0) {
+        result = pos.compareTo(other.pos)
+      }
+      return result
+    }
+
+    override fun equals(other: Any?): Boolean {
+      if (this === other) return true
+      other as Cell
+      if (c != other.c) return false
+      if (pos != other.pos) return false
+
+
+      return true
+    }
+
+    override fun hashCode(): Int {
+      return pos.hashCode() * c.hashCode()
+    }
+
+    fun actual(): Char = when (c) {
+      'S' -&gt; 'a'
+      'E' -&gt; 'z'
+      else -&gt; c
+    }
+
+    override fun toString(): String {
+      return "Cell($c, $pos)"
+    }
+
+  }
+
+  fun createGrid(input: List&lt;String&gt;): List&lt;Edge&lt;Cell&gt;&gt; {
+    val edges = mutableListOf&lt;Edge&lt;Cell&gt;&gt;()
+    val cells = input.mapIndexed { y, line -&gt;
+      line.mapIndexed { x, c -&gt;
+        Cell(c, Coord(x, input.lastIndex - y))
+      }
+    }.flatMap { row -&gt; row.map { it } }.associateBy { it.pos }
+    cells.values.forEach { cell -&gt;
+      cell.pos.surrounds().forEach { coord -&gt;
+        val neighbour = cells[coord]
+        if (neighbour != null) {
+          val height = neighbour.actual() - cell.actual()
+          if (height &lt;= 1) {
+            edges.add(Edge(cell, neighbour))
+          }
+        }
+      }
+    }
+    return edges
+  }
+
+  fun calculateSteps(
+    edges: List&lt;Edge&lt;Cell&gt;&gt;,
+    start: Cell,
+    end: Cell
+  ): Int? {
+    val graph = Graph(edges, true)
+    val path = graph.findPath(start, end)
+    return if (path.isEmpty()) null else path.size - 1
+  }
+
+  fun calcSolution1(input: List&lt;String&gt;): Int {
+    val edges = createGrid(input)
+    val end = edges.map { edge -&gt; edge.c2 }
+      .find { it.c == 'E' } ?: error("Cannot find E")
+    val start = edges.map { edge -&gt; edge.c1 }
+      .find { it.c == 'S' } ?: error("Cannot find S")
+    return calculateSteps(edges, start, end)
+      ?: error("Cannot find solution from $start to $end")
+  }
+
+  fun calcSolution2(input: List&lt;String&gt;): Int {
+    val edges = createGrid(input)
+    val end = edges.map { edge -&gt; edge.c2 }
+      .find { it.c == 'E' } ?: error("Cannot find E")
+    return edges.map { edge -&gt; edge.c1 }
+      .filter { it.actual() == 'a' }
+      .mapNotNull { start -&gt; calculateSteps(edges, start, end) }
+      .min()
+  }
+
+  fun part1() {
+    val testResult = measureAndPrint("Part 1 Test Time: ") {
+      calcSolution1(test)
+    }
+    println("Part 1 Answer = $testResult")
+    check(testResult == 31)
+    val result = measureAndPrint("Part 1 Time: ") {
+      calcSolution1(input)
+    }
+    println("Part 1 Answer = $result")
+    check(result == 339)
+  }
+
+  fun part2() {
+    val testResult = measureAndPrint("Part 2 Test Time: ") {
+      calcSolution2(test)
+    }
+    println("Part 2 Answer = $testResult")
+    check(testResult == 29)
+    val result = measureAndPrint("Part 2 Time: ") {
+      calcSolution2(input)
+    }
+    println("Part 2 Answer = $result")
+    check(result == 332)
+  }
+  println("Day - 12")
+  part1()
+  part2()
+}</code></pre>
+</div>
+</div>
+<a id="day13" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_13_kotlin"><a class="anchor" href="#_day_13_kotlin"></a><a class="link" href="#_day_13_kotlin">Day 13: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_distress_signal"><a class="anchor" href="#_distress_signal"></a><a class="link" href="#_distress_signal">Distress Signal</a></h4>
+<div class="paragraph">
+<p>Today&#8217;s puzzle required parsing a data structure with nested elements. My brain fell apart initially.</p>
+</div>
+<div class="paragraph">
+<p>I decided to try a List&lt;Object&gt; where the entry can be an Int or List&lt;Object&gt;
+Once this worked I refactored to use an abstract class to represent any packet item, packet value and packet list.</p>
+</div>
+<div class="paragraph">
+<p>Implementing the determination of the order provided some problems until I understood that the packet order is determined once two items aren&#8217;t equal.</p>
+</div>
+<div class="sect4">
+<h5 id="_sample_input"><a class="anchor" href="#_sample_input"></a><a class="link" href="#_sample_input">Sample Input</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-text" data-lang="text">[1,1,3,1,1]
+[1,1,5,1,1]
+
+[[1],[2,3,4]]
+[[1],4]
+
+[9]
+[[8,7,6]]
+
+[[4,4],4,4]
+[[4,4],4,4,4]
+
+[7,7,7,7]
+[7,7,7]
+
+[]
+[3]
+
+[[[]]]
+[[]]
+
+[1,[2,[3,[4,[5,6,7]]]],8,9]
+[1,[2,[3,[4,[5,6,0]]]],8,9]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_model_5"><a class="anchor" href="#_model_5"></a><a class="link" href="#_model_5">Model</a></h5>
+<div class="paragraph">
+<p>The model for Item, Value and Packet below</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">abstract class Item
+data class Value(val value: Int) : Item() {
+  fun compareTo(right: Value): Int {
+    return value.compareTo(right.value)
+  }
+  override fun toString(): String {
+    return value.toString()
+  }
+}
+
+data class Packet(val items: List&lt;Item&gt;) : Item(), List&lt;Item&gt; by items {
+  constructor(value: Item) : this(listOf(value)) {
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_parsing_9"><a class="anchor" href="#_parsing_9"></a><a class="link" href="#_parsing_9">Parsing</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun parsePacket(input: String): Packet {
+  val value = StringBuilder()
+  var list: MutableList&lt;Item&gt; = mutableListOf()
+
+  fun checkAdd() {
+    if (value.isNotBlank()) {
+      list.add(Value(value.toString().toInt()))
+    }
+    value.clear()
+  }
+  val lists = Stack&lt;List&lt;Item&gt;&gt;()
+  var index = 1 // skip first [
+  while (index &lt; input.lastIndex) {
+    when (val c = input[index]) {
+      ',', ' ' -&gt; checkAdd()
+      '[' -&gt; {
+        lists.push(list)
+        list = mutableListOf()
+      }
+      ']' -&gt; {
+        checkAdd()
+        val v = list
+        list = lists.pop().toMutableList()
+        list.add(Packet(v))
+      }
+      '-' -&gt; value.append('-')
+      '+' -&gt; value.append('+')
+      else -&gt; {
+        if (c.isDigit()) {
+          value.append(c)
+        } else {
+          error("Unexpected $c")
+        }
+      }
+    }
+    index += 1
+  }
+  checkAdd()
+  return Packet(list.toList())
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_processing_3"><a class="anchor" href="#_processing_3"></a><a class="link" href="#_processing_3">Processing</a></h5>
+<div class="paragraph">
+<p>We needed comparison functions for the Packet and one for generic Item.
+The <code>isOrdered</code> function couldn&#8217;t be part of Item because it references Packet and Value.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun Packet.compareTo(right: Packet): Int {
+  var result = 0
+  for (index in indices) {
+    val item = this[index]
+    val rightItem = right.getOrNull(index)
+    result = when {
+      rightItem == null -&gt; 1
+      item is Value &amp;&amp; rightItem is Value -&gt; item.compareTo(rightItem)
+      item is Packet &amp;&amp; rightItem is Value -&gt; item.compareTo(Packet(rightItem))
+      item is Packet &amp;&amp; rightItem is Packet -&gt; item.compareTo(rightItem)
+      item is Value &amp;&amp; rightItem is Packet -&gt; Packet(item).compareTo(rightItem)
+      else -&gt; 1
+    }
+    if (result != 0) {
+      break
+    }
+  }
+  if (result == 0 &amp;&amp; size &lt; right.size) {
+    result = -1
+  }
+  return result
+}
+
+fun Item.isOrdered(right: Item?): Int {
+  return when {
+    right == null -&gt; 1
+    this is Value &amp;&amp; right is Value -&gt; compareTo(right)
+    this is Packet &amp;&amp; right is Packet -&gt; this.compareTo(right)
+    this is Packet &amp;&amp; right is Value -&gt; this.compareTo(Packet(right))
+    this is Value &amp;&amp; right is Packet -&gt; Packet(this).compareTo(right)
+    else -&gt; 1
+  }
+}
+
+fun isIndexOrdered(index: Int, input: List&lt;String&gt;): Boolean {
+  check(input.size == 2)
+  val (left, right) = input.map { parsePacket(it) }
+  var result = 0
+  for (index in left.indices) {
+    val item = left[index]
+    val rightItem = if (index &lt;= right.lastIndex) right[index]
+        else null
+    result = item.isOrdered(rightItem)
+    if (result != 0) {
+      break
+    }
+  }
+  return result &lt;= 0
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_part_1_9"><a class="anchor" href="#_part_1_9"></a><a class="link" href="#_part_1_9">Part 1</a></h5>
+<div class="paragraph">
+<p>In part 1 we had check every 2 pairs to determine if they are in the right order and then report the sum of the indexes of those pairs.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun calcSolution1(input: List&lt;List&lt;String&gt;&gt;): Int {
+  return input.mapIndexedNotNull { index, inputs -&gt;
+    if (isIndexOrdered(index, inputs)) index + 1 else null
+  }.sum()
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_part_2_10"><a class="anchor" href="#_part_2_10"></a><a class="link" href="#_part_2_10">Part 2</a></h5>
+<div class="paragraph">
+<p>In part 2 we had to treat all the packets as one list and add 2 more with the values:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-text" data-lang="text">"[[2]]"
+"[[6]]"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then we had to sort the packets using the ordering rules from part 1.
+We need to find the indexes of the 2 additional packets and print the product.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun calcSolution2(input: List&lt;String&gt;): Int {
+  val extra1 = "[[2]]"
+  val extra2 = "[[6]]"
+  val packets = input.filter { it.isNotBlank() }.toMutableList()
+  packets.add(extra1)
+  packets.add(extra2)
+  val sorted = packets.map { it to parsePacket(it) }
+    .sortedWith { o1, o2 -&gt; o1.second.compareTo(o2.second) }
+    .map { it.first }
+  val index1 = sorted.indexOf(extra1) + 1
+  val index2 = sorted.indexOf(extra2) + 1
+  return index1 * index2
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_full_source_11"><a class="anchor" href="#_full_source_11"></a><a class="link" href="#_full_source_11">Full source</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">package day13
+
+import utils.groupLines
+import utils.readFile
+import utils.readLines
+import utils.separator
+import java.util.*
+
+fun main() {
+  val test = readLines(
+    """[1,1,3,1,1]
+       [1,1,5,1,1]
+
+       [[1],[2,3,4]]
+       [[1],4]
+
+       [9]
+       [[8,7,6]]
+
+       [[4,4],4,4]
+       [[4,4],4,4,4]
+
+       [7,7,7,7]
+       [7,7,7]
+
+       []
+       [3]
+
+       [[[]]]
+       [[]]
+
+       [1,[2,[3,[4,[5,6,7]]]],8,9]
+       [1,[2,[3,[4,[5,6,0]]]],8,9]
+       """.trimIndent()
+  )
+  val input = readFile("day13")
+
+  abstract class Item
+  data class Value(val value: Int) : Item() {
+    fun compareTo(right: Value): Int {
+      return value.compareTo(right.value)
+    }
+
+    override fun toString(): String {
+      return value.toString()
+    }
+  }
+
+  data class Packet(val items: List&lt;Item&gt;) : Item(), List&lt;Item&gt; by items {
+    constructor(value: Item) : this(listOf(value)) {}
+  }
+
+  fun parsePacket(input: String): Packet {
+    val value = StringBuilder()
+    var list: MutableList&lt;Item&gt; = mutableListOf()
+
+    fun checkAdd() {
+      if (value.isNotBlank()) {
+        list.add(Value(value.toString().toInt()))
+      }
+      value.clear()
+    }
+
+    val lists = Stack&lt;List&lt;Item&gt;&gt;()
+    var index = 1 // skip first [
+    while (index &lt; input.lastIndex) {
+      when (val c = input[index]) {
+        ',', ' ' -&gt; checkAdd()
+        '[' -&gt; {
+          lists.push(list)
+          list = mutableListOf()
+        }
+
+        ']' -&gt; {
+          checkAdd()
+          val v = list
+          list = lists.pop().toMutableList()
+          list.add(Packet(v))
+        }
+
+        '-' -&gt; value.append('-')
+        '+' -&gt; value.append('+')
+        else -&gt; {
+          if (c.isDigit()) {
+            value.append(c)
+          } else {
+            error("Unexpected $c")
+          }
+        }
+      }
+      index += 1
+    }
+    checkAdd()
+    return Packet(list.toList())
+  }
+
+
+  fun Packet.compareTo(right: Packet): Int {
+    var result = 0
+    for (index in indices) {
+      val item = this[index]
+      val rightItem = right.getOrNull(index)
+      result = when {
+        rightItem == null -&gt; 1
+        item is Value &amp;&amp; rightItem is Value -&gt; item.compareTo(rightItem)
+        item is Packet &amp;&amp; rightItem is Value -&gt; item.compareTo(Packet(rightItem))
+        item is Packet &amp;&amp; rightItem is Packet -&gt; item.compareTo(rightItem)
+        item is Value &amp;&amp; rightItem is Packet -&gt; Packet(item).compareTo(rightItem)
+        else -&gt; 1
+      }
+      if (result != 0) {
+        break
+      }
+    }
+    if (result == 0 &amp;&amp; size &lt; right.size) {
+      result = -1
+    }
+    return result
+  }
+
+  fun Item.isOrdered(right: Item?): Int {
+    return when {
+      right == null -&gt; 1
+      this is Value &amp;&amp; right is Value -&gt; compareTo(right)
+      this is Packet &amp;&amp; right is Packet -&gt; this.compareTo(right)
+      this is Packet &amp;&amp; right is Value -&gt; this.compareTo(Packet(right))
+      this is Value &amp;&amp; right is Packet -&gt; Packet(this).compareTo(right)
+      else -&gt; 1
+    }
+  }
+
+  fun isIndexOrdered(index: Int, input: List&lt;String&gt;): Boolean {
+    check(input.size == 2)
+    val (left, right) = input.map { parsePacket(it) }
+    var result = 0
+    for (index in left.indices) {
+      val item = left[index]
+      val rightItem = if (index &lt;= right.lastIndex)
+        right[index] else null
+      result = item.isOrdered(rightItem)
+      if (result != 0) {
+        break
+      }
+    }
+    val ordered = result &lt;= 0
+    if (result == 0) {
+      println("Pair $index: was the same")
+    } else if (result &lt; 0) {
+      println("Pair $index: left was lower")
+    }
+    return ordered
+  }
+
+  fun calcSolution1(input: List&lt;List&lt;String&gt;&gt;): Int {
+    return input.mapIndexedNotNull { index, inputs -&gt;
+      if (isIndexOrdered(index, inputs)) index + 1 else null
+    }.sum()
+  }
+
+  fun calcSolution2(input: List&lt;String&gt;): Int {
+    val extra1 = "[[2]]"
+    val extra2 = "[[6]]"
+    val packets = input.filter { it.isNotBlank() }.toMutableList()
+    packets.add(extra1)
+    packets.add(extra2)
+    val sorted = packets.map { it to parsePacket(it) }
+      .sortedWith { o1, o2 -&gt; o1.second.compareTo(o2.second) }
+      .map { it.first }
+    val index1 = sorted.indexOf(extra1) + 1
+    val index2 = sorted.indexOf(extra2) + 1
+    return index1 * index2
+  }
+
+  fun part1() {
+    val testResult = calcSolution1(groupLines(test))
+    println("Part 1 Test Answer = $testResult")
+    check(testResult == 13)
+    separator()
+    val result = calcSolution1(groupLines(input))
+    println("Part 1 Answer = $result")
+    check(result == 4643)
+  }
+
+  fun part2() {
+    val testResult = calcSolution2(test)
+    println("Part 2 Test Answer = $testResult")
+    check(testResult == 140)
+    separator()
+    val result = calcSolution2(input)
+    println("Part 2 Answer = $result")
+    check(result == 21614)
+  }
+  println("Day - 13")
+  part1()
+  separator()
+  part2()
+}</code></pre>
+</div>
+</div>
+<a id="day14" />
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_day_14_kotlin"><a class="anchor" href="#_day_14_kotlin"></a><a class="link" href="#_day_14_kotlin">Day 14: kotlin</a></h3>
+<div class="sect3">
+<h4 id="_regolith_reservoir"><a class="anchor" href="#_regolith_reservoir"></a><a class="link" href="#_regolith_reservoir">Regolith Reservoir</a></h4>
+<div class="paragraph">
+<p>Today we had to use the input data to represent a cave system and model sand falling into the cave.</p>
+</div>
+<div class="paragraph">
+<p>In the first part there is a point where the sand falls over the edge and it means all the sand falls down that abyss. So you needed to detect and out of boundary condition.</p>
+</div>
+<div class="sect4">
+<h5 id="_sample_input_2"><a class="anchor" href="#_sample_input_2"></a><a class="link" href="#_sample_input_2">Sample Input</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-text" data-lang="text">498,4 -&gt; 498,6 -&gt; 496,6
+503,4 -&gt; 502,4 -&gt; 502,9 -&gt; 494,9</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_model_6"><a class="anchor" href="#_model_6"></a><a class="link" href="#_model_6">Model</a></h5>
+<div class="paragraph">
+<p>The model of the cave is a grid with a map of coordinates and the substance found their, like rock, sand or air.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">open class Grid(
+val cells: MutableMap&lt;Coord, Substance&gt; = mutableMapOf()
+): MutableMap&lt;Coord, Substance&gt; by cells {
+  open val maxX: Int get() = cells.keys.maxOf { it.x }
+  open val minX: Int get() = cells.keys.minOf { it.x }
+  open val maxY: Int get() = cells.keys.maxOf { it.y }
+  open val minY: Int = 0
+  fun countSand() = cells.values.count { it == Substance.SAND }
+  open fun isInGrid(pos: Coord): Boolean = pos.x in minX..maxX
+        &amp;&amp; pos.y in minY..maxY
+
+  fun getSubStance(pos: Coord) = getOrDefault(pos, Substance.AIR)
+  fun isAir(pos: Coord) = getSubStance(pos) == Substance.AIR
+  fun isTarget(pos: Coord) = isInGrid(pos) &amp;&amp; isAir(pos)
+  fun canDrop(pos: Coord): Pair&lt;Coord, Direction&gt; {
+    if (!isInGrid(pos.left()) || !isInGrid(pos.right())) {
+      return Pair(pos, Direction.ABYSS)
+    }
+    if (isInGrid(pos.bottom())) {
+      if (isTarget(pos.bottom())) {
+        return canDrop(pos.bottom())
+      } else {
+        if (isTarget(pos.bottom().left())) {
+          return canDrop(pos.bottom().left())
+        } else if (isTarget(pos.bottom().right())) {
+          return canDrop(pos.bottom().right())
+        }
+        if (isTarget(pos)) {
+          return Pair(pos, Direction.DOWN)
+        }
+      }
+    }
+    return Pair(pos, Direction.STOP)
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_parsing_10"><a class="anchor" href="#_parsing_10"></a><a class="link" href="#_parsing_10">Parsing</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun loadStructure(lines: List&lt;String&gt;): Grid {
+  val grid = mutableMapOf&lt;Coord, Substance&gt;()
+  lines.map {
+    it.scanInts()
+      .windowed(2, 2)
+      .map { line -&gt; Coord(line[0], line[1]) }
+  }.forEach { scan -&gt;
+    scan.windowed(2)
+      .forEach { pair -&gt;
+        val prev = pair[0]
+        val curr = pair[1]
+        val diff = curr - prev
+        if (diff.y == 0) {
+          for (x in min(curr.x, prev.x)..max(curr.x, prev.x)) {
+            val pos = Coord(x, curr.y)
+            if (!grid.containsKey(pos)) {
+              grid[pos] = Substance.ROCK
+            }
+          }
+        } else {
+          for (y in min(curr.y, prev.y)..max(curr.y, prev.y)) {
+            val pos = Coord(curr.x, y)
+            if (!grid.containsKey(pos)) {
+              grid[pos] = Substance.ROCK
+            }
+          }
+        }
+      }
+  }
+  return Grid(grid)
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_processing_4"><a class="anchor" href="#_processing_4"></a><a class="link" href="#_processing_4">Processing</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun isStop(direction: Direction) = direction == Direction.STOP
+    || direction == Direction.NONE
+    || direction == Direction.ABYSS
+fun dropSand(grid: Grid, entry: Coord): Pair&lt;Coord, Boolean&gt; {
+  val drop = grid.canDrop(entry)
+  if (drop.second == Direction.ABYSS) {
+    return Pair(drop.first, false)
+  }
+  return Pair(drop.first, !isStop(drop.second))
+}
+
+fun simulateSand(grid: Grid, start: Coord, print: Boolean): Int {
+  do {
+    val result = dropSand(grid, start)
+    if (result.second) {
+      grid[result.first] = Substance.SAND
+    }
+  } while (result.second)
+  return grid.countSand()
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_part_1_10"><a class="anchor" href="#_part_1_10"></a><a class="link" href="#_part_1_10">Part 1</a></h5>
+<div class="paragraph">
+<p>Part 1 involved simulating the sand while determining the boundary.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">fun calcSand(input: List&lt;String&gt;, print: Boolean): Int {
+  val grid = loadStructure(input)
+  val entry = Coord(500, 0)
+  simulateSand(grid, entry, print)
+  return grid.countSand()
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_part_2_11"><a class="anchor" href="#_part_2_11"></a><a class="link" href="#_part_2_11">Part 2</a></h5>
+<div class="paragraph">
+<p>Part 2 provided for an infinite floor and I overloaded the grid to provide for a different boundary condition and the floor.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">class InfiniteGird(
+cells: MutableMap&lt;Coord, Substance&gt;,
+val level: Int
+) : Grid(cells) {
+  override val maxY: Int get() = level
+  override fun get(key: Coord): Substance? {
+    if (key.y == level) {
+      return Substance.ROCK
+    }
+    return super.get(key)
+  }
+  override fun getOrDefault(key: Coord, defaultValue: Substance): Substance {
+    if (key.y == level) {
+      return Substance.ROCK
+    }
+    return super.getOrDefault(key, defaultValue)
+  }
+  override fun isInGrid(pos: Coord): Boolean = pos.y &lt;= level
+}
+
+fun calcInfiniteSand(input: List&lt;String&gt;, print: Boolean): Int {
+  val grid = loadStructure(input)
+  val entry = Coord(500, 0)
+  val infiniteGrid = InfiniteGird(grid.toMutableMap(), grid.maxY + 2)
+  if (print) {
+    grid.print(entry)
+  }
+  infiniteGrid.stretch()
+  val sand = simulateSand(infiniteGrid, entry, print)
+  if (print) {
+    infiniteGrid.print(null)
+  }
+  return sand
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_full_source_12"><a class="anchor" href="#_full_source_12"></a><a class="link" href="#_full_source_12">Full source</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-kotlin" data-lang="kotlin">package day14
+
+import main.utils.measureAndPrint
+import main.utils.scanInts
+import utils.Coord
+import utils.readFile
+import utils.readLines
+import utils.separator
+import kotlin.math.max
+import kotlin.math.min
+
+enum class Substance(val c: Char) {
+  AIR('.'),
+  ROCK('#'),
+  SAND('o')
+}
+
+enum class Direction {
+  STOP,
+  NONE,
+  DOWN,
+  LEFT,
+  RIGHT,
+  ABYSS
+}
+
+object Depth {
+  private val depth = ThreadLocal.withInitial { 0 }
+  var maxDepth = 0
+  fun enter() {
+    depth.set(depth.get() + 1)
+    maxDepth = max(maxDepth, depth.get())
+  }
+
+  fun exit() {
+    depth.set(depth.get() - 1)
+  }
+}
+
+fun main() {
+
+  val test = readLines(
+    """498,4 -&gt; 498,6 -&gt; 496,6
+503,4 -&gt; 502,4 -&gt; 502,9 -&gt; 494,9"""
+  )
+  val input = readFile("day14")
+
+  open class Grid(val cells: MutableMap&lt;Coord, Substance&gt; = mutableMapOf()) : MutableMap&lt;Coord, Substance&gt; by cells {
+    open val maxX: Int get() = cells.keys.maxOf { it.x }
+    open val minX: Int get() = cells.keys.minOf { it.x }
+    open val maxY: Int get() = cells.keys.maxOf { it.y }
+    open val minY: Int = 0
+    open fun stretch() {}
+    fun countSand() = cells.values.count { it == Substance.SAND }
+    open fun isInGrid(pos: Coord): Boolean = pos.x in minX..maxX
+        &amp;&amp; pos.y in minY..maxY
+
+    fun getSubStance(pos: Coord) = getOrDefault(pos, Substance.AIR)
+    fun isAir(pos: Coord) = getSubStance(pos) == Substance.AIR
+    fun isTarget(pos: Coord) = isInGrid(pos) &amp;&amp; isAir(pos)
+    fun canDrop(pos: Coord): Pair&lt;Coord, Direction&gt; {
+      Depth.enter()
+      try {
+        if (!isInGrid(pos.left()) || !isInGrid(pos.right())) {
+          return Pair(pos, Direction.ABYSS)
+        }
+        if (isInGrid(pos.bottom())) {
+          if (isTarget(pos.bottom())) {
+            return canDrop(pos.bottom())
+          } else {
+            if (isTarget(pos.bottom().left())) {
+              return canDrop(pos.bottom().left())
+            } else if (isTarget(pos.bottom().right())) {
+              return canDrop(pos.bottom().right())
+            }
+            if (isTarget(pos)) {
+              return Pair(pos, Direction.DOWN)
+            }
+          }
+        }
+        return Pair(pos, Direction.STOP)
+      } finally {
+        Depth.exit()
+      }
+    }
+
+    fun print(entry: Coord?) {
+      val zX = maxX
+      val aX = minX
+      val zY = maxY
+      val aY = minY
+      for (y in aY..zY) {
+        for (x in aX..zX) {
+          val pos = Coord(x, y)
+          if (entry != null &amp;&amp; pos == entry) {
+            print('+')
+          } else {
+            print(getOrDefault(pos, Substance.AIR).c)
+          }
+        }
+        println()
+      }
+    }
+  }
+
+  class InfiniteGird(cells: MutableMap&lt;Coord, Substance&gt;, val level: Int) : Grid(cells) {
+    override val maxY: Int get() = level
+    override fun get(key: Coord): Substance? {
+      if (key.y == level) {
+        return Substance.ROCK
+      }
+      return super.get(key)
+    }
+
+    override fun getOrDefault(key: Coord, defaultValue: Substance): Substance {
+      if (key.y == level) {
+        return Substance.ROCK
+      }
+      return super.getOrDefault(key, defaultValue)
+    }
+
+    override fun isInGrid(pos: Coord): Boolean = pos.y &lt;= level
+    override fun stretch() {
+      val zX = (cells.keys.filter { it.y &lt; level }.maxOfOrNull { it.x } ?: maxX) + 1
+      val aX = (cells.keys.filter { it.y &lt; level }.minOfOrNull { it.x } ?: minX) - 1
+      for (x in aX..zX) {
+        val pos = Coord(x, level)
+        if (!containsKey(pos)) {
+          cells[pos] = Substance.ROCK
+        }
+      }
+    }
+  }
+
+  fun loadStructure(lines: List&lt;String&gt;): Grid {
+    val grid = mutableMapOf&lt;Coord, Substance&gt;()
+    val scans = lines.map {
+      it.scanInts()
+        .windowed(2, 2)
+        .map { line -&gt; Coord(line[0], line[1]) }
+    }
+    scans.forEach { scan -&gt;
+      scan.windowed(2)
+        .forEach { pair -&gt;
+          check(pair.size == 2)
+          val prev = pair[0]
+          val curr = pair[1]
+          val diff = curr - prev
+          check((diff.x == 0 &amp;&amp; diff.y != 0) || (diff.x != 0 &amp;&amp; diff.y == 0)) { "Expected one 0 in $diff" }
+          if (diff.y == 0) {
+            for (x in min(curr.x, prev.x)..max(curr.x, prev.x)) {
+              val pos = Coord(x, curr.y)
+              if (!grid.containsKey(pos)) {
+                grid[pos] = Substance.ROCK
+              }
+            }
+          } else {
+            for (y in min(curr.y, prev.y)..max(curr.y, prev.y)) {
+              val pos = Coord(curr.x, y)
+              if (!grid.containsKey(pos)) {
+                grid[pos] = Substance.ROCK
+              }
+            }
+          }
+        }
+    }
+    return Grid(grid)
+  }
+
+  fun isStop(direction: Direction) = direction == Direction.STOP
+      || direction == Direction.NONE
+      || direction == Direction.ABYSS
+
+  fun dropSand(grid: Grid, entry: Coord): Pair&lt;Coord, Boolean&gt; {
+    val drop = grid.canDrop(entry)
+    if (drop.second == Direction.ABYSS) {
+      return Pair(drop.first, false)
+    }
+    return Pair(drop.first, !isStop(drop.second))
+  }
+
+  fun simulateSand(grid: Grid, start: Coord, print: Boolean): Int {
+    do {
+      val result = dropSand(grid, start)
+      if (result.second) {
+        grid[result.first] = Substance.SAND
+      }
+    } while (result.second)
+    return grid.countSand()
+  }
+
+  fun calcSand(input: List&lt;String&gt;, print: Boolean): Int {
+    val grid = loadStructure(input)
+    val entry = Coord(500, 0)
+    if(print) {
+      grid.print(entry)
+    }
+    simulateSand(grid, entry, print)
+    if(print) {
+      grid.print(entry)
+    }
+    return grid.countSand()
+  }
+
+  fun calcInfiniteSand(input: List&lt;String&gt;, print: Boolean): Int {
+    val grid = loadStructure(input)
+    val entry = Coord(500, 0)
+    val infiniteGrid = InfiniteGird(grid.toMutableMap(), grid.maxY + 2)
+    if (print) {
+      grid.print(entry)
+    }
+    infiniteGrid.stretch()
+    val sand = simulateSand(infiniteGrid, entry, print)
+    if (print) {
+      infiniteGrid.print(null)
+    }
+    return sand
+  }
+
+  fun part1() {
+    val testResult = calcSand(test, false)
+    println("Part 1 Test Answer = $testResult")
+    check(testResult == 24) { "Expected 24 not $testResult" }
+    val result = measureAndPrint("Test 1 Time: ") {
+      calcSand(input, false)
+    }
+    println("Part 1 Answer = $result")
+  }
+
+  fun part2() {
+    val testResult = calcInfiniteSand(test, false)
+    println("Part 2 Test Answer = $testResult")
+    check(testResult == 93) { "Expected 93 not $testResult" }
+    val result = measureAndPrint("Test 2 Time: ") {
+      calcInfiniteSand(input, false)
+    }
+    println("Part 2 Answer = $result")
+    check(result == 22499) { "Expected 22499 not $result" }
+  }
+  println("Day - 14")
+  part1()
+  part2()
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></p>
+
+	</div>
+
+</div>
+<div id="push"></div>
+</div>
+
+
+    <div id="footer">
+      <div class="container">
+          <p class="muted credit">&copy; 2022 | Mixed with Bootstrap v3.1.1 | generated with <a href="https://doctoolchain.org">docToolchain</a> | Baked with JBake v2.6.4</p>
+      </div>
+    </div>
+    
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/prettify.js"></script>
+    
+
+
+</body>
+</html>
