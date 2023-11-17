@@ -6,8 +6,9 @@ Generates documentation from solutions and README.adoc files
 __version__ = "0.1"
 __author__ = "Peter Wieland"
 
-import sys
 import os
+import subprocess
+import sys
 from dataclasses import dataclass
 from urllib.parse import quote
 
@@ -79,14 +80,15 @@ def list_solutions(project_dir=os.path.abspath(sys.path[0])):
 
 
 
-def make_user_docs(sols, adoc_file: str=ADOC_BY_USER_FILE):
+def write_adoc_files(sols, out_dir: str=ADOC_GEN_DIR):
     """
     Write an ADOC file per user and one summary ADOC file.
 
     Parameters:
     sols (list[Solution]): list of solutions
-    adoc_file (str, optional): the summary file. Defaults to ADOC_BY_USER_FILE.
+    out_dir (str, optional): the folder to generate the ADOC files in. Defaults to ADOC_GEN_DIR
     """
+
     # create lists per user
     sols_for_users = {}
     for sol in sols:
@@ -105,23 +107,21 @@ def make_user_docs(sols, adoc_file: str=ADOC_BY_USER_FILE):
     #    break ties by sorting user names alphabetically
     user_scores.sort(key=lambda x: (-x[2], -x[1], x[0]))
 
-    os.makedirs(os.path.dirname(adoc_file), exist_ok=True)
-    with open(adoc_file, 'w', encoding="utf-8") as g:
-        g.write("[[top]]\n");
-        g.write("= Solutions by user\n\n")
-        g.write("link:by_day.html[Solutions by Day] &bull; link:by_lang.html[Solutions by Language] &bull; link:by_user.html[Solutions by User]\n\n")
+    os.makedirs(out_dir, exist_ok=True)
+    with open(os.path.join(out_dir, "index.adoc"), 'w', encoding="utf-8") as g:
+        g.write("= AOC 2022 Solutions\n\n")
+        g.write("== Solutions by user\n\n")
         g.write("|===\n")
 
         for user, n_tot, n_doc in user_scores:
             user_sols = sols_for_users[user]
-            g.write(f"| link:users/{quote(user)}.html[{user}] | {n_tot} Solution{'s' if n_tot != 1 else ''} ({n_doc} documented)\n")
+            g.write(f"| link:user-{quote(user)}.html[{user}] | {n_tot} Solution{'s' if n_tot != 1 else ''} ({n_doc} documented)\n")
 
-            user_file = os.path.join(os.path.dirname(adoc_file), "users", user + ".adoc")
-            os.makedirs(os.path.dirname(user_file), exist_ok=True)
+            user_file = os.path.join(out_dir, f"user-{user}.adoc")
             with open(user_file, 'w', encoding="utf-8") as f:
                 f.write("[[top]]\n")
                 f.write(f"= Solutions by {user}\n\n")
-                f.write("link:../by_day.html[Solutions by Day] &bull; link:../by_lang.html[Solutions by Language] &bull; link:../by_user.html[Solutions by User]\n\n")
+                f.write("link:index.html[Overview]\n\n")
                 for sol in sorted(user_sols, key=lambda sol: (sol.day, sol.lang)):
                     f.write(f"\n[[sol-{sol.day}]]\n")
 
@@ -136,77 +136,43 @@ def make_user_docs(sols, adoc_file: str=ADOC_BY_USER_FILE):
 
         g.write("|===\n")
 
-
-def make_lang_doc(sols, adoc_file: str=ADOC_BY_LANG_FILE):
-    """
-    Write an ADOC file for an overview by language.
-
-    Parameters:
-    sols (list[Solution]): list of solutions
-    adoc_file (str, optional): the file to be written. Defaults to ADOC_BY_LANG_FILE
-    """
-    os.makedirs(os.path.dirname(adoc_file), exist_ok=True)
-    with open(adoc_file, 'w', encoding="utf-8") as f:
         cur_lang = None
         cur_day = None
-        f.write("[[top]]\n")
-        f.write("= Solutions by language\n\n")
-        f.write("link:by_day.html[Solutions by Day] &bull; link:by_lang.html[Solutions by Language] &bull; link:by_user.html[Solutions by User]\n\n")
+        g.write("\n== Solutions by language\n\n")
         for sol in sorted(sols, key=lambda sol: (sol.lang, sol.day, sol.user)):
             if cur_lang != sol.lang:
                 if cur_lang != None:
-                    f.write("|===\n\n")
-                    f.write("link:#top[Top]\n\n")
-                f.write(f"== {sol.lang}\n\n")
-                f.write("|===\n")
+                    g.write("|===\n\n")
+                g.write(f"=== {sol.lang}\n\n")
+                g.write("|===\n")
 
-            f.write(f"| {sol.day if sol.day != cur_day else '':2} | link:users/{quote(sol.user)}.html#sol-{sol.day}[{sol.user}]\n")
+            g.write(f"| {sol.day if sol.day != cur_day else '':2} | link:user-{quote(sol.user)}.html#sol-{sol.day}[{sol.user}]\n")
 
             cur_lang = sol.lang
             cur_day = sol.day
 
         if cur_lang != None:
-            f.write("|===\n")
-            f.write("link:#top[Top]\n\n")
+            g.write("|===\n")
 
-
-def make_day_doc(sols, adoc_file: str=ADOC_BY_DAY_FILE):
-    """
-    Write an ADOC file for an overview by day.
-
-    Parameters:
-    sols (list[Solution]): list of solutions
-    adoc_file (str, optional): the file to be written. Defaults to ADOC_BY_DAY_FILE
-    """
-    os.makedirs(os.path.dirname(adoc_file), exist_ok=True)
-    with open(adoc_file, 'w', encoding="utf-8") as f:
         cur_day = None
         cur_lang = None
-        f.write("[[top]]\n")
-        f.write("= Solutions by day\n\n")
-        f.write("link:by_day.html[Solutions by Day] &bull; link:by_lang.html[Solutions by Language] &bull; link:by_user.html[Solutions by User]\n\n")
+        g.write("\n== Solutions by day\n\n")
         for sol in sorted(sols, key=lambda sol: (sol.day, sol.lang, sol.user)):
             if cur_day != sol.day:
                 if cur_day != None:
-                    f.write("|===\n\n")
-                    f.write("link:#top[Top]\n\n")
-                f.write(f"== Day {sol.day}\n\n")
-                f.write("|===\n")
+                    g.write("|===\n\n")
+                g.write(f"=== Day {sol.day}\n\n")
+                g.write("|===\n")
 
-            f.write(f"| {sol.lang if sol.lang != cur_lang else '':10} | link:users/{quote(sol.user)}.html#sol-{sol.day}[{sol.user}]\n")
+            g.write(f"| {sol.lang if sol.lang != cur_lang else '':10} | link:user-{quote(sol.user)}.html#sol-{sol.day}[{sol.user}]\n")
 
             cur_day = sol.day
             cur_lang = sol.lang
 
         if cur_day != None:
-            f.write("|===\n")
-            f.write("link:#top[Top]\n\n")
+            g.write("|===\n")
 
 
 sols = list_solutions()
-make_user_docs(sols)
-make_lang_doc(sols)
-make_day_doc(sols)
-
-# asciidoctor -a toc=right -a code-highlighter=rouge -D gen/html gen/adoc/*.adoc
-# asciidoctor -a toc=right -a code-highlighter=rouge -D gen/html/users gen/adoc/users/*.adoc
+write_adoc_files(sols)
+subprocess.run(["asciidoctor", "-a", "toc=right", "-a", "Source-highlighter=rouge", "-D", "gen/site", "gen/adoc/*.adoc"])

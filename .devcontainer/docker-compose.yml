@@ -1,0 +1,12 @@
+version: '3'
+services:
+  aoc-2022:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${WEBSERVER_HOST_PORT}:8080"
+    volumes:
+      - ..:/workspace
+    command: tail -f /dev/null  # keep the container running
+    entrypoint: [ "/workspace/.devcontainer/entrypoint.sh" ]

@@ -1,4 +1,19 @@
 {
-  "build": { "dockerfile" :  "../.gitpod.dockerfile" },
-  "extensions" : ["asciidoctor.asciidoctor-vscode", "hediet.vscode-drawio"]
+    "name": "AOC 2022",
+    "dockerComposeFile": ["docker-compose.yml"],
+    "service": "aoc-2022",
+    "workspaceFolder": "/workspace",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "rust-lang.rust-analyzer",
+                "asciidoctor.asciidoctor-vscode",
+                "formulahendry.code-runner",
+                "streetsidesoftware.code-spell-checker",
+                "vadimcn.vscode-lldb",
+                "tamasfe.even-better-toml",
+                "mhutchie.git-graph"
+            ] 
+        }
+    }
 }
